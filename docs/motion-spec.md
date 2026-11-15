@@ -122,3 +122,33 @@ Everything not listed above is not animated.
 5. Rapid clicking on the property picker: no stacked timelines, no leftover SVG (previous timeline killed, previous scope reverted).
 6. Navigate away and back (and, if view transitions are ever added, `astro:before-swap`): no duplicate listeners or triggers.
 7. Screenshots at 390, 768, 1280 and 1440 widths with the animation at rest.
+
+## 8. Lessons from the GSAP + anime.js prototype
+
+Reference: `docs/design-proposal/mock-site-gsap.html` (same design as `mock-site.html`, with every motion in section 5 driven by the real libraries; open it through `final-mock.html`). Verified in a browser with GSAP 3.13.0 (ScrollTrigger, DrawSVG, SplitText) and anime.js 4.5.0.
+
+- **anime.js v4 `loop: N` means N extra repeats**, not N plays. `loop: 1` gives two plays; `loop: 2` gave three plays (9.6 s) and broke the 5-second rule. Use `loop: 1` for "2 cycles". Check `animation.iterationCount` and `duration` in testing.
+- **`from()` tweens leave inline transforms.** On elements that also have CSS hover transforms (tiles, cards), always pass `clearProps: "transform,opacity,visibility"`, otherwise the inline `transform` overrides the hover lift.
+- **DrawSVG and `pathLength`:** do not put a `pathLength` attribute on elements GSAP DrawSVG animates. Keep it only where anime.js `svg.createDrawable()` is used (it sets it itself).
+- **Hidden-until-animated content:** use a head class (`anim-pending`) that is only added when reduced motion is off and has a 2.5 s failsafe timer, then let GSAP `set()` the start state before removing the class. This avoids a flash and guarantees content is never left hidden if a script fails.
+- **Lag smoothing:** GSAP's default lag smoothing slows animations to slow motion when a tab is throttled (the preview pane did this). The prototype turns it off for demo accuracy. **Production keeps the default.**
+- **One owner per element:** the prototype uses GSAP for the plan walls and anime.js for the cones on the same SVG, which is fine because they touch different elements and properties (stroke dash versus transform).
+- **Name clashes:** the plan builders used a variable called `G` for the ground polygon. Do not use short global names like `G`, `A` or `ST` for library handles; import named exports in TypeScript modules.
+- **Integrity:** if scripts are ever loaded from a CDN (the prototype does), pin the exact version and add `integrity` and `crossorigin`. The production build bundles them through npm instead.
+
+### Round 2 review changes (applied in the prototype)
+
+- **Camera sweep is ±12° (±10° on the services card).** ±5° read as a twitch, not a scan.
+- **Hover replay only when idle.** Calling `revert()` mid-sweep snaps cones back to 0°. Check `animation.completed` before replaying on `mouseenter`.
+- **Coverage shape is a wedge with a radial fade**, not a flat triangle: apex at the camera, a gentle arc at the far edge, `radialGradient` from about 62% to 10% opacity using the zone colour. Wedge length is trimmed 6% so rotation stays inside walls.
+- **Cameras are a camera glyph on a royal disc**, not a plain dot. Flat view scale 1.2, isometric 0.95.
+- **Buttons:** fill sweep 0.26 s, colour 0.18 s, arrow 0.22 s (was 0.4 s). Weight 650.
+- **Type:** Archivo headings 700 (was 800), H1 stretch 100–102% so the hero H1 sits on 4 lines at 1280 px.
+- **Orange is used twice, sparingly:** the hero eyebrow dot and the end tick of each section dimension line, plus entrance zones. Never for buttons or text.
+- **More GSAP (round 3):** header entrance stagger; SplitText line mask on every `h2` (tablet and up); numbered kickers slide in; hero parallax (grid drift and plan card -30 px, scrubbed, tablet and up); process circle pulse in sequence; a "Planned for ..." line under the H1 that swaps (slide out, slide in) when the property picker changes; vehicles roll into the plan after the walls draw (`.mv`, offsets in `data-dx` and `data-dy`); pointer-follow spotlight on tiles and cards (hover devices only).
+- **CSS only, finite:** camera signal ring (2 pulses) and green recording dot (4 blinks) on every camera.
+- **Round 4 (Indian context, no moving vehicles):** drawings now show Indian property features: compound wall and gate piers, two-wheeler parking rows, auto-rickshaw on the society road, overhead water tank and lift core on roofs, windows on every storey, shop shutter and sign board, gated bungalow with porch. Vehicles are static. Isometric heights raised (building 46, society blocks 50, home 38, shop 36) and `OY` moved to 62 to fit.
+- **Projection animation (GSAP):** isometric masses rise out of the ground plane with a short stagger, then windows switch on in random order, then gate piers, shutters and sign board fade in. Plan view: zones fade in, then two-wheelers and piers pop in with `back.out`. Both run after the DrawSVG wall draw starts.
+- **Final CTA live-view panel:** four camera tiles (line drawings, labelled illustrative) rise in, lines draw with DrawSVG, scan lines sweep with `repeat: 3` (finite), green REC dots blink 6 times (CSS).
+- **Whitespace:** section padding 46 px mobile and 66 px desktop, section head gap 26 px, grid gaps tightened.
+- **Hero is calmer:** the in-drawing "Illustrative" plaque is removed (the caption row already says it) and the bottom location line moved into the eyebrow. On phones the property picker now starts inside the first screen.

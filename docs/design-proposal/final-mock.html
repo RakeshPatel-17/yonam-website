@@ -45,30 +45,42 @@ header{padding-top:36px}
 <div class="wrap">
   <header>
     <span class="eyebrow">Blueprint · Zone Coded · Plan view hero · Isometric planning</span>
-    <h1>YONAM homepage, version 3</h1>
-    <p class="muted" style="max-width:70ch">This is the real responsive page, not a picture. Scroll inside either window. Try: the four property buttons above the hero plan (each has its own drawing, and the planning section follows your choice), the legend and chips on the drawings, hover states, the menu sheet and step list on the phone.</p>
+    <h1>YONAM homepage, built with GSAP and anime.js</h1>
+    <p class="muted" style="max-width:70ch">This is the real responsive page, not a picture. Scroll inside either window. Animations are driven by the real libraries. Try: scroll slowly to watch the reveals and the process timeline fill, the four property buttons above the hero plan (each has its own drawing, and the planning section follows your choice), the legend and chips on the drawings, hover states, the menu sheet and step list on the phone.</p>
+    <p class="muted" id="libs" style="font-size:13px;margin:14px 0 0"></p>
     <div class="bar" role="group" aria-label="Jump to section"><b>Jump to</b>
       <button class="chip" data-id="top">Hero</button><button class="chip" data-id="solutions">Segments</button><button class="chip" data-id="about">About</button>
       <button class="chip" data-id="services">Services</button><button class="chip" data-id="planning">Planning</button><button class="chip" data-id="process">Process</button>
       <button class="chip" data-id="why">Why YONAM</button><button class="chip" data-id="faq">FAQs</button><button class="chip" data-id="contact">Final CTA + footer</button>
-      <a class="open" href="mock-site.html" target="_blank" rel="noopener">Open full size ↗</a><a class="open" style="margin-left:14px;font-weight:600" href="mock-site-v1.html" target="_blank" rel="noopener">First version ↗</a></div>
+      <a class="open" href="mock-site-gsap.html" target="_blank" rel="noopener">Open full size ↗</a><a class="open" style="margin-left:14px;font-weight:600" href="mock-site.html" target="_blank" rel="noopener">CSS-only version ↗</a></div>
   </header>
 
   <div class="row">
     <div>
       <div class="cap"><h2>Desktop</h2><span>1280 px wide window</span></div>
-      <div class="win"><div class="chrome"><i></i><i></i><i></i><em>yonam.example · Home</em></div><div id="deskBox"><iframe id="desk" src="mock-site.html" title="Desktop homepage mock" loading="eager"></iframe></div></div>
+      <div class="win"><div class="chrome"><i></i><i></i><i></i><em>yonam.example · Home</em></div><div id="deskBox"><iframe id="desk" src="mock-site-gsap.html" title="Desktop homepage mock" loading="eager"></iframe></div></div>
     </div>
     <div>
       <div class="cap"><h2>Phone</h2><span>390 px wide</span></div>
-      <div class="phone-wrap"><div class="phone"><div id="phoneBox"><iframe id="phone" src="mock-site.html" title="Phone homepage mock"></iframe></div></div></div>
+      <div class="phone-wrap"><div class="phone"><div id="phoneBox"><iframe id="phone" src="mock-site-gsap.html" title="Phone homepage mock"></iframe></div></div></div>
     </div>
   </div>
 
   <div class="notes">
-    <div class="n"><h2>What is real</h2><ul><li>Your logo with the white background removed (original JPEG untouched)</li><li>Palette, type and spacing from the design system</li><li>All wording from the PRD</li></ul></div>
-    <div class="n"><h2>What is placeholder</h2><ul><li>Phone, WhatsApp, email: dashed “to be confirmed” boxes</li><li>FAQ answers: marked Draft</li><li>Links go to anchors, no other pages yet</li></ul></div>
+    <div class="n"><h2>What is real</h2><ul><li>Your logo with the white background removed (original JPEG untouched)</li><li>Palette, type and spacing from the design system</li><li>All wording from the PRD</li><li>Phones, branches, services and brands from your business card (see docs/business-info.md)</li></ul></div>
+    <div class="n"><h2>What is placeholder</h2><ul><li>WhatsApp and email: dashed “to be confirmed” box</li><li>Brand names are text for now; official logo files still needed</li><li>FAQ answers: marked Draft</li><li>Links go to anchors, no other pages yet</li></ul></div>
     <div class="n"><h2>Left out on purpose</h2><ul><li>Projects section, until genuine projects exist</li><li>Testimonials, ratings, numbers, certifications</li><li>Any support or response-time promise</li></ul></div>
+  </div>
+  <div class="n" style="margin-top:16px">
+    <h2>Colour psychology: why these colours</h2>
+    <ul>
+      <li><b>Navy:</b> authority, stability and calm. Used for headings, the process band and outdoor zones. Security buyers read it as serious and dependable.</li>
+      <li><b>Royal blue:</b> trust and action. Used only for things you can click, and for camera markers, so blue always means "interact" or "camera".</li>
+      <li><b>Cyan:</b> clarity and technology. Used for coverage and common areas, and for progress lines.</li>
+      <li><b>Green:</b> safe, recorded, supported. Used only for the recording room, the recording dot and the support band.</li>
+      <li><b>Orange:</b> attention and entry points. Used sparingly: entrances, the Nadiad dot, and the end tick of each section line. Never for buttons or body text.</li>
+      <li><b>Pale blue-white backgrounds:</b> keep the page clean and technical, and keep contrast above WCAG AA for all text.</li>
+    </ul>
   </div>
 </div>
 <script>
@@ -84,10 +96,11 @@ header{padding-top:36px}
     var sc=Math.min(1,pB.parentElement.clientWidth/390);pB.style.width='100%';pB.style.height=(780*sc)+'px';
   }
   window.addEventListener('resize',layout);layout();
+  d.addEventListener('load',function(){try{var m=d.contentWindow.__motion;if(m){document.getElementById('libs').textContent='Loaded in the page: GSAP '+m.gsap+' (ScrollTrigger '+(m.scrollTrigger?'yes':'no')+', DrawSVG '+(m.drawSVG?'yes':'no')+', SplitText '+(m.splitText?'yes':'no')+') and anime.js '+m.anime+(m.reducedMotion?'. Reduced motion is ON, so animations are skipped.':'.')}}catch(e){}});
   [].forEach.call(document.querySelectorAll('.chip'),function(c){
     c.addEventListener('click',function(){
       var id=c.dataset.id;
-      [d,p].forEach(function(f){try{var el=f.contentDocument.getElementById(id);if(el){el.scrollIntoView({behavior:'smooth'});return}}catch(e){}f.src='mock-site.html#'+id});
+      [d,p].forEach(function(f){try{var el=f.contentDocument.getElementById(id);if(el){el.scrollIntoView({behavior:'smooth'});return}}catch(e){}f.src='mock-site-gsap.html#'+id});
     });
   });
 })();

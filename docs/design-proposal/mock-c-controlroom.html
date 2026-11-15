@@ -1,0 +1,1155 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>YONAM CCTV Surveillance · Homepage mock C · Control Room</title>
+<script>document.documentElement.className+=' js';(function(){var r=document.documentElement;if(!matchMedia('(prefers-reduced-motion: reduce)').matches){r.classList.add('anim-pending');setTimeout(function(){r.classList.remove('anim-pending')},2500)}})()</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,500..900&family=Manrope:wght@400;500;600;700;800&display=swap">
+<style>
+/* v3: transparent logo, a different illustration for each property type, tighter spacing, light footer.
+   Tokens use shadcn/ui names (background, foreground, primary, muted, border, ring, radius) so real shadcn components drop in at build time.
+   Components mirrored here: Button, Tabs, Accordion, Sheet, Card, Badge, Carousel. */
+:root{
+  --background:#fff;--foreground:#0E1A33;
+  --primary:#1650D0;--primary-foreground:#fff;
+  --secondary:#F3F7FE;--secondary-foreground:#0B1F5C;
+  --muted:#F3F7FE;--muted-foreground:#475569;
+  --accent:#E3F2FD;--border:#DDE4F0;--ring:#1650D0;--radius:.625rem;
+  --navy-950:#060F2E;--navy-900:#0B1F5C;--navy-700:#1243B0;--royal:#1650D0;
+  --cyan:#00ADFC;--cyan-7:#0369A1;--sky:#E3F2FD;--ice:#F3F7FE;
+  --orange:#FD7B01;--orange-6:#C2540A;--green:#1CAD00;--green-7:#15803D;
+  --ink:#0E1A33;--slate:#475569;--line:#DDE4F0;
+  --f-body:'Manrope',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;
+  --f-disp:'Archivo','Manrope',system-ui,sans-serif;
+  --ease:cubic-bezier(.2,.7,.2,1);
+  --gutter:20px;
+  --arrow:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><path d='M4 10h11M11 5l5 5-5 5'/></svg>");
+}
+@media (min-width:768px){:root{--gutter:28px}}
+@media (min-width:1024px){:root{--gutter:36px}}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:88px}
+body{margin:0;font-family:var(--f-body);font-size:16px;line-height:1.6;color:var(--foreground);background:var(--background);font-weight:500;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+@media (min-width:768px){body{font-size:17px}}
+img{max-width:100%}
+p{margin:0}
+h1,h2,h3,h4{margin:0;color:var(--navy-900);font-family:var(--f-disp);text-wrap:balance}
+h1{font-size:clamp(30px,4.1vw,48px);line-height:1.08;font-weight:700;font-stretch:100%;letter-spacing:-.01em}
+h2{font-size:clamp(26px,3.2vw,38px);line-height:1.14;font-weight:700;font-stretch:102%;letter-spacing:-.01em}
+h3{font-size:clamp(18px,1.8vw,21px);line-height:1.25;font-weight:650;font-stretch:100%}
+@media (min-width:1024px){h1{font-stretch:102%}h2{font-stretch:105%}}
+a{color:var(--primary)}
+.wrap{max-width:1240px;margin-inline:auto;padding-inline:var(--gutter)}
+@media (min-width:1536px){.wrap{max-width:1380px}:root{--gutter:48px}}
+.lead{font-size:clamp(16px,1.45vw,18px);line-height:1.65;color:var(--muted-foreground);max-width:58ch}
+section{padding-block:46px}
+@media (min-width:1024px){section{padding-block:66px}}
+.alt{background:var(--secondary)}
+:focus-visible{outline:3px solid var(--ring);outline-offset:3px;border-radius:6px}
+.skip{position:absolute;left:-999px;top:8px;background:#fff;padding:8px 14px;border-radius:8px;z-index:100;font-weight:700}
+.skip:focus{left:8px}
+.short{display:none}
+@media (max-width:639px){.long{display:none}.short{display:inline}}
+
+/* ===== Button (shadcn: default / outline / secondary). One size, 52px. sm = header only. ===== */
+.btn{--bg:var(--primary);--fg:var(--primary-foreground);--sw:var(--navy-900);--bd:transparent;--fg-h:#fff;
+  position:relative;isolation:isolate;overflow:hidden;display:inline-flex;align-items:center;justify-content:center;gap:12px;
+  height:52px;min-width:216px;padding:0 26px;border-radius:var(--radius);border:2px solid var(--bd);background:var(--bg);color:var(--fg);
+  font:650 16px/1 var(--f-disp);font-stretch:104%;text-decoration:none;cursor:pointer;white-space:nowrap;
+  transition:color .18s var(--ease),transform .15s var(--ease),box-shadow .2s var(--ease)}
+.btn::before{content:"";position:absolute;inset:0;background:var(--sw);transform:translateX(-102%);transition:transform .26s var(--ease);z-index:-1}
+.btn::after{content:"";width:18px;height:18px;flex:none;background:currentColor;-webkit-mask:var(--arrow) center/contain no-repeat;mask:var(--arrow) center/contain no-repeat;transition:transform .22s var(--ease)}
+.btn:hover{color:var(--fg-h);box-shadow:0 10px 22px -10px rgb(22 80 208/.55)}
+.btn:hover::before{transform:none}
+.btn:hover::after{transform:translateX(5px)}
+.btn:active{transform:scale(.98)}
+.btn-outline{--bg:#fff;--fg:var(--navy-900);--bd:var(--navy-900);--sw:var(--navy-900);--fg-h:#fff}
+.btn-light{--bg:#fff;--fg:var(--navy-900);--sw:var(--sky);--fg-h:var(--navy-900)}
+.btn-sm{height:44px;min-width:0;padding:0 22px;font-size:15px}
+.btn-ping{animation:ping 1.4s 2.4s 1 both}
+@keyframes ping{0%{box-shadow:0 0 0 0 rgb(22 80 208/.55)}100%{box-shadow:0 0 0 16px rgb(22 80 208/0)}}
+@media (max-width:639px){.btn:not(.btn-sm){width:100%}}
+.tlink{display:inline-flex;align-items:center;gap:8px;font:650 16px var(--f-disp);font-stretch:104%;color:var(--primary);text-decoration:none;min-height:44px}
+.tlink::after{content:"";width:16px;height:16px;background:currentColor;-webkit-mask:var(--arrow) center/contain no-repeat;mask:var(--arrow) center/contain no-repeat;transition:transform .3s var(--ease)}
+.tlink:hover::after{transform:translateX(5px)}
+.tlink:hover{text-decoration:underline;text-underline-offset:4px}
+
+/* ===== header ===== */
+.site-header{position:sticky;top:0;z-index:30;background:rgb(255 255 255/.94);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid var(--border);transition:box-shadow .3s}
+.site-header.scrolled{box-shadow:0 8px 24px -14px rgb(11 31 92/.35)}
+.hbar{display:flex;align-items:center;gap:20px;min-height:68px;transition:min-height .3s var(--ease)}
+.scrolled .hbar{min-height:58px}
+@media (min-width:1024px){.hbar{min-height:92px}.scrolled .hbar{min-height:72px}}
+.logo{display:block;flex:none}
+.lt{display:block;width:54px;transition:width .3s var(--ease)}
+.scrolled .lt{width:46px}
+@media (min-width:1024px){.lt{width:86px}.scrolled .lt{width:66px}}
+.lt img{display:block;width:100%;height:auto}
+.prog{position:absolute;left:0;right:0;bottom:-1px;height:3px;pointer-events:none}
+.prog i{display:block;height:100%;background:linear-gradient(90deg,var(--cyan),var(--royal));transform:scaleX(0);transform-origin:left}
+.nav{display:none;margin-left:auto;align-items:center;gap:8px}
+.nav>ul{list-style:none;margin:0;padding:0;display:flex;gap:2px}
+.nav a.nl{position:relative;display:flex;align-items:center;gap:6px;padding:12px 14px;border-radius:8px;color:var(--foreground);text-decoration:none;font-weight:600;font-size:15px}
+.nav a.nl::after{content:"";position:absolute;left:14px;right:14px;bottom:6px;height:2px;background:var(--primary);transform:scaleX(0);transform-origin:left;transition:transform .3s var(--ease)}
+.nav a.nl:hover::after,.nav .has-sub:focus-within>a.nl::after{transform:scaleX(1)}
+.has-sub{position:relative}
+.sub{position:absolute;top:100%;left:0;min-width:290px;background:#fff;border:1px solid var(--border);border-radius:14px;padding:8px;box-shadow:0 18px 40px -16px rgb(11 31 92/.35);opacity:0;visibility:hidden;transform:translateY(8px);transition:opacity .2s,transform .25s var(--ease),visibility .2s}
+.has-sub:hover .sub,.has-sub:focus-within .sub{opacity:1;visibility:visible;transform:none}
+.sub a{display:block;padding:11px 14px;border-radius:9px;text-decoration:none;color:var(--foreground);font-weight:700;font-size:15px;transition:background .15s,padding .2s var(--ease)}
+.sub a:hover{background:var(--secondary);color:var(--primary);padding-left:18px}
+.sub small{display:block;font-weight:500;color:var(--muted-foreground);font-size:13px}
+.hcta{margin-left:12px}
+.hph{display:none!important;font-weight:700!important;white-space:nowrap}
+.hph svg{width:16px;height:16px;stroke:var(--primary);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+@media (min-width:1200px){.hph{display:flex!important}}
+.menu-btn{margin-left:auto;width:48px;height:48px;border-radius:10px;border:1.5px solid var(--border);background:#fff;display:grid;place-content:center;gap:5px;cursor:pointer}
+.menu-btn i{display:block;width:22px;height:2px;background:var(--navy-900);border-radius:2px}
+@media (min-width:1024px){.nav{display:flex}.menu-btn,.sheet,.sheet-ov{display:none!important}}
+
+/* ===== Sheet (mobile menu) ===== */
+.sheet-ov{position:fixed;inset:0;background:rgb(6 15 46/.55);opacity:0;pointer-events:none;transition:opacity .3s;z-index:55}
+.sheet-ov.open{opacity:1;pointer-events:auto}
+.sheet{position:fixed;top:0;right:0;bottom:0;width:min(88vw,380px);background:#fff;z-index:60;transform:translateX(102%);transition:transform .38s var(--ease);display:flex;flex-direction:column;box-shadow:-20px 0 40px -20px rgb(6 15 46/.4);visibility:hidden}
+.sheet.open{transform:none;visibility:visible}
+.sh-head{display:flex;justify-content:space-between;align-items:center;padding:12px var(--gutter);border-bottom:1px solid var(--border)}
+.sh-head .lt{width:50px}
+.sh-close{width:44px;height:44px;border-radius:10px;border:1.5px solid var(--border);background:#fff;display:grid;place-items:center;cursor:pointer}
+.sh-close svg{width:18px;height:18px;stroke:var(--navy-900);stroke-width:2;fill:none;stroke-linecap:round}
+.sheet nav{flex:1;overflow:auto}
+.sheet a.m{display:flex;justify-content:space-between;align-items:center;min-height:58px;padding:0 var(--gutter);border-bottom:1px solid var(--border);text-decoration:none;color:var(--foreground);font:700 18px var(--f-disp);font-stretch:104%}
+.sheet a.m::after{content:"";width:16px;height:16px;background:var(--primary);-webkit-mask:var(--arrow) center/contain no-repeat;mask:var(--arrow) center/contain no-repeat}
+.sheet .pad{padding:20px var(--gutter) max(24px,env(safe-area-inset-bottom,0px));display:grid;gap:12px;border-top:1px solid var(--border)}
+.sheet .ph{font-size:14px;color:var(--muted-foreground);text-align:center;display:grid;gap:6px}
+.sheet .ph a{color:var(--navy-900);font-weight:700;text-decoration:none;font-size:16px}
+
+/* ===== hero ===== */
+.hero{padding-block:24px 36px;background-color:var(--secondary);
+  background-image:linear-gradient(rgba(22,80,208,.07) 1px,transparent 1px),linear-gradient(90deg,rgba(22,80,208,.07) 1px,transparent 1px);background-size:20px 20px}
+@media (min-width:1024px){.hero{padding-block:36px 52px}}
+.hero-grid{display:grid;gap:28px;align-items:center}
+@media (min-width:980px){.hero-grid{grid-template-columns:1.05fr .95fr;gap:48px}}
+.hero h1{margin-bottom:18px}
+.eyebrow{display:inline-flex;align-items:center;gap:10px;margin-bottom:16px;padding:7px 14px 7px 12px;background:#fff;border:1px solid var(--border);border-radius:999px;box-shadow:0 1px 2px rgb(11 31 92/.06);font:700 13px var(--f-disp);font-stretch:104%;letter-spacing:.08em;text-transform:uppercase;color:var(--navy-900)}
+.eyebrow i{width:10px;height:10px;border-radius:50%;background:var(--orange);flex:none;animation:dotp 1.6s 1.2s 2}
+@keyframes dotp{0%{box-shadow:0 0 0 0 rgb(253 123 1/.55)}100%{box-shadow:0 0 0 10px rgb(253 123 1/0)}}
+@media (max-width:639px){.hero{padding-block:18px 32px}.hero-grid{gap:18px}.hero h1{margin-bottom:12px}.hero .lead{margin-bottom:16px}.eyebrow{margin-bottom:10px;font-size:12px}}
+.w{display:inline-block;overflow:hidden;vertical-align:top;padding-bottom:.12em;margin-bottom:-.12em}
+.w i{display:inline-block;font-style:normal}
+.js .w i{transform:translateY(112%);animation:rise .85s var(--ease) both;animation-delay:calc(var(--i)*65ms + 150ms)}
+@keyframes rise{to{transform:none}}
+.anim-pending .rise,.anim-pending .hero .planbox{opacity:0}
+@keyframes fadeup{to{opacity:1;transform:none}}
+.bf{display:flex;flex-wrap:wrap;align-items:baseline;gap:8px;margin:0 0 14px;font:650 clamp(18px,1.7vw,21px)/1.3 var(--f-disp);color:var(--muted-foreground)}
+.bf b{display:inline-block;color:var(--primary);font-weight:700}
+.bf b::after{content:"";display:block;height:2px;margin-top:3px;background:linear-gradient(90deg,var(--primary),var(--cyan));border-radius:2px}
+.hero .lead{margin-bottom:24px}
+.ctas{display:grid;gap:12px}
+@media (min-width:640px){.ctas{grid-template-columns:repeat(2,max-content)}}
+.hero .mob-link{display:none}
+@media (max-width:639px){.hero .ctas .btn-outline{display:none}.hero .mob-link{display:inline-flex;margin-top:4px}}
+.loc{display:flex;gap:10px;align-items:center;margin-top:18px;font-size:15px;font-weight:600;color:var(--muted-foreground)}
+.planbox{background:#fff;border:1px solid var(--border);border-radius:18px;padding:12px;box-shadow:0 24px 48px -28px rgb(11 31 92/.35)}
+@media (min-width:640px){.planbox{padding:16px}}
+
+/* ===== Tabs (property picker) ===== */
+.pick{display:grid;grid-template-columns:repeat(2,1fr);gap:4px;background:var(--muted);padding:4px;border-radius:14px;margin-bottom:12px}
+@media (min-width:560px){.pick{grid-template-columns:repeat(4,1fr)}}
+.pk{display:grid;justify-items:center;align-content:center;gap:5px;min-height:58px;padding:8px 6px;border:0;border-radius:10px;background:transparent;color:var(--muted-foreground);font:700 13.5px/1.2 var(--f-body);cursor:pointer;transition:background .25s,color .25s,box-shadow .25s,transform .15s}
+.pk svg{width:22px;height:22px;stroke:currentColor;fill:none;stroke-width:1.75;stroke-linecap:round;stroke-linejoin:round}
+.pk:hover{color:var(--navy-900)}
+.pk:active{transform:scale(.97)}
+.pk[aria-selected=true]{background:#fff;color:var(--navy-900);box-shadow:0 1px 3px rgb(11 31 92/.18),0 0 0 1px var(--border)}
+.pk[aria-selected=true] svg{stroke:var(--primary)}
+.pcap{display:flex;justify-content:space-between;gap:10px;font-size:13.5px;color:var(--muted-foreground);margin-top:8px;font-weight:600}
+.pcap b{color:var(--navy-900)}
+
+/* ===== plan svg system ===== */
+.plan{--ink:#0B1F5C;--wall:#F3F7FE;--ground:#EAF0FA;--wl:#C9D6EE;--wr:#AFC2E4;--roof:#F8FAFF;--halo:#fff;--fo:.22;--iter:2;--sd:0s;--dd:0s;
+  --f-ent:#FD7B01;--s-ent:#C2540A;--f-park:#0B1F5C;--s-park:#0B1F5C;--f-com:#00ADFC;--s-com:#0369A1;--f-rec:#1CAD00;--s-rec:#15803D;color:var(--ink)}
+.plan.quick{--sd:.7s;--dd:0s}
+.hero .plan{--sd:2.4s;--dd:.95s}
+.hero .plan.quick{--sd:.7s;--dd:0s}
+.plan svg{display:block;width:100%;height:auto}
+.z-ent{--f:var(--f-ent);--s:var(--s-ent)}.z-park{--f:var(--f-park);--s:var(--s-park)}
+.z-com{--f:var(--f-com);--s:var(--s-com)}.z-rec{--f:var(--f-rec);--s:var(--s-rec)}
+.cone{stroke:var(--s);stroke-width:1;stroke-opacity:.5;stroke-linejoin:round}
+.area{fill:var(--f);fill-opacity:.12;stroke:var(--s);stroke-width:1;stroke-dasharray:4 3}
+.st-iso .area{fill-opacity:.4}
+.door{fill:var(--f);fill-opacity:.9;stroke:var(--s);stroke-width:1}
+.bld{fill:var(--wall);stroke:var(--ink);stroke-width:2}
+.wall{fill:none;stroke:var(--ink);stroke-width:1.5}
+.cam{fill:var(--royal);stroke:#fff;stroke-width:1.5}
+.camring{fill:none;stroke:var(--royal);stroke-width:1.5;opacity:0;transform-box:fill-box;transform-origin:center;animation:ringp 1.8s 3s 2 ease-out}
+@keyframes ringp{0%{transform:scale(1);opacity:.7}100%{transform:scale(2.3);opacity:0}}
+.recdot{fill:var(--green);stroke:#fff;stroke-width:1;animation:blink 1.2s 2.6s 4}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.25}}
+.camp{fill:none;stroke:#fff;stroke-width:1.25;stroke-linecap:round;stroke-linejoin:round}
+.shelf{fill:#E6ECF8;stroke:var(--ink);stroke-width:.8}
+.road{fill:none;stroke:#DCE5F5;stroke-width:14}
+.roadc{fill:none;stroke:#fff;stroke-width:1.4;stroke-dasharray:6 5}
+.dash{fill:none;stroke:#7F8FB0;stroke-width:1.2;stroke-dasharray:3 3}
+.car{fill:#fff;stroke:#7F8FB0;stroke-width:1}
+.roadi{fill:#DCE5F5}
+.lab{font-family:var(--f-disp);font-stretch:75%;font-weight:700;font-size:9.5px;letter-spacing:.04em;text-transform:uppercase;fill:var(--ink);paint-order:stroke;stroke:var(--halo);stroke-width:3;stroke-linejoin:round}
+.lab.sm{font-size:8.5px}
+.tb{fill:#fff;stroke:#5B6B8C;stroke-width:.8}
+.tbt{font-family:var(--f-disp);font-stretch:75%;font-weight:600;font-size:7.5px;letter-spacing:.05em;text-transform:uppercase;fill:#5B6B8C}
+.ground{fill:var(--ground);stroke:#C5D2EA;stroke-width:1}
+.face-l{fill:var(--wl);stroke:var(--ink);stroke-width:1}.face-r{fill:var(--wr);stroke:var(--ink);stroke-width:1}
+.roof{fill:var(--roof);stroke:var(--ink);stroke-width:1}
+.two{fill:#fff;stroke:#6F7FA3;stroke-width:1}.twoh{fill:none;stroke:#6F7FA3;stroke-width:1.4;stroke-linecap:round}
+.cwall{fill:none;stroke:#8E9CBC;stroke-width:2.5;stroke-linejoin:round}
+.pier{fill:var(--navy-900)}
+.win{fill:#fff;fill-opacity:.9;stroke:var(--ink);stroke-width:.5}
+.shut{fill:none;stroke:var(--ink);stroke-width:.7;opacity:.65}
+.sign{fill:var(--navy-900);stroke:var(--ink);stroke-width:.6}
+.slot{stroke:var(--s-park);stroke-width:.8;opacity:.55;fill:none}
+.legend{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+.lg{font:700 13px var(--f-body);color:var(--navy-900);background:#fff;border:1px solid var(--border);border-radius:999px;min-height:36px;padding:4px 14px 4px 10px;display:inline-flex;gap:8px;align-items:center;cursor:pointer;transition:background .2s,border-color .2s}
+.lg:hover,.lg[aria-pressed=true]{border-color:var(--navy-900);background:var(--secondary)}
+.lg i{width:12px;height:12px;border-radius:3px;border:1.5px solid;display:block}
+.lg .sw-ent{background:color-mix(in srgb,var(--f-ent) 45%,#fff);border-color:var(--s-ent)}
+.lg .sw-park{background:color-mix(in srgb,var(--f-park) 45%,#fff);border-color:var(--s-park)}
+.lg .sw-com{background:color-mix(in srgb,var(--f-com) 45%,#fff);border-color:var(--s-com)}
+.lg .sw-rec{background:color-mix(in srgb,var(--f-rec) 45%,#fff);border-color:var(--s-rec)}
+[data-z]{transition:opacity .25s}
+.plan[data-focus=ent] [data-z]:not([data-z=ent]){opacity:.12}
+.plan[data-focus=park] [data-z]:not([data-z=park]){opacity:.12}
+.plan[data-focus=com] [data-z]:not([data-z=com]){opacity:.12}
+.plan[data-focus=rec] [data-z]:not([data-z=rec]){opacity:.12}
+@keyframes scan{0%{transform:rotate(0)}25%{transform:rotate(-12deg)}75%{transform:rotate(12deg)}100%{transform:rotate(0)}}
+@keyframes breathe{0%,100%{transform:scale(1);opacity:1}50%{transform:scale(.9);opacity:.55}}
+@keyframes draw{from{stroke-dashoffset:1}to{stroke-dashoffset:0}}
+.fadeswap{animation:fadein .4s var(--ease)}
+@keyframes fadein{from{opacity:0}to{opacity:1}}
+
+/* ===== section head with dimension line ===== */
+.sec-head{display:grid;gap:12px;margin-bottom:26px;max-width:760px}
+.kick{display:flex;align-items:center;gap:10px;margin:0;font:700 12.5px var(--f-disp);font-stretch:106%;letter-spacing:.14em;text-transform:uppercase;color:var(--primary)}
+.kick b{color:var(--orange-6);font-weight:800}
+.kick b::after{content:"";display:inline-block;width:22px;height:1.5px;background:currentColor;vertical-align:middle;margin-left:10px;opacity:.7}
+.on-dark .kick{color:#7FD0FF}.on-dark .kick b{color:#FFB070}
+.faq .kick{justify-content:center}
+.dim{position:relative;height:12px;width:clamp(120px,22vw,220px)}
+.dim::before,.dim::after{content:"";position:absolute;top:0;bottom:0;width:1.5px;background:var(--primary)}
+.dim::before{left:0}.dim::after{right:0;background:var(--orange);width:2px}
+.dim i{position:absolute;left:0;right:0;top:calc(50% - .75px);height:1.5px;background:var(--primary);transform-origin:left}
+.on-dark .dim::before,.on-dark .dim i{background:#7FD0FF}
+
+/* ===== reveal helpers ===== */
+
+/* ===== fact strip ===== */
+.facts{background:var(--navy-900);color:#fff}
+.facts ul{list-style:none;margin:0;padding:0;display:flex;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none}
+.facts ul::-webkit-scrollbar{display:none}
+.facts li{flex:0 0 78%;scroll-snap-align:start;display:flex;align-items:center;gap:14px;padding:18px 20px;border-left:1px solid rgba(255,255,255,.14);font:700 16px/1.3 var(--f-disp)}
+.facts li:first-child{border-left:0;padding-left:0}
+@media (min-width:768px){.facts li{flex:1 1 0;padding:24px}.facts li:first-child{padding-left:0}}
+.facts svg{width:24px;height:24px;flex:none;stroke:var(--cyan);fill:none;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+
+/* ===== segment tiles (Card) ===== */
+.seg{display:grid;gap:12px;grid-template-columns:repeat(2,1fr)}
+@media (min-width:1024px){.seg{grid-template-columns:repeat(4,1fr);gap:18px}}
+.tile{position:relative;display:grid;align-content:space-between;gap:16px;min-height:150px;padding:18px;background:#fff;border:1px solid var(--border);border-radius:16px;text-decoration:none;color:inherit;overflow:hidden;transition:transform .35s var(--ease),box-shadow .35s var(--ease),border-color .25s}
+@media (min-width:1024px){.tile{min-height:196px;padding:22px}}
+.tile::before,.card::before{content:"";position:absolute;inset:0;pointer-events:none;opacity:0;transition:opacity .3s;background:radial-gradient(260px circle at var(--mx,50%) var(--my,0%),rgba(22,80,208,.09),transparent 65%)}
+.tile:hover::before,.card:hover::before{opacity:1}
+.b1::before{background:radial-gradient(300px circle at var(--mx,50%) var(--my,0%),rgba(111,163,255,.22),transparent 65%)}
+.tile::after{content:"";position:absolute;left:0;right:0;bottom:0;height:4px;background:linear-gradient(90deg,var(--cyan),var(--royal));transform:scaleX(0);transform-origin:left;transition:transform .45s var(--ease)}
+.tile:hover{transform:translateY(-4px);box-shadow:0 22px 36px -22px rgb(11 31 92/.45);border-color:#B9C7E4}
+.tile:hover::after{transform:scaleX(1)}
+.ico{width:46px;height:46px;border-radius:12px;background:var(--accent);display:grid;place-items:center}
+.ico svg{width:25px;height:25px;stroke:var(--primary);fill:none;stroke-width:1.75;stroke-linecap:round;stroke-linejoin:round}
+.tile h3{margin-bottom:4px}
+.tile p{color:var(--muted-foreground);font-size:15px;line-height:1.5;display:none}
+@media (min-width:1024px){.tile p{display:block}}
+.tile .go{display:flex;align-items:center;justify-content:space-between;font:700 15px var(--f-disp);color:var(--primary)}
+.tile .go::after{content:"";width:18px;height:18px;background:currentColor;-webkit-mask:var(--arrow) center/contain no-repeat;mask:var(--arrow) center/contain no-repeat;transition:transform .3s var(--ease)}
+.tile:hover .go::after{transform:translateX(6px)}
+.tile .go span{display:none}
+@media (min-width:1024px){.tile .go span{display:inline}}
+
+/* ===== about ===== */
+.about{display:grid;gap:28px}
+@media (min-width:960px){.about{grid-template-columns:1fr 1fr;gap:56px;align-items:start}}
+.about h2{margin-bottom:16px}
+.about .lead+.lead{margin-top:14px}
+.about .act{margin-top:24px}
+.more{border:1px solid var(--border);border-radius:14px;background:#fff;overflow:hidden}
+.more summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;min-height:56px;padding:0 20px;font:700 17px var(--f-disp);color:var(--navy-900)}
+.more summary::-webkit-details-marker{display:none}
+.more summary::after{content:"";width:12px;height:12px;border-right:2px solid var(--primary);border-bottom:2px solid var(--primary);transform:rotate(45deg) translateY(-3px);transition:transform .3s var(--ease)}
+.more[open] summary::after{transform:rotate(225deg)}
+.more.static summary{display:none}
+.ticks{list-style:none;margin:0;padding:0}
+.ticks li{display:flex;gap:16px;align-items:flex-start;padding:16px 20px;border-top:1px solid var(--border)}
+.more.static .ticks li:first-child{border-top:0}
+.more.static{border:0;background:transparent;border-radius:0}
+.more.static .ticks li{padding-inline:0}
+.ticks .n{width:30px;height:30px;border-radius:50%;background:var(--accent);color:var(--primary);display:grid;place-items:center;flex:none;font:800 14px var(--f-disp)}
+.ticks b{display:block;color:var(--navy-900);font:700 17px var(--f-disp)}
+.ticks span.t{color:var(--muted-foreground);font-size:15px;line-height:1.5}
+
+/* ===== services bento (Card + Carousel on mobile) ===== */
+.bento{display:grid;gap:18px;grid-template-columns:repeat(2,1fr)}
+.card{position:relative;display:grid;gap:10px;align-content:start;padding:26px;background:#fff;border:1px solid var(--border);border-radius:16px;text-decoration:none;color:inherit;overflow:hidden;transition:transform .35s var(--ease),box-shadow .35s var(--ease),border-color .25s}
+.card:hover{transform:translateY(-3px);box-shadow:0 22px 36px -22px rgb(11 31 92/.4);border-color:#B9C7E4}
+.card p{color:var(--muted-foreground);font-size:16px;line-height:1.6}
+.card .ico{margin-bottom:4px}
+.b1{grid-row:1/3;grid-column:1;background:var(--navy-900);border-color:var(--navy-900);color:#fff;padding:32px;align-content:space-between;gap:22px}
+.b1 h3{color:#fff;font-size:clamp(24px,2.5vw,30px);font-stretch:108%;font-weight:800;line-height:1.12}
+.b1 p{color:#C9D6F6;font-size:17px;max-width:44ch}
+.b1:hover{border-color:var(--navy-900);box-shadow:0 26px 44px -22px rgb(11 31 92/.7)}
+.b1 .tlink{color:#fff}
+.b2{grid-column:2;grid-row:1}.b3{grid-column:2;grid-row:2}
+.b4{grid-column:1/-1;grid-row:3;background:#F1FAF0;border-color:#CFE8CB;grid-template-columns:auto 1fr auto;align-items:center;column-gap:24px;padding:22px 26px}
+.b4 .ico{background:var(--green-7);margin:0}
+.b4 .ico svg{stroke:#fff}
+.mini{width:100%;height:auto;display:block}
+.mini .s{fill:none;stroke:#fff;stroke-width:1.6;opacity:.95}
+.mini .k{fill:rgba(0,173,252,.22);stroke:#37C2FF;stroke-width:1}
+.mini .cm{fill:#6FA3FF;stroke:#fff;stroke-width:1.5}
+.mini .pk2{fill:none;stroke:#7F93C9;stroke-width:1;stroke-dasharray:4 3}
+@media (max-width:1023px){
+  .bento{grid-template-columns:1fr}
+  .b1,.b2,.b3,.b4{grid-column:1;grid-row:auto}
+  .b4{grid-template-columns:auto 1fr}
+  .b4 .tlink{grid-column:1/-1}
+}
+@media (max-width:767px){
+  .snap{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:14px;margin-inline:calc(var(--gutter)*-1);padding:4px var(--gutter) 16px;scroll-padding-inline:var(--gutter);scrollbar-width:none}
+  .snap::-webkit-scrollbar{display:none}
+  .snap>*{flex:0 0 84%;scroll-snap-align:start;grid-column:auto;grid-row:auto}
+  .b1{padding:24px}
+  .b4{grid-template-columns:1fr}
+  .card p{font-size:15px}
+}
+.swipe{display:none;align-items:center;gap:8px;margin-top:-6px;font:700 13px var(--f-disp);color:var(--muted-foreground)}
+@media (max-width:767px){.swipe{display:flex}}
+.dots{display:flex;gap:6px;margin-left:auto}
+.dots i{width:6px;height:6px;border-radius:50%;background:#C5D0E4;transition:width .3s var(--ease),background .3s}
+.dots i.on{width:20px;border-radius:3px;background:var(--primary)}
+
+.svc5{margin-top:26px}
+.svc5-t{margin:0 0 12px;font:700 13px var(--f-disp);font-stretch:106%;letter-spacing:.12em;text-transform:uppercase;color:var(--muted-foreground)}
+.svc5 ul{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+@media (min-width:900px){.svc5 ul{grid-template-columns:repeat(5,1fr)}}
+@media (max-width:899px){.svc5 li:last-child{grid-column:1/-1}}
+.sv{display:flex;align-items:center;gap:12px;padding:12px 14px;border:1px solid var(--border);border-radius:14px;background:#fff;font:650 15px/1.25 var(--f-disp);color:var(--navy-900);transition:transform .3s var(--ease),border-color .25s,box-shadow .3s}
+.sv:hover{transform:translateY(-3px);border-color:#B9C7E4;box-shadow:0 16px 28px -20px rgb(11 31 92/.45)}
+.sv .ico{width:40px;height:40px;flex:none;border-radius:10px}.sv .ico svg{width:22px;height:22px}
+
+/* ===== brands ===== */
+.brands{padding-block:30px;background:#fff;border-block:1px solid var(--border)}
+@media (min-width:1024px){.brands{padding-block:36px}}
+.in3{display:grid;gap:16px;align-items:center}
+@media (min-width:900px){.in3{grid-template-columns:260px 1fr;gap:40px}}
+.brands h2{font-size:clamp(20px,2.1vw,26px);margin-bottom:4px}
+.brands .sub2{color:var(--muted-foreground);font-size:15px;line-height:1.5}
+.bl{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+@media (min-width:700px){.bl{grid-template-columns:repeat(5,1fr)}}
+.bn{display:grid;place-items:center;text-align:center;min-height:62px;padding:10px 12px;border:1px solid var(--border);border-radius:12px;background:var(--secondary);font:800 clamp(15px,1.5vw,18px)/1.15 var(--f-disp);letter-spacing:.01em;color:var(--navy-900);transition:transform .3s var(--ease),border-color .25s,background .25s,box-shadow .3s}
+.bn:hover{transform:translateY(-3px);border-color:#B9C7E4;background:#fff;box-shadow:0 16px 28px -20px rgb(11 31 92/.45)}
+.bn.more{font-weight:600;font-size:15px;color:var(--muted-foreground);border-style:dashed;background:#fff}
+@media (max-width:699px){.bl li:last-child{grid-column:1/-1}}
+
+/* ===== planning ===== */
+.plan-sec{display:grid;gap:32px;align-items:center}
+@media (min-width:980px){.plan-sec{grid-template-columns:.95fr 1.05fr;gap:48px}}
+.plan-sec h2{margin-bottom:16px}
+.factors{display:flex;flex-wrap:wrap;gap:8px;list-style:none;padding:0;margin:22px 0 26px}
+.factors button{font:700 15px var(--f-body);color:var(--navy-900);background:#fff;border:1.5px solid var(--border);border-radius:999px;min-height:44px;padding:0 18px;cursor:pointer;display:inline-flex;align-items:center;gap:9px;transition:border-color .2s,background .2s,transform .15s}
+.factors button::before{content:"";width:10px;height:10px;border-radius:3px;background:var(--cyan);flex:none}
+.factors button[data-k=ent]::before{background:var(--orange)}
+.factors button[data-k=park]::before{background:var(--navy-900)}
+.factors button[data-k=rec]::before{background:var(--green)}
+.factors button:hover,.factors button[aria-pressed=true]{border-color:var(--navy-900);transform:translateY(-1px)}
+.factors button[aria-pressed=true]{background:var(--navy-900);color:#fff}
+.showing{display:flex;align-items:center;gap:10px;font:700 14px var(--f-body);color:var(--muted-foreground);margin-bottom:12px}
+.badge{display:inline-flex;align-items:center;gap:6px;border-radius:999px;background:var(--accent);color:var(--cyan-7);font:700 13px var(--f-body);padding:4px 12px}
+
+/* ===== process ===== */
+.process{background:var(--navy-900);color:#fff;position:relative;overflow:hidden}
+.process h2{color:#fff}
+.process .lead{color:#C3D2F5}
+.tl{position:relative;margin-top:30px}
+.tl .track{position:absolute;background:rgba(255,255,255,.2);border-radius:2px;overflow:hidden;left:19px;top:24px;bottom:24px;width:3px}
+.tl .track i{display:block;width:100%;height:100%;background:linear-gradient(180deg,var(--cyan),#6FA3FF)}
+.tl ol{list-style:none;margin:0;padding:0;display:grid;gap:4px;position:relative}
+.tl li{display:grid}
+.st{all:unset;box-sizing:border-box;display:grid;grid-template-columns:auto 1fr auto;align-items:center;column-gap:18px;min-height:56px;cursor:pointer;width:100%;-webkit-tap-highlight-color:transparent}
+.st:focus-visible{outline:3px solid #7FD0FF;outline-offset:2px;border-radius:10px}
+.tl li b{width:42px;height:42px;border-radius:50%;background:#fff;color:var(--navy-900);border:3px solid var(--cyan);display:grid;place-items:center;font:800 15px var(--f-disp);transition:transform .3s var(--ease),background .3s}
+.tl li:last-child b{border-color:var(--green)}
+.tl h3{color:#fff;font-size:18px;font-stretch:100%}
+.st::after{content:"";width:10px;height:10px;border-right:2px solid #9FB4EA;border-bottom:2px solid #9FB4EA;transform:rotate(45deg) translateY(-3px);transition:transform .3s var(--ease)}
+.tl li.open .st::after{transform:rotate(225deg)}
+.tl li.open b{transform:scale(1.08);background:#E3F2FD}
+.tl .pp{display:grid;grid-template-rows:0fr;transition:grid-template-rows .35s var(--ease)}
+.tl .pp>div{overflow:hidden}
+.tl .pp p{color:#C3D2F5;font-size:15px;line-height:1.55;padding:0 0 14px 60px}
+.tl li.open .pp{grid-template-rows:1fr}
+@media (min-width:980px){
+  .tl .track{left:calc(100%/12);right:calc(100%/12);top:21px;bottom:auto;height:3px;width:auto}
+  .tl .track i{background:linear-gradient(90deg,var(--cyan),#6FA3FF)}
+  .tl ol{grid-template-columns:repeat(6,1fr);gap:0}
+  .st{grid-template-columns:1fr;justify-items:center;text-align:center;row-gap:16px;cursor:default;min-height:0}
+  .st::after{display:none}
+  .tl .pp{grid-template-rows:1fr}
+  .tl .pp p{padding:12px 14px 0;text-align:center}
+}
+@keyframes fillw{from{width:0}to{width:100%}}
+@keyframes fillh{from{height:0}to{height:100%}}
+@keyframes lit{from{border-color:rgba(255,255,255,.3);background:rgba(255,255,255,.35);color:rgba(11,31,92,.6);transform:scale(.8)}to{transform:scale(1)}}
+
+/* ===== why ===== */
+.why{display:grid;gap:28px}
+@media (min-width:980px){.why{grid-template-columns:.85fr 1.15fr;gap:52px}}
+.why h2{margin-bottom:16px}
+.wlist{display:grid;gap:0;border-top:1px solid var(--border)}
+@media (min-width:700px){.wlist{grid-template-columns:1fr 1fr;column-gap:40px}}
+.wl{display:flex;gap:16px;align-items:center;padding:16px 0;border-bottom:1px solid var(--border)}
+.wl .ico{flex:none}
+.wl b{display:block;color:var(--navy-900);font:700 17px/1.3 var(--f-disp)}
+.wl span.t{display:none;color:var(--muted-foreground);font-size:15px;line-height:1.5;margin-top:4px}
+@media (min-width:700px){.wl{align-items:flex-start;padding:20px 0}.wl span.t{display:block}}
+
+/* ===== support ===== */
+.support{background:#F1FAF0;border-block:1px solid #CFE8CB;padding-block:26px}
+.support .in2{display:grid;grid-template-columns:auto 1fr;gap:20px;align-items:center}
+.support .badge2{position:relative;width:56px;height:56px;border-radius:50%;background:var(--green-7);display:grid;place-items:center}
+.support .badge2 svg{width:28px;height:28px;stroke:#fff;fill:none;stroke-width:2.6;stroke-linecap:round;stroke-linejoin:round}
+.support .badge2::after{content:"";position:absolute;inset:0;border-radius:50%;border:2px solid var(--green-7);opacity:0}
+.halo{position:absolute;inset:0;border-radius:50%;border:2px solid var(--green-7);opacity:0;pointer-events:none}
+@keyframes halo{0%{transform:scale(1);opacity:.6}100%{transform:scale(1.9);opacity:0}}
+.support h2{font-size:clamp(21px,2.5vw,30px);margin-bottom:4px}
+.support p{color:var(--muted-foreground);max-width:64ch}
+
+/* ===== Accordion (faq) ===== */
+.faq{max-width:860px;margin-inline:auto}
+.faq .sec-head{margin-inline:auto;text-align:center;justify-items:center}
+details.q{border-bottom:1px solid var(--border)}
+details.q:first-of-type{border-top:1px solid var(--border)}
+details.q summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;gap:20px;align-items:center;min-height:60px;padding:12px 4px;font:700 18px/1.35 var(--f-disp);color:var(--navy-900);transition:color .2s}
+details.q summary::-webkit-details-marker{display:none}
+details.q summary:hover{color:var(--primary)}
+details.q summary::after{content:"";width:28px;height:28px;flex:none;border-radius:50%;background:var(--accent) linear-gradient(var(--primary),var(--primary)) center/12px 2px no-repeat;transition:transform .3s var(--ease)}
+details.q[open] summary::after{transform:rotate(180deg);background:var(--primary) linear-gradient(#fff,#fff) center/12px 2px no-repeat}
+details.q p{padding:0 4px 22px;color:var(--muted-foreground);max-width:64ch;animation:fadein .4s var(--ease)}
+.draft{display:inline-block;font:800 11px var(--f-disp);background:#FFF1E5;color:var(--orange-6);padding:3px 9px;border-radius:6px;margin-right:8px;font-style:normal}
+
+/* ===== final cta ===== */
+.cta{position:relative;overflow:hidden;background:radial-gradient(900px 420px at 85% 20%,rgba(0,173,252,.22),transparent 60%),linear-gradient(120deg,var(--navy-900),var(--navy-700));color:#fff;text-align:center}
+.cta::before{content:"";position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.05) 1px,transparent 1px);background-size:24px 24px;pointer-events:none}
+.cta .wrap{position:relative;z-index:1}
+.cta-grid{display:grid;gap:30px;align-items:center}
+@media (min-width:980px){.cta-grid{grid-template-columns:1fr 1.05fr;gap:56px}.cta{text-align:left}.cta h2,.cta p{margin-inline:0!important}}
+.cta h2{color:#fff;max-width:20ch;margin-inline:auto}
+.cta p{color:#D5E0FA;max-width:52ch;margin:14px auto 24px;font-size:18px}
+.cta p.cta-call{margin:18px auto 0;font-size:16px;display:flex;flex-wrap:wrap;gap:6px 20px;justify-content:center;max-width:none}
+@media (min-width:980px){.cta p.cta-call{justify-content:flex-start;margin-inline:0!important}}
+.cta-call a{color:#fff;font-weight:700;text-decoration:none;border-bottom:1.5px solid rgba(255,255,255,.4)}
+.cta-call a:hover{border-color:#fff}
+.live{background:rgba(6,15,46,.55);border:1px solid rgba(127,208,255,.28);border-radius:16px;padding:10px;box-shadow:0 30px 60px -30px rgb(0 0 0/.6);backdrop-filter:blur(4px)}
+.live-bar{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:2px 6px 10px;font:700 12px var(--f-disp);letter-spacing:.1em;text-transform:uppercase;color:#CFE3FF}
+.live-bar em{font-style:normal;letter-spacing:.02em;text-transform:none;font:600 12px var(--f-body);color:#9FB4EA}
+.live-bar span::before{content:"";display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--green);margin-right:8px;animation:blink 1.2s 1s 6}
+.vgrid{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.vt{position:relative;aspect-ratio:16/10;border-radius:10px;overflow:hidden;background:linear-gradient(160deg,#0E2A73,#081A4A)}
+.vt svg{position:absolute;inset:0;width:100%;height:100%}
+.vt .ln{fill:none;stroke:#BFD8FF;stroke-width:1.4;stroke-linecap:round;stroke-linejoin:round;opacity:.9}
+.vt .ac{stroke:#FFB070}
+.vt::before{content:"";position:absolute;inset:7px;pointer-events:none;z-index:2;background:linear-gradient(#7FD0FF,#7FD0FF) 0 0/12px 2px no-repeat,linear-gradient(#7FD0FF,#7FD0FF) 0 0/2px 12px no-repeat,linear-gradient(#7FD0FF,#7FD0FF) 100% 0/12px 2px no-repeat,linear-gradient(#7FD0FF,#7FD0FF) 100% 0/2px 12px no-repeat,linear-gradient(#7FD0FF,#7FD0FF) 0 100%/12px 2px no-repeat,linear-gradient(#7FD0FF,#7FD0FF) 0 100%/2px 12px no-repeat,linear-gradient(#7FD0FF,#7FD0FF) 100% 100%/12px 2px no-repeat,linear-gradient(#7FD0FF,#7FD0FF) 100% 100%/2px 12px no-repeat;opacity:.8}
+.vl{position:absolute;left:12px;top:11px;z-index:3;font:700 10px var(--f-disp);letter-spacing:.08em;text-transform:uppercase;color:#fff;background:rgba(6,15,46,.7);padding:3px 7px;border-radius:5px}
+.vr{position:absolute;right:13px;top:14px;z-index:3;width:8px;height:8px;border-radius:50%;background:var(--green);animation:blink 1.2s 1.4s 6}
+.sl{position:absolute;left:8px;right:8px;top:6%;height:2px;z-index:2;background:linear-gradient(90deg,transparent,#7FD0FF,transparent);box-shadow:0 0 10px #7FD0FF;opacity:.9}
+@keyframes slscan{from{top:6%}to{top:94%}}
+@media (max-width:639px){.vl{font-size:9px;left:9px;top:9px}.vt::before{inset:5px}.live-bar em{display:none}}
+
+/* ===== footer (light, so the transparent logo shows as designed) ===== */
+footer{background:var(--secondary);color:var(--muted-foreground);padding-block:42px 0;border-top:1px solid var(--border)}
+.fgrid{display:grid;gap:32px}
+@media (min-width:768px){.fgrid{grid-template-columns:1fr 1fr}}
+@media (min-width:1024px){.fgrid{grid-template-columns:1.4fr 1fr 1fr 1.2fr}}
+.flogo .lt{width:92px;margin-bottom:16px}
+footer h4{color:var(--navy-900);font-size:15px;margin-bottom:14px;font-stretch:100%}
+footer ul{list-style:none;margin:0;padding:0;display:grid;gap:10px}
+footer a{color:var(--muted-foreground);text-decoration:none;transition:color .2s}footer a:hover{color:var(--primary);text-decoration:underline;text-underline-offset:4px}
+footer p{font-size:15px}
+.fph b{color:var(--navy-900)}.fph{font-weight:600}
+footer li.br{font-size:14.5px;line-height:1.45}footer li.br b{display:block;color:var(--navy-900)}
+.pend{border:1.5px dashed #9AA9C8;border-radius:8px;padding:6px 12px;font-size:14px;color:#5B6B8C;display:inline-block;background:#fff}
+.fbottom{margin-top:40px;border-top:1px solid var(--border);padding-block:20px;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;font-size:14px}
+.abar-space{height:0}
+
+/* ===== mobile action bar ===== */
+.abar{display:none}
+@media (max-width:767px){
+  .abar-space{height:76px;background:var(--secondary)}
+  .abar{display:grid;grid-template-columns:1fr 1fr 1.4fr;gap:8px;position:fixed;left:0;right:0;bottom:0;z-index:25;background:rgb(255 255 255/.96);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-top:1px solid var(--border);padding:10px var(--gutter) max(10px,env(safe-area-inset-bottom,0px))}
+  .abar a{height:52px;display:grid;place-items:center;border-radius:var(--radius);font:700 15px var(--f-disp);text-decoration:none;border:2px solid var(--navy-900);color:var(--navy-900);transition:transform .15s}
+  .abar a:active{transform:scale(.97)}
+  .abar a.off{border:2px dashed #9AA7C0;color:#6B7A99;pointer-events:none}
+  .abar a.go{background:var(--primary);border-color:var(--primary);color:#fff}
+}
+
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation:none!important;transition:none!important}
+  .js .w i{transform:none}.js .rise,.js .stg>*{opacity:1;transform:none}
+  .js .hero .planbox{clip-path:none}
+  .js .dim i{transform:none}.js .dim::after{opacity:1}
+  .js .d{stroke-dashoffset:0}
+}
+
+/* ===== smooth shell (GSAP ScrollSmoother) ===== */
+html{scroll-behavior:auto!important;scroll-padding-top:0}
+.site-header{position:fixed;left:0;right:0;top:0}
+#smooth-content{padding-top:68px}
+@media (min-width:1024px){#smooth-content{padding-top:92px}}
+.hero{padding-top:20px}
+.svc5 ul{grid-template-columns:repeat(2,1fr)}
+@media (min-width:700px){.svc5 ul{grid-template-columns:repeat(3,1fr)}}
+@media (max-width:699px){.svc5 li:last-child{grid-column:1/-1}}
+.brandcard{background:#fff;border:1px solid var(--border);border-radius:18px;padding:26px;box-shadow:0 18px 36px -26px rgb(11 31 92/.35)}
+.brandcard h3{font-size:clamp(20px,2vw,24px)}
+.brandcard .sub2{color:var(--muted-foreground);font-size:15px;margin-top:4px}
+.brandcard .bl{grid-template-columns:repeat(2,1fr);margin-top:18px}
+@media (min-width:700px){.brandcard .bl{grid-template-columns:repeat(2,1fr)}}
+.brandcard .bl li:last-child{grid-column:1/-1}
+@media (min-width:960px){.about{align-items:center}}
+/* process illustrations */
+.pa{display:block;width:100%;height:auto;max-width:150px;color:#9FD6FF}
+.pa .ln{fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.pa .ac{stroke:#FFB070}
+.tl .pa{margin:14px auto 0;max-width:118px}
+@media (max-width:979px){.tl .pa{margin:2px 0 10px 60px;max-width:104px}}
+.hn{font:800 clamp(30px,3vw,40px)/1 var(--f-disp);color:#7FD0FF;letter-spacing:-.01em}
+
+/* C: Control Room (dark hero, stacking process cards) */
+.hero-dark{position:relative;overflow:hidden;color:#fff;border-radius:0 0 34px 34px;background:radial-gradient(900px 480px at 82% 8%,rgba(0,173,252,.3),transparent 60%),linear-gradient(160deg,#060F2E,#0B1F5C 62%,#12307D)}
+.hero-dark::before{content:"";position:absolute;inset:0;pointer-events:none;background-image:linear-gradient(rgba(127,208,255,.07) 1px,transparent 1px),linear-gradient(90deg,rgba(127,208,255,.07) 1px,transparent 1px);background-size:24px 24px}
+.hero-dark .hero-grid{position:relative;z-index:1}
+.hero-dark h1{color:#fff}.hero-dark .lead{color:#C9D6F6}
+.hero-dark .bf{color:#B9CCF2}.hero-dark .bf b{color:#7FD0FF}.hero-dark .bf b::after{background:linear-gradient(90deg,#7FD0FF,#fff)}
+.hero-dark .eyebrow{background:rgba(255,255,255,.08);border-color:rgba(127,208,255,.32);color:#E7F0FF}
+.hero-dark .btn-outline{--bg:transparent;--fg:#fff;--bd:rgba(255,255,255,.55);--sw:#fff;--fg-h:var(--navy-900)}
+.hero-dark .tlink{color:#9FD6FF}
+.hero-dark .planbox{border-color:rgba(127,208,255,.35);box-shadow:0 34px 70px -24px rgb(0 0 0/.65)}
+.orb{position:absolute;border-radius:50%;filter:blur(46px);pointer-events:none;z-index:0}
+.o1{width:340px;height:340px;right:-70px;top:-90px;background:rgba(0,173,252,.38)}
+.o2{width:260px;height:260px;left:-90px;bottom:-70px;background:rgba(22,80,208,.5)}
+.sk{display:grid;gap:14px;margin-top:8px}
+.sc{display:grid;gap:14px;align-items:center;padding:22px;border-radius:20px;background:linear-gradient(135deg,#12307D,#0B1F5C);border:1px solid rgba(127,208,255,.28);box-shadow:0 22px 44px -22px rgb(0 0 0/.55)}
+.sc h3{color:#fff;font-size:clamp(20px,2vw,24px)}.sc p{color:#C3D2F5;font-size:16px;line-height:1.55;margin-top:6px;max-width:46ch}
+.sc .pa{max-width:130px}
+@media (min-width:768px){.sc{grid-template-columns:70px 1fr 160px;gap:26px;padding:26px 30px;min-height:150px}.sc .pa{max-width:160px;justify-self:end}}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="site-header" id="top">
+  <div class="wrap hbar">
+    <a class="logo" href="#top" aria-label="YONAM CCTV Surveillance, home"><span class="lt"><img src="yonam-logo.png" alt="YONAM CCTV Surveillance" width="1208" height="1095"></span></a>
+    <nav class="nav" aria-label="Main">
+      <ul>
+        <li><a class="nl" href="#top">Home</a></li>
+        <li><a class="nl" href="#about">About Us</a></li>
+        <li class="has-sub"><a class="nl" href="#solutions" aria-haspopup="true">Solutions <svg width="10" height="6" viewBox="0 0 10 6" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M1 1l4 4 4-4"/></svg></a>
+          <div class="sub">
+            <a href="#solutions">Building CCTV Solutions<small>Builders and developers</small></a>
+            <a href="#solutions">Housing Society CCTV Solutions<small>Apartments and communities</small></a>
+            <a href="#solutions">Residential CCTV Solutions<small>Houses, flats and villas</small></a>
+            <a href="#solutions">Commercial CCTV Solutions<small>Shops, offices and warehouses</small></a>
+          </div></li>
+        <li class="has-sub"><a class="nl" href="#services" aria-haspopup="true">Services <svg width="10" height="6" viewBox="0 0 10 6" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M1 1l4 4 4-4"/></svg></a>
+          <div class="sub">
+            <a href="#services">CCTV Implementation Planning</a><a href="#services">CCTV Installation</a>
+            <a href="#services">CCTV System Setup</a><a href="#services">Long-Term Support</a>
+          </div></li>
+        <li><a class="nl" href="#contact">Contact Us</a></li>
+      </ul>
+      <a class="nl hph" href="tel:+917041999963" aria-label="Call 70419 99963"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z"/></svg>70419 99963</a>
+      <a class="btn btn-sm hcta" href="#contact">Discuss Your Project</a>
+    </nav>
+    <button class="menu-btn" id="menuBtn" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="sheet"><i></i><i></i><i></i></button>
+  </div>
+  <div class="prog" aria-hidden="true"><i id="prog"></i></div>
+</header>
+
+<div class="sheet-ov" id="ov"></div>
+<aside class="sheet" id="sheet" role="dialog" aria-modal="true" aria-label="Menu" tabindex="-1">
+  <div class="sh-head"><span class="lt"><img src="yonam-logo.png" alt="YONAM CCTV Surveillance"></span><button class="sh-close" id="closeBtn" type="button" aria-label="Close menu"><svg viewBox="0 0 20 20"><path d="M4 4l12 12M16 4L4 16"/></svg></button></div>
+  <nav aria-label="Mobile"><a class="m" href="#top">Home</a><a class="m" href="#about">About Us</a><a class="m" href="#solutions">Solutions</a><a class="m" href="#services">Services</a><a class="m" href="#contact">Contact Us</a></nav>
+  <div class="pad"><a class="btn" href="#contact">Discuss Your Project</a><p class="ph"><a href="tel:+917041999963">Vandan · 70419 99963</a><a href="tel:+919727455515">Jayraj · 97274 55515</a></p></div>
+</aside>
+
+<div id="smooth-wrapper"><div id="smooth-content">
+<main id="main">
+
+<!-- HERO -->
+<section class="hero hero-dark" aria-labelledby="h-hero">
+  <i class="orb o1" data-speed=".8" aria-hidden="true"></i><i class="orb o2" data-speed="1.2" aria-hidden="true"></i>
+  <div class="wrap hero-grid">
+    <div>
+      <p class="eyebrow"><i aria-hidden="true"></i>CCTV surveillance · Nadiad &amp; Kheda</p>
+      <h1 id="h-hero" aria-label="Complete CCTV Surveillance Solutions, Planned Around Your Needs.">
+        <span aria-hidden="true"><span class="w"><i style="--i:0">Complete</i></span> <span class="w"><i style="--i:1">CCTV</i></span> <span class="w"><i style="--i:2">Surveillance</i></span> <span class="w"><i style="--i:3">Solutions,</i></span> <span class="w"><i style="--i:4">Planned</i></span> <span class="w"><i style="--i:5">Around</i></span> <span class="w"><i style="--i:6">Your</i></span> <span class="w"><i style="--i:7">Needs.</i></span></span>
+      </h1>
+      <p class="bf rise" style="--rd:.7s"><span>Planned for</span> <b id="bf" aria-live="polite">builders and new buildings</b></p>
+      <p class="lead rise" style="--rd:.85s"><span class="long">From dedicated implementation planning and professional installation to system setup and long-term support, YONAM helps deliver CCTV surveillance solutions according to your property’s requirements.</span><span class="short">Planning, installation, setup and long-term support, built around your property.</span></p>
+      <div class="ctas rise" style="--rd:1.05s"><a class="btn btn-ping" href="#contact">Discuss Your Project</a><a class="btn btn-outline" href="#contact">Request a Site Assessment</a></div>
+      <a class="tlink mob-link rise" style="--rd:1.15s" href="#contact">Or request a site assessment</a>
+    </div>
+    <div class="planbox" data-lag=".14">
+      <div class="pick" role="tablist" aria-label="Choose a property type to see an example plan">
+        <button class="pk" type="button" role="tab" data-v="building" aria-selected="true"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 21V6l8-3 8 3v15M4 21h16M9 9h2M13 9h2M9 13h2M13 13h2M10 21v-4h4v4"/></svg>Building</button>
+        <button class="pk" type="button" role="tab" data-v="society" aria-selected="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 21V10l5-3 5 3v11M13 21V4l8 3v14M3 21h18M6 12h4M6 16h4M16 10h2M16 14h2"/></svg>Housing society</button>
+        <button class="pk" type="button" role="tab" data-v="home" aria-selected="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 11l9-8 9 8M5 9.5V21h14V9.5M10 21v-6h4v6"/></svg>Home</button>
+        <button class="pk" type="button" role="tab" data-v="shop" aria-selected="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 9l1.5-5h15L21 9M3 9c0 1.7 1.3 3 3 3s3-1.3 3-3c0 1.7 1.3 3 3 3s3-1.3 3-3c0 1.7 1.3 3 3 3s3-1.3 3-3M5 12v9h14v-9M10 21v-5h4v5"/></svg>Shop or office</button>
+      </div>
+      <div class="plan-host" id="heroPlan" data-style="flat" data-anim="sweep draw"></div>
+      <p class="pcap" id="pcap" aria-live="polite"></p>
+    </div>
+  </div>
+</section>
+
+<!-- SEGMENTS -->
+<section id="solutions" aria-labelledby="h-seg">
+  <div class="wrap">
+    <div class="sec-head" data-rv><div class="dim" aria-hidden="true"><i></i></div><p class="kick"><b>01</b>Every kind of property</p><h2 id="h-seg">What are you securing?</h2><p class="lead">Choose the closest match. Each path explains how YONAM plans, installs and supports CCTV for that kind of property.</p></div>
+    <div class="seg stg" data-rv>
+      <a class="tile" href="#contact" style="--k:0"><span class="ico"><svg viewBox="0 0 24 24"><path d="M4 21V6l8-3 8 3v15M4 21h16M9 9h2M13 9h2M9 13h2M13 13h2M10 21v-4h4v4"/></svg></span><div><h3>Building projects</h3><p>Builders, developers and new construction.</p></div><span class="go"><span>Explore building solutions</span></span></a>
+      <a class="tile" href="#contact" style="--k:1"><span class="ico"><svg viewBox="0 0 24 24"><path d="M3 21V10l5-3 5 3v11M13 21V4l8 3v14M3 21h18M6 12h4M6 16h4M16 10h2M16 14h2"/></svg></span><div><h3>Housing societies</h3><p>Apartment complexes and residential communities.</p></div><span class="go"><span>Explore society solutions</span></span></a>
+      <a class="tile" href="#contact" style="--k:2"><span class="ico"><svg viewBox="0 0 24 24"><path d="M3 11l9-8 9 8M5 9.5V21h14V9.5M10 21v-6h4v6"/></svg></span><div><h3>Residential</h3><p>Houses, flats, villas and bungalows.</p></div><span class="go"><span>Explore residential solutions</span></span></a>
+      <a class="tile" href="#contact" style="--k:3"><span class="ico"><svg viewBox="0 0 24 24"><path d="M3 9l1.5-5h15L21 9M3 9c0 1.7 1.3 3 3 3s3-1.3 3-3c0 1.7 1.3 3 3 3s3-1.3 3-3c0 1.7 1.3 3 3 3s3-1.3 3-3M5 12v9h14v-9M10 21v-5h4v5"/></svg></span><div><h3>Commercial</h3><p>Shops, offices, showrooms and warehouses.</p></div><span class="go"><span>Explore commercial solutions</span></span></a>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT + BRANDS -->
+<section class="alt" id="about" aria-labelledby="h-about">
+  <div class="wrap about">
+    <div data-rv>
+      <div class="sec-head" style="margin-bottom:20px"><div class="dim" aria-hidden="true"><i></i></div><p class="kick"><b>02</b>A partner, not a seller</p><h2 id="h-about">A surveillance partner, not just a camera seller.</h2></div>
+      <p class="lead"><span class="long">YONAM is a CCTV surveillance solutions company based in Nadiad, Gujarat. Every property has different requirements, so we prepare a dedicated plan for yours instead of offering a one-size-fits-all package.</span><span class="short">YONAM prepares a dedicated CCTV plan for every property, then installs, configures and supports it.</span></p>
+      <p class="lead long">You do not need to know camera quantities, placement or cabling before you call. We assess the property and recommend an approach.</p>
+      <p class="act"><a class="btn btn-outline" href="#contact">Talk to YONAM</a></p>
+    </div>
+    <div class="brandcard" data-rv>
+      <h3 id="h-brands">Our trusted brands</h3>
+      <p class="sub2">We work with these CCTV brands, and more.</p>
+      <ul class="bl stg" aria-label="CCTV brands"><li class="bn">CP PLUS</li><li class="bn">Honeywell</li><li class="bn">Prama India</li><li class="bn">Dahua</li><li class="bn more">and many more</li></ul>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services" aria-labelledby="h-svc">
+  <div class="wrap">
+    <div class="sec-head" data-rv><div class="dim" aria-hidden="true"><i></i></div><p class="kick"><b>03</b>Plan to support</p><h2 id="h-svc">From first plan to long-term support</h2></div>
+    <div class="bento snap" id="snap1">
+      <a class="card b1" href="#planning" data-rv>
+        <div><h3>CCTV Implementation Planning</h3><p style="margin-top:12px">We study your property and requirements and prepare a dedicated plan before any equipment is installed.</p></div>
+        <svg class="mini" viewBox="0 0 320 150" role="img" aria-label="Line drawing of a plan with camera coverage">
+          <rect class="s d" x="10" y="12" width="200" height="124" rx="3" style="--k:0"/>
+          <path class="s d" d="M110 12V70M10 70H210M70 70V136" style="--k:1"/>
+          <rect class="pk2" x="224" y="22" width="86" height="114" rx="3"/>
+          <g class="sw" style="transform-origin:40px 128px"><path class="k" d="M40 128L16 80Q40 65.6 64 80Z"/></g>
+          <g class="sw" style="transform-origin:60px 22px;animation-delay:.3s"><path class="k" d="M60 22L22 64Q60 76.6 98 64Z"/></g>
+          <g class="sw" style="transform-origin:216px 80px;animation-delay:.6s"><path class="k" d="M216 80L300 34Q325.2 80 300 126Z"/></g>
+          <circle class="cm" cx="40" cy="128" r="4.5"/><circle class="cm" cx="60" cy="22" r="4.5"/><circle class="cm" cx="216" cy="80" r="4.5"/>
+        </svg>
+        <span class="tlink">Learn more</span>
+      </a>
+      <a class="card b2" href="#services" data-rv><span class="ico"><svg viewBox="0 0 24 24"><rect x="3" y="7" width="13" height="10" rx="2"/><path d="M16 10l5-2.5v9L16 14M7 4h4"/></svg></span><h3>CCTV Installation</h3><p>The required CCTV infrastructure and equipment are installed according to the approved plan.</p><span class="tlink">Learn more</span></a>
+      <a class="card b3" href="#services" data-rv><span class="ico"><svg viewBox="0 0 24 24"><path d="M4 7h10M18 7h2M4 17h2M10 17h10M14 4v6M8 14v6"/></svg></span><h3>System Setup and Configuration</h3><p>The system is configured and tested according to the implementation requirements.</p><span class="tlink">Learn more</span></a>
+      <a class="card b4" href="#services" data-rv><span class="ico"><svg viewBox="0 0 24 24"><path d="M12 3l8 3v6c0 4.5-3.2 8-8 9-4.8-1-8-4.5-8-9V6zM8.5 12l2.5 2.5 4.5-5"/></svg></span><div><h3>Long-Term Support</h3><p style="margin-top:6px">Support for the implemented CCTV surveillance solution, beyond the day of installation.</p></div><span class="tlink">Learn more</span></a>
+    </div>
+    <div class="swipe" aria-hidden="true">Swipe to see all services<span class="dots" id="dots1"><i class="on"></i><i></i><i></i><i></i></span></div>
+    <div class="svc5" data-rv>
+      <p class="svc5-t">Also offered</p>
+      <ul class="stg">
+        <li class="sv"><span class="ico"><svg viewBox="0 0 24 24"><path d="M12 3l8 3v6c0 4.5-3.2 8-8 9-4.8-1-8-4.5-8-9V6zM8.5 12l2.5 2.5 4.5-5"/></svg></span>Security solutions</li>
+        <li class="sv"><span class="ico"><svg viewBox="0 0 24 24"><path d="M3 5h18v11H3zM8 20h8M12 16v4M6.5 10.5s2.2-3 5.5-3 5.5 3 5.5 3-2.2 3-5.5 3-5.5-3-5.5-3z"/><circle cx="12" cy="10.5" r="1.2"/></svg></span>Remote monitoring</li>
+        <li class="sv"><span class="ico"><svg viewBox="0 0 24 24"><rect x="7" y="2.5" width="10" height="19" rx="2"/><circle cx="12" cy="10" r="2.5"/><path d="M11 18h2"/></svg></span>Smart surveillance</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- PLANNING -->
+<section class="alt" id="planning" aria-labelledby="h-plan">
+  <div class="wrap plan-sec">
+    <div data-rv>
+      <div class="sec-head" style="margin-bottom:18px"><div class="dim" aria-hidden="true"><i></i></div><p class="kick"><b>04</b>Plan before camera</p><h2 id="h-plan">Every property is different. So is every plan.</h2></div>
+      <p class="lead"><span class="long">YONAM develops a dedicated CCTV implementation plan based on your property, coverage requirements and expectations. We consider the whole property before proposing an approach.</span><span class="short">We consider the whole property before proposing an approach.</span></p>
+      <ul class="factors" id="factors" aria-label="What we consider. Choose one to highlight it on the drawing.">
+        <li><button type="button" data-k="all" aria-pressed="false">Property layout</button></li>
+        <li><button type="button" data-k="ent" aria-pressed="false">Entrances and exits</button></li>
+        <li><button type="button" data-k="com" aria-pressed="false">Common areas</button></li>
+        <li><button type="button" data-k="park" aria-pressed="false">Parking</button></li>
+        <li><button type="button" data-k="com" aria-pressed="false">Indoor and outdoor areas</button></li>
+        <li><button type="button" data-k="rec" aria-pressed="false">Infrastructure needs</button></li>
+      </ul>
+      <a class="btn" href="#contact">Request a Site Assessment</a>
+    </div>
+    <div class="planbox" data-rv>
+      <div class="pick" role="tablist" aria-label="Choose a property type">
+        <button class="pk" type="button" role="tab" data-v="building" aria-selected="true"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 21V6l8-3 8 3v15M4 21h16M9 9h2M13 9h2M9 13h2M13 13h2M10 21v-4h4v4"/></svg>Building</button>
+        <button class="pk" type="button" role="tab" data-v="society" aria-selected="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 21V10l5-3 5 3v11M13 21V4l8 3v14M3 21h18M6 12h4M6 16h4M16 10h2M16 14h2"/></svg>Housing society</button>
+        <button class="pk" type="button" role="tab" data-v="home" aria-selected="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 11l9-8 9 8M5 9.5V21h14V9.5M10 21v-6h4v6"/></svg>Home</button>
+        <button class="pk" type="button" role="tab" data-v="shop" aria-selected="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 9l1.5-5h15L21 9M3 9c0 1.7 1.3 3 3 3s3-1.3 3-3c0 1.7 1.3 3 3 3s3-1.3 3-3c0 1.7 1.3 3 3 3s3-1.3 3-3M5 12v9h14v-9M10 21v-5h4v5"/></svg>Shop or office</button>
+      </div>
+      <div class="plan-host" id="isoPlan" data-style="iso" data-anim=""></div>
+      <p class="pcap" id="pcap2" aria-live="polite"></p>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS (stacking cards) -->
+<section class="process on-dark sk-sec" id="process" aria-labelledby="h-proc">
+  <div class="wrap"><div class="sec-head" data-rv><div class="dim" aria-hidden="true"><i></i></div><p class="kick"><b>05</b>Six clear steps</p><h2 id="h-proc">Six steps, from first call to long-term support</h2><p class="lead">You always know what happens next.</p></div>
+    <div class="sk" id="sk">
+      <article class="sc"><span class="hn">01</span><div><h3>Understand your requirements</h3><p>Property type, location, what you need covered and any existing system.</p></div><svg class="pa" viewBox="0 0 160 100" aria-hidden="true"><rect class="ln" x="48" y="10" width="64" height="80" rx="6"/><path class="ln" d="M66 10V6h28v4M62 36h8M78 36h22M62 54h8M78 54h22M62 72h8M78 72h16"/><path class="ln ac" d="M62 36l2.5 2.5L69 33M62 54l2.5 2.5L69 51"/></svg></article>
+      <article class="sc"><span class="hn">02</span><div><h3>Assess your property</h3><p>Entrances, exits, parking, common spaces, layout and infrastructure.</p></div><svg class="pa" viewBox="0 0 160 100" aria-hidden="true"><rect class="ln" x="22" y="16" width="88" height="62" rx="4"/><path class="ln" d="M66 16v28M22 44h88M48 44v34"/><circle class="ln ac" cx="112" cy="64" r="16"/><path class="ln ac" d="M124 76l16 16"/></svg></article>
+      <article class="sc"><span class="hn">03</span><div><h3>Prepare a dedicated plan</h3><p>An implementation plan built around your property.</p></div><svg class="pa" viewBox="0 0 160 100" aria-hidden="true"><rect class="ln" x="22" y="12" width="116" height="76" rx="4"/><path class="ln" d="M22 50h116M80 12v38"/><circle class="ln ac" cx="52" cy="28" r="4"/><path class="ln" d="M52 28l-20 18h40z"/><circle class="ln ac" cx="108" cy="70" r="4"/><path class="ln" d="M108 70l24-15v30z"/></svg></article>
+      <article class="sc"><span class="hn">04</span><div><h3>Install the CCTV system</h3><p>Equipment and infrastructure installed according to the plan.</p></div><svg class="pa" viewBox="0 0 160 100" aria-hidden="true"><path class="ln" d="M20 12v78M20 40h30"/><rect class="ln ac" x="50" y="29" width="48" height="22" rx="5"/><circle class="ln" cx="106" cy="40" r="8"/><path class="ln" d="M72 51v14q0 16 40 20"/></svg></article>
+      <article class="sc"><span class="hn">05</span><div><h3>Configure and test</h3><p>The system is set up and tested against your requirements.</p></div><svg class="pa" viewBox="0 0 160 100" aria-hidden="true"><rect class="ln" x="26" y="12" width="108" height="64" rx="5"/><path class="ln" d="M62 90h36M80 76v14"/><path class="ln ac" d="M60 44l14 14 28-30"/></svg></article>
+      <article class="sc"><span class="hn">06</span><div><h3>Long-term support</h3><p>Support continues after implementation.</p></div><svg class="pa" viewBox="0 0 160 100" aria-hidden="true"><path class="ln" d="M80 8l38 13v28c0 20-15 34-38 43-23-9-38-23-38-43V21z"/><path class="ln ac" d="M62 48l14 14 28-30"/></svg></article>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="alt" id="faq" aria-labelledby="h-faq">
+  <div class="wrap faq">
+    <div class="sec-head" data-rv><div class="dim" aria-hidden="true"><i></i></div><p class="kick"><b>06</b>Quick answers</p><h2 id="h-faq">Questions we are often asked</h2></div>
+    <div id="acc">
+    <details class="q" open><summary>How do I determine the CCTV requirements for my property?</summary><p><i class="draft">Draft</i>You do not need to work this out alone. Tell us about your property and what you want to protect, and we assess it and recommend an approach. Final wording to be confirmed by YONAM.</p></details>
+    <details class="q"><summary>Does YONAM prepare a dedicated implementation plan?</summary><p><i class="draft">Draft</i>Answer to be confirmed by YONAM before launch.</p></details>
+    <details class="q"><summary>Do you provide installation and system setup?</summary><p><i class="draft">Draft</i>Answer to be confirmed by YONAM before launch.</p></details>
+    <details class="q"><summary>Do you work with builders and housing societies?</summary><p><i class="draft">Draft</i>Answer to be confirmed by YONAM before launch.</p></details>
+    <details class="q"><summary>Can you install CCTV in existing buildings?</summary><p><i class="draft">Draft</i>Answer to be confirmed by YONAM before launch.</p></details>
+    <details class="q"><summary>What factors affect installation costs?</summary><p><i class="draft">Draft</i>Answer to be confirmed by YONAM before launch.</p></details>
+    <details class="q"><summary>Do you provide long-term support?</summary><p><i class="draft">Draft</i>Answer to be confirmed by YONAM before launch.</p></details>
+    <details class="q"><summary>Can an existing CCTV system be upgraded?</summary><p><i class="draft">Draft</i>Answer to be confirmed by YONAM before launch.</p></details>
+    <details class="q"><summary>How can I request a site assessment?</summary><p><i class="draft">Draft</i>Answer to be confirmed by YONAM before launch.</p></details>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="cta" id="contact" aria-labelledby="h-cta" data-rv>
+
+  <div class="wrap cta-grid">
+    <div>
+      <h2 id="h-cta">Let’s Plan the Right CCTV Solution for Your Property.</h2>
+      <p>Tell us about your property and requirements. YONAM can help you understand the next steps towards a dedicated surveillance implementation plan.</p>
+      <a class="btn btn-light" href="#contact">Get in Touch</a>
+      <p class="cta-call"><span>Or call</span><a href="tel:+917041999963">Vandan · 70419 99963</a><a href="tel:+919727455515">Jayraj · 97274 55515</a></p>
+    </div>
+    <div class="live" data-lag=".18" aria-hidden="true">
+      <div class="live-bar"><span>Live view</span><em>Illustrative drawing, not real footage</em></div>
+      <div class="vgrid">
+        <div class="vt"><span class="vl">Cam 01 · Entrance</span><i class="vr"></i><i class="sl"></i><svg viewBox="0 0 160 100"><path class="ln" d="M44 92V38a36 36 0 0 1 72 0v54"/><path class="ln" d="M80 2V92M16 92H144"/><path class="ln ac" d="M56 70h10M94 70h10"/></svg></div>
+        <div class="vt"><span class="vl">Cam 02 · Lobby</span><i class="vr"></i><i class="sl"></i><svg viewBox="0 0 160 100"><path class="ln" d="M8 94L48 62H112L152 94"/><path class="ln" d="M48 62V22H112V62M8 94V8M152 94V8"/><path class="ln" d="M62 62V76H98V62"/><path class="ln ac" d="M70 22v8M90 22v8"/></svg></div>
+        <div class="vt"><span class="vl">Cam 03 · Parking</span><i class="vr"></i><i class="sl"></i><svg viewBox="0 0 160 100"><path class="ln" d="M16 94V48M48 94V48M80 94V48M112 94V48M144 94V48M16 48H144"/><rect class="ln" x="22" y="62" width="9" height="24" rx="4.5"/><rect class="ln" x="86" y="60" width="22" height="30" rx="6"/><rect class="ln ac" x="54" y="66" width="9" height="20" rx="4.5"/></svg></div>
+        <div class="vt"><span class="vl">Cam 04 · Back office</span><i class="vr"></i><i class="sl"></i><svg viewBox="0 0 160 100"><path class="ln" d="M14 82H146M26 82V96M134 82V96"/><rect class="ln" x="58" y="40" width="42" height="28" rx="3"/><path class="ln" d="M79 68V82M68 82H90"/><rect class="ln" x="114" y="30" width="26" height="52"/><path class="ln ac" d="M114 56H140"/></svg></div>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="fgrid">
+      <div class="flogo"><span class="lt"><img src="yonam-logo.png" alt="YONAM CCTV Surveillance"></span><p>Complete CCTV surveillance solutions, from planning to long-term support.</p><p style="margin-top:10px;color:var(--navy-900);font-weight:700">Your Security, Our Priority</p></div>
+      <div><h4>Solutions</h4><ul><li><a href="#solutions">Building CCTV Solutions</a></li><li><a href="#solutions">Housing Society CCTV Solutions</a></li><li><a href="#solutions">Residential CCTV Solutions</a></li><li><a href="#solutions">Commercial CCTV Solutions</a></li></ul></div>
+      <div><h4>Services</h4><ul><li><a href="#services">Implementation Planning</a></li><li><a href="#services">Installation</a></li><li><a href="#services">System Setup</a></li><li><a href="#services">Long-Term Support</a></li></ul></div>
+      <div><h4>Contact</h4><ul><li class="fph"><a href="tel:+917041999963"><b>Vandan</b> · 70419 99963</a></li><li class="fph"><a href="tel:+919727455515"><b>Jayraj</b> · 97274 55515</a></li><li class="br"><b>Nadiad</b>Petiad Highway, Piplag 387355</li><li class="br"><b>Kheda</b>Tarapur Highway, Traj 387530</li><li><span class="pend">WhatsApp and email: to be confirmed</span></li></ul></div>
+    </div>
+    <div class="fbottom"><span>© YONAM CCTV Surveillance. All rights reserved.</span><a href="#top">Privacy Policy</a></div>
+  </div>
+</footer>
+<div class="abar-space"></div>
+</div></div>
+<nav class="abar" aria-label="Quick contact"><a href="tel:+917041999963" aria-label="Call Vandan, 70419 99963">Call</a><a class="off" href="#contact" aria-disabled="true" tabindex="-1">WhatsApp</a><a class="go" href="#contact">Enquire</a></nav>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js" integrity="sha384-HOvlOYPIs/zjoIkWUGXkVmXsjr8GuZLV+Q+rcPwmJOVZVpvTSXQChiN4t9Euv9Vc" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js" integrity="sha384-P8VzCVnT9NBUkMrpcIZrJbA7EBjJvh/fJS6PmP+4nLIM284DtsImIv8D0fFjIkeh" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollSmoother.min.js" integrity="sha384-dd8lT3AimXbI347qlZzlijPa4qnSlgGxuTqK2HlcfvF5+aOIeddPdMFmFpypQPZN" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/DrawSVGPlugin.min.js" integrity="sha384-hk4mr+NXgJSfCJFF+LKzt26e6ZekZmmXAesF9r58nbaoAqB/VAlvY4T8k2plkXf+" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/SplitText.min.js" integrity="sha384-xb96EMJeax+NLXMC88ZBa1xAeAW+kn+horHh/zFlbMLG2UPWhMJJSlv7fi57hS+Q" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/animejs@4.5.0/dist/bundles/anime.umd.min.js" integrity="sha384-InMmvD3VoYcY7hGjSC80aLb2bNNE4CzpX+Eq6FVDlmB0IKgDvmfPw4UY8L/M++iG" crossorigin="anonymous"></script>
+<script>
+(function(){
+  var $=function(s,r){return (r||document).querySelector(s)},$$=function(s,r){return [].slice.call((r||document).querySelectorAll(s))};
+  var root=document.documentElement,mq=window.matchMedia('(min-width:980px)'),mq2=window.matchMedia('(min-width:768px)');
+  var REDUCE=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var G=window.gsap,A=window.anime,ST=window.ScrollTrigger;
+  var LIBS=!!(G&&A&&ST&&!REDUCE);
+  if(G){G.registerPlugin.apply(G,[window.ScrollTrigger,window.DrawSVGPlugin,window.SplitText,window.ScrollSmoother].filter(Boolean));
+    G.ticker.lagSmoothing(0)} /* demo only: keeps timings true when the preview pane is unfocused; production keeps GSAP's default lag smoothing */
+  var SM=null;
+  if(LIBS&&window.ScrollSmoother){SM=window.ScrollSmoother.create({wrapper:'#smooth-wrapper',content:'#smooth-content',smooth:1.15,effects:true,smoothTouch:false,normalizeScroll:false})}
+  function goTo(id){
+    var el=id==='#top'?null:$(id);
+    if(SM){SM.scrollTo(el||0,true,el?'top 78px':undefined)}
+    else if(el){el.scrollIntoView({behavior:REDUCE?'auto':'smooth'})}else{window.scrollTo({top:0,behavior:REDUCE?'auto':'smooth'})}
+  }
+  document.addEventListener('click',function(e){var a=e.target.closest&&e.target.closest('a[href^="#"]');if(!a)return;var id=a.getAttribute('href');if(id.length<2)return;if(id!=='#top'&&!$(id))return;e.preventDefault();goTo(id)});
+  window.__motion={smoother:!!SM,gsap:G&&G.version,anime:A&&(A.version||'4.x'),scrollTrigger:!!ST,drawSVG:!!window.DrawSVGPlugin,splitText:!!window.SplitText,reducedMotion:REDUCE,active:LIBS};
+
+  /* ===== header: shrink on scroll (class), read-progress (GSAP ScrollTrigger) ===== */
+  var hd=$('.site-header'),pr=$('#prog');
+  function shrink(){hd.classList.toggle('scrolled',window.scrollY>24)}
+  window.addEventListener('scroll',shrink,{passive:true});shrink();
+  if(LIBS){ST.create({start:0,end:'max',onUpdate:function(s){G.set(pr,{scaleX:s.progress})}})}
+
+  /* ===== Sheet (mobile menu; shadcn Sheet in production) ===== */
+  var sh=$('#sheet'),ov=$('#ov'),mb=$('#menuBtn');
+  function openSheet(){sh.classList.add('open');ov.classList.add('open');if(SM)SM.paused(true);mb.setAttribute('aria-expanded','true');sh.focus()}
+  function closeSheet(){sh.classList.remove('open');ov.classList.remove('open');if(SM)SM.paused(false);mb.setAttribute('aria-expanded','false');mb.focus()}
+  mb.addEventListener('click',openSheet);$('#closeBtn').addEventListener('click',closeSheet);ov.addEventListener('click',closeSheet);
+  sh.addEventListener('click',function(e){if(e.target.closest('a'))closeSheet()});
+  document.addEventListener('keydown',function(e){if(e.key==='Escape'&&sh.classList.contains('open'))closeSheet()});
+
+  /* ---------- illustrations: four property types, plan view + isometric ---------- */
+  var T={
+    building:{bf:'builders and new buildings',cap:'New building project',ent:'Main entrance',com:'Lobby',rec:'Control room',cor:'Corridor',park:'Parking'},
+    society:{bf:'housing societies',cap:'Housing society',ent:'Main gate',com:'Clubhouse',rec:'Security cabin',cor:'Internal road',park:'Visitor parking'},
+    home:{bf:'homes and villas',cap:'Home or villa',ent:'Front door',com:'Living area',rec:'Utility',cor:'Garden',park:'Driveway'},
+    shop:{bf:'shops and offices',cap:'Shop or office',ent:'Shop entrance',com:'Sales floor',rec:'Back office',cor:'Counter',park:'Parking'}
+  };
+  function pts(a){return a.map(function(p){return p.join(',')}).join(' ')}
+  var gid=0;
+  function wedge(z,a,p1,p2,k){
+    var sh=function(q){return [+(a[0]+(q[0]-a[0])*.94).toFixed(1),+(a[1]+(q[1]-a[1])*.94).toFixed(1)]};p1=sh(p1);p2=sh(p2);
+    var mx=(p1[0]+p2[0])/2,my=(p1[1]+p2[1])/2,cx=a[0]+(mx-a[0])*1.18,cy=a[1]+(my-a[1])*1.18,
+        r=Math.max(Math.hypot(p1[0]-a[0],p1[1]-a[1]),Math.hypot(p2[0]-a[0],p2[1]-a[1]),Math.hypot(mx-a[0],my-a[1])*1.15).toFixed(1),id='cg'+(++gid),f=function(n){return +n.toFixed(1)};
+    return '<g class="sw" data-z="'+z+'" style="--k:'+k+';transform-origin:'+a[0]+'px '+a[1]+'px"><radialGradient id="'+id+'" class="z-'+z+'" gradientUnits="userSpaceOnUse" cx="'+a[0]+'" cy="'+a[1]+'" r="'+r+'"><stop offset="0" style="stop-color:var(--f)" stop-opacity=".62"/><stop offset="1" style="stop-color:var(--f)" stop-opacity=".1"/></radialGradient><path class="cone z-'+z+'" fill="url(#'+id+')" d="M'+a.join(' ')+'L'+p1.join(' ')+'Q'+f(cx)+' '+f(cy)+' '+p2.join(' ')+'Z"/></g>'}
+  function cone(z,c,p,k){return wedge(z,p[0],p[1],p[2],k)}
+  function camg(z,x,y,sc){return '<g data-z="'+z+'" transform="translate('+x+' '+y+') scale('+(sc||1.2)+')"><circle class="camring" r="8.5"/><circle class="cam" r="8.5"/><circle class="recdot" cx="6.6" cy="-6.6" r="2.6"/><path class="camp" d="M-4.6 -2.4h6a1.2 1.2 0 0 1 1.2 1.2v2.4a1.2 1.2 0 0 1-1.2 1.2h-6a1.2 1.2 0 0 1-1.2-1.2v-2.4a1.2 1.2 0 0 1 1.2-1.2zM2.6 -.5L5.8 -2.2v4.4L2.6 .5"/></g>'}
+  function dot(z,x,y){return camg(z,x,y)}
+  function area(z,x,y,w,h){return '<rect class="area z-'+z+'" data-z="'+z+'" x="'+x+'" y="'+y+'" width="'+w+'" height="'+h+'" rx="3"/>'}
+  function bld(x,y,w,h,r){return '<rect class="bld" x="'+x+'" y="'+y+'" width="'+w+'" height="'+h+'" rx="'+(r||3)+'"/>'}
+  function wl(d){return '<path class="wall" d="'+d+'"/>'}
+  function door(z,x,y,w,h){return '<rect class="door z-'+z+'" data-z="'+z+'" x="'+x+'" y="'+y+'" width="'+w+'" height="'+h+'" rx="2"/>'}
+  function lb(x,y,t,z,sm){return '<text class="lab'+(sm?' sm':'')+'" data-z="'+z+'" x="'+x+'" y="'+y+'">'+t+'</text>'}
+  function tb(x){return ''}
+  function slotsFlat(x,y,w,h){var s='';for(var i=1;i<5;i++){s+='<path class="slot" d="M'+(x+8)+' '+(y+i*h/5)+'H'+(x+w-8)+'"/>'}return s}
+  function wrapFlat(v,inner){var L=T[v];return '<svg viewBox="0 0 360 226" role="img" aria-label="Illustrative plan view of a '+L.cap.toLowerCase()+'. Cameras cover the '+L.ent.toLowerCase()+', '+L.com.toLowerCase()+', '+L.rec.toLowerCase()+' and '+L.park.toLowerCase()+'.">'+inner+'</svg>'}
+
+  function two(x,y,r){return '<g class="tw" transform="translate('+x+' '+y+')'+(r?' rotate('+r+')':'')+'"><rect class="two" x="-3.5" y="-9" width="7" height="18" rx="3.5"/><path class="twoh" d="M-6 -4.5H6"/></g>'}
+  function bikes(x,y,cols,rows,dx,dy){var o='';for(var j=0;j<rows;j++)for(var i=0;i<cols;i++)o+=two(x+i*dx,y+j*dy);return o}
+  function pier(x,y){return '<rect class="pier" x="'+(x-3)+'" y="'+(y-5)+'" width="6" height="10" rx="1"/>'}
+  function cw(d){return '<path class="cwall" d="'+d+'"/>'}
+  function rick(x,y){return '<g transform="translate('+x+' '+y+')"><rect class="car" x="-11" y="-6" width="22" height="12" rx="5"/><path class="twoh" d="M5 -6V6"/></g>'}
+  var FLAT={
+    building:function(L){return cw('M42 214H8V8H352V214H98')+pier(44,214)+pier(96,214)+area('park',265,30,82,170)+bikes(290,50,2,5,34,25)+bld(20,20,230,170)+wl('M160 20V110M20 110H250M120 110V190')+
+      cone('ent',[70,182],[[70,182],[30,122],[110,122]],0)+cone('com',[90,28],[[90,28],[35,108],[145,108]],1)+cone('com',[240,150],[[240,150],[128,126],[128,186]],2)+cone('rec',[205,28],[[205,28],[168,96],[242,96]],3)+cone('park',[268,115],[[268,115],[346,36],[346,196]],4)+
+      door('ent',50,186,40,7)+dot('ent',70,182)+dot('com',90,28)+dot('com',240,150)+dot('rec',205,28)+dot('park',268,115)+
+      lb(52,206,L.ent,'ent')+lb(28,37,L.com,'com')+lb(166,54,L.rec,'rec',1)+lb(130,176,L.cor,'com',1)+lb(272,194,L.park,'park')},
+    society:function(L){return '<path class="road" d="M150 206V100H300M26 100H150"/><path class="roadc" d="M150 206V100H300M26 100H150"/>'+
+      wl('M10 10H350V206H10Z')+pier(128,206)+pier(172,206)+bld(28,26,72,50)+bld(118,26,72,50)+bld(208,26,72,50)+
+      bld(28,122,86,50)+area('com',28,122,86,50)+area('park',204,122,90,60)+bikes(216,136,5,2,15,24)+bld(168,170,32,24)+area('rec',168,170,32,24)+rick(84,100)+
+      cone('ent',[150,200],[[150,200],[108,142],[192,142]],0)+cone('com',[154,76],[[154,76],[122,98],[186,98]],1)+cone('com',[296,100],[[296,100],[214,90],[214,110]],2)+cone('com',[114,148],[[114,148],[144,122],[144,176]],3)+cone('park',[248,122],[[248,122],[206,178],[290,178]],4)+
+      door('ent',132,203,36,6)+dot('ent',150,200)+dot('com',154,76)+dot('com',296,100)+dot('com',114,148)+dot('park',248,122)+dot('rec',184,182)+
+      lb(54,52,'Block A','com',1)+lb(144,52,'Block B','com',1)+lb(234,52,'Block C','com',1)+lb(34,148,L.com,'com')+lb(210,138,L.park,'park',1)+lb(172,203,L.rec,'rec',1)+lb(74,198,L.ent,'ent')+lb(232,98,L.cor,'com',1)},
+    home:function(L){return wl('M10 10H350V206H10Z')+pier(66,206)+pier(124,206)+area('park',250,36,90,164)+
+      '<rect class="car" x="270" y="140" width="30" height="52" rx="8"/>'+bikes(274,62,3,1,22,0)+'<path class="dash" d="M95 206V146"/>'+
+      bld(46,34,176,106)+wl('M134 34V140M134 88H222')+area('rec',134,88,88,52)+
+      cone('ent',[95,146],[[95,146],[55,202],[135,202]],0)+cone('com',[60,40],[[60,40],[46,104],[128,104]],1)+cone('rec',[178,94],[[178,94],[148,128],[214,128]],2)+cone('park',[232,100],[[232,100],[346,48],[346,194]],3)+
+      door('ent',78,137,34,6)+door('ent',70,203,50,5)+dot('ent',95,146)+dot('com',60,40)+dot('rec',178,94)+dot('park',232,100)+
+      lb(76,56,L.com,'com')+lb(142,48,'Bedroom','com',1)+lb(142,104,L.rec,'rec',1)+lb(124,182,L.ent,'ent')+lb(256,52,L.park,'park')+lb(20,196,'Gate','ent',1)},
+    shop:function(L){return '<rect class="roadi" x="0" y="206" width="360" height="20"/><path class="roadc" style="stroke-width:1.2" d="M0 216H360"/>'+rick(312,216)+area('park',284,50,66,122)+bikes(300,78,2,4,26,24)+bld(30,28,236,156)+
+      '<rect class="shelf" x="58" y="68" width="124" height="10"/><rect class="shelf" x="58" y="94" width="124" height="10"/><rect class="shelf" x="58" y="120" width="124" height="10"/><rect class="shelf" x="196" y="128" width="58" height="20"/>'+
+      wl('M186 28V92M186 92H266')+area('rec',186,28,80,64)+
+      cone('ent',[132,178],[[132,178],[84,132],[180,132]],0)+cone('com',[40,38],[[40,38],[176,58],[176,150]],1)+cone('com',[258,160],[[258,160],[198,150],[198,178]],2)+cone('rec',[226,34],[[226,34],[192,86],[262,86]],3)+cone('park',[276,118],[[276,118],[348,56],[348,180]],4)+
+      door('ent',96,181,72,7)+'<path class="shut" d="M98 183.2H166M98 185H166M98 186.8H166"/>'+door('park',263,102,6,32)+dot('ent',132,178)+dot('com',40,38)+dot('com',258,160)+dot('rec',226,34)+dot('park',276,118)+
+      lb(98,200,L.ent,'ent')+lb(60,52,L.com,'com')+lb(194,66,L.rec,'rec',1)+lb(204,142,L.cor,'com',1)+lb(288,64,L.park,'park',1)}
+  };
+  function flat(v){return wrapFlat(v,FLAT[v](T[v]))}
+
+  /* isometric helpers */
+  var S=.62,OX=130,OY=62;
+  function P(x,y,z){z=z||0;return [+(OX+(x-y)*.866*S).toFixed(1),+(OY+(x+y)*.5*S-z).toFixed(1)]}
+  function poly(a){return a.map(function(p){return P(p[0],p[1],p[2]).join(',')}).join(' ')}
+  function pg(cls,a,z){return '<polygon class="'+cls+(z?' z-'+z:'')+'"'+(z?' data-z="'+z+'"':'')+' points="'+poly(a)+'"/>'}
+  function box(x,y,w,d,h,o){o=o||{};var z0=o.z||0,H=z0+h;
+    return pg('face-l',[[x,y+d,z0],[x+w,y+d,z0],[x+w,y+d,H],[x,y+d,H]])+pg('face-r',[[x+w,y,z0],[x+w,y+d,z0],[x+w,y+d,H],[x+w,y,H]])+(o.noroof?'':pg('roof',[[x,y,H],[x+w,y,H],[x+w,y+d,H],[x,y+d,H]]))}
+  function zroof(x,y,w,d,H,z){return pg('area',[[x,y,H],[x+w,y,H],[x+w,y+d,H],[x,y+d,H]],z)}
+  function gnd(x,y,w,d,z){return pg('area',[[x,y,0],[x+w,y,0],[x+w,y+d,0],[x,y+d,0]],z)}
+  function icone(z,c,p,k){var q=p.map(function(t){return P(t[0],t[1],t[2])});return wedge(z,q[0],q[1],q[2],k)}
+  function idot(z,x,y,h){var p=P(x,y,h);return camg(z,p[0],p[1],.95)}
+  function ilab(x,y,t,z,sm,zz){var p=P(x,y,zz||0);return '<text class="lab'+(sm?' sm':'')+'" data-z="'+z+'" text-anchor="middle" x="'+p[0]+'" y="'+p[1]+'">'+t+'</text>'}
+  function wpath(d){return '<path class="wall" d="'+d+'"/>'}
+  function outline(x,y,w,d,H){return 'M'+P(x,y,H)+' L'+P(x+w,y,H)+' L'+P(x+w,y+d,H)+' L'+P(x,y+d,H)+' Z M'+P(x,y+d,H)+' L'+P(x,y+d)+' L'+P(x+w,y+d)+' L'+P(x+w,y)+' L'+P(x+w,y,H)+' M'+P(x+w,y+d,H)+' L'+P(x+w,y+d)}
+  function slotsIso(x,y,w,d,n){var s='';for(var i=1;i<n;i++){var yy=y+i*d/n;s+='<path class="slot" d="M'+P(x+8,yy).join(',')+' L'+P(x+w-8,yy).join(',')+'"/>'}return s}
+  function itb(x){return ''}
+  var GROUND=pg('ground',[[-10,-10],[310,-10],[310,210],[-10,210]]);
+  function wrapIso(v,inner){var L=T[v];return '<svg viewBox="0 0 314 224" role="img" aria-label="Illustrative isometric view of a '+L.cap.toLowerCase()+'. Cameras cover the '+L.ent.toLowerCase()+' and '+L.park.toLowerCase()+'.">'+GROUND+inner+'</svg>'}
+
+  function winsL(x,y,w,d,H,n,rows,r0){var o='',gw=w/n,fh=H/(rows+1);for(var r=r0;r<=rows;r++)for(var c=0;c<n;c++){var p=x+c*gw+gw*.22,q=x+c*gw+gw*.72,z0=r*fh+fh*.22,z1=z0+fh*.5;o+='<polygon class="win" points="'+poly([[p,y+d,z0],[q,y+d,z0],[q,y+d,z1],[p,y+d,z1]])+'"/>'}return o}
+  function winsR(x,y,w,d,H,n,rows,r0){var o='',gd=d/n,fh=H/(rows+1);for(var r=r0;r<=rows;r++)for(var c=0;c<n;c++){var p=y+c*gd+gd*.22,q=y+c*gd+gd*.72,z0=r*fh+fh*.22,z1=z0+fh*.5;o+='<polygon class="win" points="'+poly([[x+w,p,z0],[x+w,q,z0],[x+w,q,z1],[x+w,p,z1]])+'"/>'}return o}
+  function bikesI(x,y,cols,rows,dx,dy){var o='';for(var j=0;j<rows;j++)for(var i=0;i<cols;i++)o+=box(x+i*dx,y+j*dy,6,11,5);return o}
+  function shutI(x0,x1,y,zs){return '<path class="shut" d="'+zs.map(function(z){return 'M'+P(x0,y,z)+' L'+P(x1,y,z)}).join(' ')+'"/>'}
+  var ISO={
+    building:function(L){var H=46;
+      return gnd(215,20,85,165,'park')+bikesI(230,34,2,5,36,30)+icone('ent',[75,140],[[75,140],[32,206],[122,206]],0)+icone('park',[190,92],[[190,92],[298,28],[298,182]],1)+
+        box(0,0,190,140,H)+zroof(6,6,116,74,H,'com')+zroof(132,6,52,74,H,'rec')+box(150,98,16,16,10,{z:H})+box(10,102,22,24,9,{z:H})+
+        pg('door',[[60,140,0],[92,140,0],[92,140,18],[60,140,18]],'ent')+winsL(0,0,190,140,H,7,3,1)+winsR(0,0,190,140,H,5,3,0)+
+        wpath(outline(0,0,190,140,H))+idot('ent',75,140,26)+idot('park',190,92,30)+
+        ilab(48,176,L.ent,'ent')+ilab(60,40,'Common area','com',1,H)+ilab(158,30,'Recording','rec',1,H)+ilab(255,198,L.park,'park')},
+    society:function(L){var H=50;
+      function blk(x){return box(x,6,44,36,H)+winsL(x,6,44,36,H,3,3,0)+winsR(x,6,44,36,H,2,3,0)+box(x+4,10,12,12,9,{z:H})}
+      return pg('roadi',[[-5,56],[305,56],[305,72],[-5,72]])+pg('roadi',[[140,72],[156,72],[156,206],[140,206]])+
+        gnd(196,92,84,56,'park')+bikesI(206,102,5,2,15,26)+
+        icone('ent',[148,190],[[148,190],[124,146],[172,146]],0)+icone('com',[130,42],[[130,42],[104,78],[156,78]],1)+icone('park',[196,120],[[196,120],[280,100],[280,142]],2)+
+        blk(8)+blk(108)+blk(208)+box(14,90,72,44,16)+zroof(14,90,72,44,16,'com')+winsL(14,90,72,44,16,4,0,0)+box(162,160,24,20,14)+zroof(162,160,24,20,14,'rec')+
+        box(133,194,4,4,12)+box(159,194,4,4,12)+pg('door',[[140,196,0],[156,196,0],[156,196,9],[140,196,9]],'ent')+
+        wpath(outline(108,6,44,36,H))+idot('ent',148,190,16)+idot('com',130,42,30)+idot('park',196,120,8)+
+        ilab(92,-14,'Blocks','com',1,H+6)+ilab(50,112,L.com,'com',1,16)+ilab(92,214,L.ent,'ent')+ilab(250,152,L.park,'park',1)+ilab(176,150,'Security','rec',1,14)},
+    home:function(L){var H=38;
+      return box(6,-2,290,3,7)+box(6,-2,3,202,7)+gnd(10,112,130,78,'com')+gnd(170,60,110,130,'park')+bikesI(190,76,3,1,30,0)+box(216,124,22,40,9)+'<path class="dash" d="M'+P(69,112)+' L'+P(69,190)+'" />'+
+        icone('ent',[69,100],[[69,100],[44,170],[96,170]],0)+icone('park',[150,60],[[150,60],[272,40],[272,150]],1)+
+        box(100,4,40,16,12)+zroof(100,4,40,16,12,'rec')+
+        box(30,24,120,76,H)+winsL(30,24,120,76,H,4,1,0)+winsR(30,24,120,76,H,3,1,0)+box(118,30,14,14,10,{z:H})+
+        pg('door',[[60,100,0],[78,100,0],[78,100,14],[60,100,14]],'ent')+box(52,100,36,14,3,{z:16})+box(52,112,3,3,16)+box(85,112,3,3,16)+
+        wpath(outline(30,24,120,76,H))+
+        idot('ent',69,100,26)+idot('park',150,60,28)+
+        box(6,198,38,3,7)+box(94,198,202,3,7)+box(293,-2,3,202,7)+
+        ilab(69,214,L.ent,'ent')+ilab(34,132,'Garden','com',1)+ilab(228,168,L.park,'park')+ilab(120,12,L.rec,'rec',1,12)},
+    shop:function(L){var H=36;
+      return gnd(205,30,90,100,'park')+bikesI(222,44,2,4,34,24)+icone('ent',[86,120],[[86,120],[50,186],[132,186]],0)+icone('park',[194,70],[[194,70],[286,34],[286,126]],1)+
+        box(24,20,170,100,H)+zroof(30,26,108,88,H,'com')+zroof(148,26,40,50,H,'rec')+
+        pg('door',[[52,120,0],[120,120,0],[120,120,13],[52,120,13]],'ent')+shutI(52,120,120,[3,6,9,12])+pg('sign',[[40,120,15],[132,120,15],[132,120,21],[40,120,21]])+
+        winsL(24,20,170,100,H,6,1,1)+winsR(24,20,170,100,H,4,1,0)+
+        wpath(outline(24,20,170,100,H))+idot('ent',86,120,28)+idot('park',194,70,30)+
+        ilab(86,146,L.ent,'ent')+ilab(70,44,L.com,'com',1,H)+ilab(170,40,L.rec,'rec',1,H)+ilab(250,138,L.park,'park')}
+  };
+  function iso(v){return wrapIso(v,ISO[v](T[v]))}
+
+  var LEG=[['ent','Entrances and exits'],['park','Outdoor and parking'],['com','Common areas'],['rec','Recording room']];
+  function render(host,o){
+    var st=host.dataset.style;
+    host.innerHTML='<div class="plan st-'+st+'">'+(st==='iso'?iso(o.v):flat(o.v))+
+      '<div class="legend" role="group" aria-label="Highlight a zone">'+LEG.map(function(i){return '<button type="button" class="lg" data-k="'+i[0]+'" aria-pressed="false"><i class="sw-'+i[0]+'"></i>'+i[1]+'</button>'}).join('')+'</div></div>';
+  }
+
+  /* ===== GSAP: draw the walls (DrawSVG) ===== */
+  function drawPlan(host,o){
+    if(!LIBS)return;o=o||{};
+    var pl=$('.plan',host),strokes=$$('.bld,.wall,.cwall',pl);if(!strokes.length)return;
+    G.killTweensOf(strokes);
+    var d0=(o.delay||0);
+    if(pl.classList.contains('st-iso')){
+      /* projection build-up: masses rise out of the ground plane, then windows switch on */
+      var mass=$$('.face-l,.face-r,.roof',pl);
+      G.fromTo(mass,{y:16,autoAlpha:0},{y:0,autoAlpha:1,duration:.8,delay:d0,stagger:{each:.012,from:'start'},ease:'power3.out',clearProps:'transform,opacity,visibility'});
+      G.fromTo($$('.win',pl),{autoAlpha:0},{autoAlpha:1,duration:.25,delay:d0+1,stagger:{each:.035,from:'random'},ease:'none',clearProps:'opacity,visibility'});
+      G.fromTo($$('.pier,.shut,.sign',pl),{autoAlpha:0},{autoAlpha:1,duration:.4,delay:d0+1.2,stagger:.05,clearProps:'opacity,visibility'});
+    }else{
+      /* plan view: zones fade in, then vehicles and gate piers settle in place */
+      G.fromTo($$('.area,.door,.shelf',pl),{autoAlpha:0},{autoAlpha:1,duration:.5,delay:d0+.5,stagger:.06,clearProps:'opacity,visibility'});
+      G.fromTo($$('.tw,.car,.pier,.shut',pl),{autoAlpha:0,scale:.6,transformOrigin:'50% 50%'},{autoAlpha:1,scale:1,duration:.45,delay:d0+1.3,stagger:.035,ease:'back.out(2)',clearProps:'opacity,visibility'});
+    }
+    G.fromTo(strokes,{drawSVG:'0%'},{drawSVG:'100%',duration:o.quick?.9:1.8,delay:o.delay||0,ease:'power2.out',clearProps:'strokeDasharray,strokeDashoffset'});
+  }
+  /* ===== anime.js: cones scan (plan) or breathe (isometric) ===== */
+  var LOOPS=1; /* anime.js v4: loop:N = N extra repeats, so 1 gives 2 plays (about 4.8 s per cone) */
+  function scan(host,delayMs){
+    if(!LIBS)return;
+    var p=$('.plan',host),cones=$$('.sw',p);if(!cones.length)return;
+    if(host._scan){host._scan.revert();host._scan=null}
+    var isoView=p.classList.contains('st-iso');
+    host._scan=A.animate(cones,isoView?{
+      scale:[{to:.9,duration:600},{to:1,duration:600}],opacity:[{to:.55,duration:600},{to:1,duration:600}],
+      delay:A.stagger(200,{start:delayMs||0}),ease:'inOutSine',loop:LOOPS
+    }:{
+      rotate:[{to:-12,duration:700},{to:12,duration:1400},{to:0,duration:700}],
+      delay:A.stagger(200,{start:delayMs||0}),ease:'inOutSine',loop:LOOPS
+    });
+  }
+  function scanBusy(host){return !!(host._scan&&!host._scan.completed)} /* hover replay only when idle: no mid-sweep snap */
+
+  /* ===== property picker: GSAP out/in, both pickers share state ===== */
+  var hero=$('#heroPlan'),isoH=$('#isoPlan'),cur='building',isoRevealed=false;
+  function caps(first){
+    var h='<span>Example: <b>'+T[cur].cap+'</b></span><span>Illustrative</span>';$('#pcap').innerHTML=h;$('#pcap2').innerHTML=h;
+    var b=$('#bf');if(!b)return;var t=T[cur].bf;if(b.textContent===t)return;
+    if(!LIBS||first){b.textContent=t;return}
+    /* GSAP text swap: old line slides up and out, new line slides up in */
+    G.killTweensOf(b);
+    G.to(b,{yPercent:-70,autoAlpha:0,duration:.18,ease:'power2.in',onComplete:function(){b.textContent=t;G.fromTo(b,{yPercent:70,autoAlpha:0},{yPercent:0,autoAlpha:1,duration:.35,ease:'power3.out',clearProps:'transform,opacity,visibility'})}});
+  }
+  /* GSAP: vehicles roll into the plan (x/y offsets come from data-dx / data-dy on each .mv element) */
+  function moveCars(host,delay){
+    if(!LIBS)return;var c=$$('.mv',host);if(!c.length)return;
+    G.killTweensOf(c);
+    G.fromTo(c,{x:function(i,t){return +t.dataset.dx||0},y:function(i,t){return +t.dataset.dy||0},autoAlpha:0},{x:0,y:0,autoAlpha:1,duration:2.2,delay:delay||0,ease:'power2.out',clearProps:'opacity,visibility'});
+  }
+  function swap(host,v){
+    host._tok=(host._tok||0)+1;var tok=host._tok;
+    if(host._scan){host._scan.revert();host._scan=null}
+    var old=$('.plan',host);
+    function show(){
+      if(tok!==host._tok)return;
+      render(host,{v:v});var p=$('.plan',host);
+      if(LIBS){G.fromTo(p,{autoAlpha:0},{autoAlpha:1,duration:.25,clearProps:'opacity,visibility'});drawPlan(host,{quick:true});scan(host,700)}
+    }
+    if(!LIBS||!old){show();return}
+    G.to(old,{autoAlpha:0,duration:.15,overwrite:true,onComplete:show});
+  }
+  function setType(v,first){
+    cur=v;$$('.pk').forEach(function(b){b.setAttribute('aria-selected',b.dataset.v===v)});
+    if(first){render(hero,{v:v});render(isoH,{v:v});caps(true);return}
+    swap(hero,v);
+    if(isoRevealed){swap(isoH,v)}else{render(isoH,{v:v})}
+    caps();
+  }
+  $$('.pk').forEach(function(b){b.addEventListener('click',function(){setType(b.dataset.v)})});
+  setType('building',true);
+  hero.addEventListener('mouseenter',function(){if(mq2.matches&&!scanBusy(hero))scan(hero,0)});
+
+  /* ===== zone focus: legend + factor chips (CSS opacity, works on tap and keyboard) ===== */
+  function setFocus(p,k,btn){$$('.lg',p).forEach(function(x){x.setAttribute('aria-pressed',btn===x)});if(k&&k!=='all'){p.dataset.focus=k}else{delete p.dataset.focus}}
+  document.addEventListener('mouseover',function(e){var b=e.target.closest&&e.target.closest('.lg');if(b)setFocus(b.closest('.plan'),b.dataset.k,b)});
+  document.addEventListener('mouseout',function(e){var b=e.target.closest&&e.target.closest('.lg');if(b)setFocus(b.closest('.plan'),null,null)});
+  document.addEventListener('focusin',function(e){var b=e.target.closest&&e.target.closest('.lg');if(b)setFocus(b.closest('.plan'),b.dataset.k,b)});
+  document.addEventListener('focusout',function(e){var b=e.target.closest&&e.target.closest('.lg');if(b)setFocus(b.closest('.plan'),null,null)});
+  document.addEventListener('click',function(e){var b=e.target.closest&&e.target.closest('.lg');if(b)setFocus(b.closest('.plan'),b.dataset.k,b)});
+  $('#factors').addEventListener('click',function(e){
+    var b=e.target.closest('button');if(!b)return;
+    var on=b.getAttribute('aria-pressed')==='true';
+    $$('#factors button').forEach(function(x){x.setAttribute('aria-pressed','false')});
+    var p=$('.plan',isoH);
+    if(on){delete p.dataset.focus}else{b.setAttribute('aria-pressed','true');setFocus(p,b.dataset.k,null)}
+  });
+
+  /* ===== process steps: tap to expand on mobile, always open on desktop ===== */
+  var steps=$$('#steps li');
+  function syncSteps(){steps.forEach(function(li){var b=$('.st',li);b.tabIndex=mq.matches?-1:0;if(mq.matches){li.classList.add('open');b.setAttribute('aria-expanded','true')}})}
+  steps.forEach(function(li){$('.st',li).addEventListener('click',function(){
+    if(mq.matches)return;var o=li.classList.contains('open');
+    steps.forEach(function(x){x.classList.remove('open');$('.st',x).setAttribute('aria-expanded','false')});
+    if(!o){li.classList.add('open');$('.st',li).setAttribute('aria-expanded','true')}
+  })});
+  mq.addEventListener('change',syncSteps);syncSteps();
+  $$('#acc details').forEach(function(d){d.addEventListener('toggle',function(){if(d.open)$$('#acc details').forEach(function(o){if(o!==d)o.open=false})})});
+  var sn=$('#snap1'),dots=$$('#dots1 i');
+  sn.addEventListener('scroll',function(){var i=Math.round(sn.scrollLeft/(sn.scrollWidth/sn.children.length));dots.forEach(function(d,k){d.classList.toggle('on',k===i)})},{passive:true});
+
+  /* =====================================================================
+     MOTION LAYER (motion-spec.md): GSAP = page-level + scroll, anime.js = component-level SVG
+     ===================================================================== */
+  function heroIn(){
+    var rise=$$('.hero .rise'),pb=$('.hero .planbox');
+    if(!LIBS){root.classList.remove('anim-pending');return}
+    G.set(rise,{autoAlpha:0,y:14});
+    G.set(pb,{clipPath:'inset(0% 0% 100% 0% round 18px)'});
+    drawPlan(hero,{delay:.95});                       /* walls: GSAP DrawSVG, after the wipe starts */
+    root.classList.remove('anim-pending');
+    var tl=G.timeline({defaults:{ease:'power3.out'}});
+    tl.to(pb,{clipPath:'inset(0% 0% 0% 0% round 18px)',duration:1,clearProps:'clipPath'},.35)
+      .to(rise,{autoAlpha:1,y:0,duration:.8,stagger:.15,clearProps:'transform,opacity,visibility'},.85)
+      .add(function(){scan(hero,0)},2.4);             /* cones: anime.js, after walls finish */
+  }
+
+  function scrollMotion(){
+    if(!LIBS)return;
+    /* section dimension lines: GSAP ScrollTrigger, once */
+    $$('.sec-head .dim i').forEach(function(i){
+      G.fromTo(i,{scaleX:0,transformOrigin:'0 50%'},{scaleX:1,duration:1,ease:'power3.out',clearProps:'transform',scrollTrigger:{trigger:i.parentNode,start:'top 90%',once:true}});
+    });
+    /* stagger groups: tiles, why list, about steps (clearProps keeps CSS hover transforms working) */
+    $$('.stg').forEach(function(g){
+      G.from(g.children,{autoAlpha:0,y:16,duration:.7,stagger:.08,ease:'power3.out',clearProps:'transform,opacity,visibility',scrollTrigger:{trigger:g,start:'top 88%',once:true}});
+    });
+    /* isometric planning drawing: draw + breathe on enter */
+    ST.create({trigger:isoH.parentNode,start:'top 80%',once:true,onEnter:function(){isoRevealed=true;drawPlan(isoH,{});scan(isoH,1100)}});
+    /* services featured card: line plan draws (GSAP) and cones scan (anime.js) */
+    G.fromTo('.mini .s',{drawSVG:'0%'},{drawSVG:'100%',duration:1.4,stagger:.2,ease:'power2.out',clearProps:'strokeDasharray,strokeDashoffset',scrollTrigger:{trigger:'.mini',start:'top 85%',once:true}});
+    ST.create({trigger:'.mini',start:'top 85%',once:true,onEnter:function(){
+      A.animate($$('.mini .sw'),{rotate:[{to:-10,duration:700},{to:10,duration:1400},{to:0,duration:700}],delay:A.stagger(300,{start:1200}),ease:'inOutSine',loop:LOOPS});
+    }});
+    /* final CTA background plan: DrawSVG */
+    /* final CTA live-view panel: tiles rise in, line drawings draw (DrawSVG), scan lines sweep (finite) */
+    var ctaST={trigger:'#contact',start:'top 78%',once:true};
+    G.from('.live',{autoAlpha:0,y:30,duration:.8,ease:'power3.out',clearProps:'transform,opacity,visibility',scrollTrigger:ctaST});
+    G.from('.vt',{autoAlpha:0,scale:.94,duration:.6,stagger:.14,delay:.25,ease:'power3.out',clearProps:'transform,opacity,visibility',scrollTrigger:ctaST});
+    G.fromTo('.vt .ln',{drawSVG:'0%'},{drawSVG:'100%',duration:1.1,stagger:.04,delay:.6,ease:'power2.out',clearProps:'strokeDasharray,strokeDashoffset',scrollTrigger:ctaST});
+    $$('.vt .sl').forEach(function(sl,i){G.fromTo(sl,{top:'6%'},{top:'94%',duration:2.2,repeat:3,yoyo:true,ease:'sine.inOut',delay:1+i*.4,scrollTrigger:ctaST})});
+    G.from('#h-cta ~ p, #h-cta ~ .btn',{autoAlpha:0,y:16,duration:.7,stagger:.12,delay:.5,ease:'power3.out',clearProps:'transform,opacity,visibility',scrollTrigger:ctaST});
+    /* numbered kickers slide in from the left */
+    $$('.kick').forEach(function(k){G.from(k,{x:-16,autoAlpha:0,duration:.6,ease:'power3.out',clearProps:'transform,opacity,visibility',scrollTrigger:{trigger:k,start:'top 92%',once:true}})});
+    /* every section heading: SplitText line mask (tablet and up only) */
+    if(window.SplitText&&mq2.matches){
+      (document.fonts&&document.fonts.ready?document.fonts.ready:Promise.resolve()).then(function(){
+        $$('main h2').forEach(function(el){
+          var sp=window.SplitText.create(el,{type:'lines',mask:'lines'});
+          G.from(sp.lines,{yPercent:110,duration:.8,stagger:.1,ease:'power3.out',scrollTrigger:{trigger:el,start:'top 88%',once:true}});
+        });
+        ST.refresh();
+      });
+    }
+  }
+
+  /* anime.js micro-interactions: icon redraw on hover/focus, support badge check + halo */
+  function microMotion(){
+    if(!LIBS)return;
+    /* header entrance (GSAP) */
+    G.from('.site-header .logo,.nav>ul>li,.hcta',{y:-12,autoAlpha:0,duration:.6,stagger:.07,ease:'power3.out',clearProps:'transform,opacity,visibility',delay:.1});
+    /* spotlight glow follows the pointer on tiles and cards (hover devices only) */
+    if(window.matchMedia('(hover:hover)').matches){
+      $$('.tile,.card').forEach(function(el){
+        el.addEventListener('pointermove',function(e){var r=el.getBoundingClientRect();el.style.setProperty('--mx',(e.clientX-r.left)+'px');el.style.setProperty('--my',(e.clientY-r.top)+'px')});
+      });
+    }
+    $$('.tile,.card,.wl,.sv').forEach(function(el){
+      var svg=$('.ico svg',el);if(!svg)return;
+      /* create the drawable only when the redraw runs: wrapping at load leaves icons hidden at rest (draw starts at "0 0") */
+      var els=svg.querySelectorAll('path,rect,circle');
+      var run=function(){A.animate(A.svg.createDrawable(els),{draw:['0 0','0 1'],duration:900,ease:'outQuad'})};
+      el.addEventListener('mouseenter',run);el.addEventListener('focusin',run);
+    });
+  }
+
+  function variant(){
+    if(!LIBS)return;
+
+    /* illustrations draw as they arrive (GSAP DrawSVG) */
+    $$('.pa').forEach(function(p){G.fromTo($$('.ln',p),{drawSVG:'0%'},{drawSVG:'100%',duration:1.1,stagger:.08,ease:'power2.out',clearProps:'strokeDasharray,strokeDashoffset',scrollTrigger:{trigger:p,start:'top 88%',once:true}})});
+    /* brand tiles pop in */
+    G.from('.brandcard',{autoAlpha:0,y:26,duration:.8,ease:'power3.out',clearProps:'transform,opacity,visibility',scrollTrigger:{trigger:'.brandcard',start:'top 88%',once:true}});
+
+    var mm=G.matchMedia();
+    /* dark hero eases back as you scroll into the light page */
+    G.to('.hero-dark .hero-grid',{y:-36,opacity:.35,ease:'none',scrollTrigger:{trigger:'.hero-dark',start:'top top',end:'bottom 25%',scrub:true}});
+    /* process: cards stack on top of each other, earlier cards recede */
+    mm.add('(min-width:768px)',function(){
+      var cards=$$('#sk .sc'),last=cards[cards.length-1];
+      cards.forEach(function(c,i){
+        if(i<cards.length-1){
+          ST.create({trigger:c,start:'top '+(104+i*14)+'px',endTrigger:last,end:'top '+(104+(cards.length-1)*14)+'px',pin:true,pinSpacing:false,anticipatePin:1});
+          G.to(c,{scale:.94,filter:'brightness(.84)',ease:'none',scrollTrigger:{trigger:cards[i+1],start:'top 76%',end:'top '+(104+(i+1)*14)+'px',scrub:true}});
+        }
+      });
+    });
+    mm.add('(max-width:767px)',function(){
+      $$('#sk .sc').forEach(function(c){G.from(c,{autoAlpha:0,y:26,duration:.7,ease:'power3.out',clearProps:'transform,opacity,visibility',scrollTrigger:{trigger:c,start:'top 90%',once:true}})});
+    });
+  }
+
+  window.__motion.hero=hero;window.__motion.iso=isoH;
+  heroIn();scrollMotion();microMotion();variant();
+  window.addEventListener('load',function(){if(ST)ST.refresh()});
+})();
+</script>
+</body>
+</html>
