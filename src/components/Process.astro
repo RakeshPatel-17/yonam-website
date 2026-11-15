@@ -1,0 +1,42 @@
+---
+import { processSteps, processArt } from '../data/site';
+import { planMarkup } from '../lib/plans';
+---
+
+<section class="process on-dark" id="process" aria-labelledby="h-proc">
+  <div class="wrap">
+    <div class="proc-head">
+      <div class="sec-head">
+        <div class="dim" aria-hidden="true"><i></i></div>
+        <p class="kick"><b>05</b>Six clear steps</p>
+        <h2 id="h-proc">Six steps, from first call to long-term support</h2>
+        <p class="lead">You always know what happens next.</p>
+      </div>
+      <figure class="bp">
+        <div class="plan-host" id="bpPlan" data-style="blue" set:html={planMarkup('blue', 'building', 'b')} />
+        <figcaption>Illustrative blueprint. It follows the property type you chose above.</figcaption>
+      </figure>
+    </div>
+    <div class="tl" id="tl">
+      <div class="track" aria-hidden="true"><i></i></div>
+      <ol id="steps">
+        {
+          processSteps.map((s, i) => (
+            <li class={i === 0 ? 'open' : ''} style={`--i:${i}`}>
+              <button class="st" type="button" aria-expanded={i === 0 ? 'true' : 'false'}>
+                <b>{i + 1}</b>
+                <h3>{s.title}</h3>
+              </button>
+              <div class="pp">
+                <div>
+                  <svg class="pa" viewBox="0 0 160 100" aria-hidden="true" set:html={processArt[i]} />
+                  <p>{s.text}</p>
+                </div>
+              </div>
+            </li>
+          ))
+        }
+      </ol>
+    </div>
+  </div>
+</section>

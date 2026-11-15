@@ -1,0 +1,119 @@
+<!doctype html>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>YONAM Homepage Options</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&display=swap">
+<style>
+/* Viewer: three scroll-driven homepage options (GSAP ScrollTrigger + ScrollSmoother), shown in a desktop window and a phone window. */
+:root{--bg:#EEF3FB;--fg:#0E1A33;--muted:#4F5E7A;--line:#D3DCEC;--accent:#1650D0;--soft:#E4ECFB;--surface:#fff;--font:'Manrope',system-ui,sans-serif}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0A1226;--fg:#E8EEFB;--muted:#9FAECB;--line:#24355C;--accent:#7BA5FF;--soft:#17274F;--surface:#111C38;color-scheme:dark}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);font-family:var(--font);line-height:1.6;padding:0 max(16px,env(safe-area-inset-left,0px)) 64px}
+.wrap{max-width:1180px;margin-inline:auto}
+h1{font-size:clamp(28px,4.2vw,42px);line-height:1.1;margin:10px 0;letter-spacing:-.02em;font-weight:800;text-wrap:balance}
+h2{font-size:20px;margin:0 0 4px;font-weight:800}
+.eyebrow{font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--accent)}
+.muted{color:var(--muted)}
+header{padding-top:32px}
+.audit{margin:22px 0;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:18px 20px}
+.audit table{width:100%;border-collapse:collapse;font-size:14px}
+.audit th,.audit td{text-align:left;padding:8px 10px;border-top:1px solid var(--line);vertical-align:top}
+.audit th{font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);border-top:0}
+.k{display:inline-block;font-weight:800;font-size:12px;padding:2px 9px;border-radius:999px}
+.k.rm{background:#FDE8E8;color:#B42318}.k.mg{background:#FFF1E5;color:#C2540A}.k.ok{background:#E3F6E8;color:#15803D}
+@media (max-width:700px){.audit table,.audit tbody,.audit tr,.audit td,.audit th{display:block}.audit tr{border-top:1px solid var(--line);padding:8px 0}.audit td,.audit th{border:0;padding:2px 0}.audit thead{display:none}}
+.tabs{display:flex;gap:8px;flex-wrap:wrap;margin:20px 0 8px}
+.tab{font:700 14px var(--font);border:1.5px solid var(--line);background:var(--surface);color:var(--fg);padding:10px 18px;border-radius:12px;cursor:pointer;text-align:left}
+.tab[aria-selected=true]{border-color:var(--accent);background:var(--accent);color:#fff}
+.tab:focus-visible,.open:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+.desc{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin:12px 0 22px}
+@media (max-width:900px){.desc{grid-template-columns:1fr}}
+.n{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:16px 18px}
+.n h2{font-size:15px;margin-bottom:6px}
+.n ul{margin:0;padding-left:18px;font-size:14px;color:var(--muted);display:grid;gap:4px}
+.open{font-weight:700;color:var(--accent);font-size:14px}
+.row{display:grid;grid-template-columns:minmax(0,1fr) 420px;gap:32px;align-items:start}
+@media (max-width:1000px){.row{grid-template-columns:1fr}}
+.cap{display:flex;justify-content:space-between;align-items:baseline;gap:10px;margin-bottom:10px;flex-wrap:wrap}
+.cap span{font-size:13px;color:var(--muted)}
+.win{background:var(--surface);border:1px solid var(--line);border-radius:12px;overflow:hidden;box-shadow:0 10px 30px rgb(11 31 92/.12)}
+.chrome{display:flex;gap:7px;align-items:center;padding:10px 14px;border-bottom:1px solid var(--line);background:var(--soft)}
+.chrome i{width:11px;height:11px;border-radius:50%;background:var(--line);display:block}
+.chrome em{margin-left:10px;flex:1;background:var(--surface);border:1px solid var(--line);border-radius:7px;font-style:normal;font-size:12px;color:var(--muted);padding:3px 10px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+#deskBox,#phoneBox{position:relative;overflow:hidden;background:#fff}
+#desk{width:1280px;height:800px;border:0;transform-origin:0 0;display:block;background:#fff}
+.phone-wrap{display:flex;justify-content:center}
+.phone{width:min(100%,414px);border:9px solid #060F2E;border-radius:40px;overflow:hidden;background:#fff;box-shadow:0 10px 30px rgb(11 31 92/.2)}
+#phone{width:390px;height:780px;border:0;transform-origin:0 0;display:block;background:#fff}
+</style>
+<div class="wrap">
+  <header>
+    <span class="eyebrow">Three scroll-driven options · GSAP ScrollTrigger + ScrollSmoother</span>
+    <h1>Pick a direction for the homepage</h1>
+    <p class="muted" style="max-width:72ch">All three share the same cleaned content, Indian-context drawings and your business details. They differ in how the page behaves as you scroll. <b>Scroll inside the windows</b> (the page glides because of ScrollSmoother). Tap a tab to switch.</p>
+    <div class="audit">
+      <h2>Redundancy check: what I removed and why</h2>
+      <table>
+        <thead><tr><th>Section</th><th>Verdict</th><th>Reason</th></tr></thead>
+        <tbody>
+          <tr><td>Fact strip (4 ticks)</td><td><span class="k rm">Removed</span></td><td>Repeated planning, installation, setup and support, which the services cards and process already say.</td></tr>
+          <tr><td>About “how we work” list</td><td><span class="k rm">Removed</span></td><td>A shorter copy of the six-step process further down.</td></tr>
+          <tr><td>“Why YONAM” list (5 items)</td><td><span class="k rm">Removed</span></td><td>Every item restated a service, a segment or the planning idea.</td></tr>
+          <tr><td>Support band</td><td><span class="k rm">Removed</span></td><td>Long-term support already appears in a service card, process step 6 and the FAQ.</td></tr>
+          <tr><td>Brands strip</td><td><span class="k mg">Merged</span></td><td>Now a card beside the About text, which also fixes the empty right column.</td></tr>
+          <tr><td>“Everything YONAM offers” (5 chips)</td><td><span class="k mg">Trimmed</span></td><td>Installation and AMC duplicated cards, so only Security solutions, Remote monitoring and Smart surveillance remain, as “Also offered”.</td></tr>
+          <tr><td>Hero plan and planning drawing</td><td><span class="k ok">Kept</span></td><td>Different views (plan and isometric) and the planning one adds the factors. Same picker drives both.</td></tr>
+          <tr><td>Segments, services, process, FAQ, final CTA</td><td><span class="k ok">Kept</span></td><td>Each answers a different question for the visitor.</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="tabs" role="tablist" aria-label="Homepage options">
+      <button class="tab" role="tab" data-i="0" aria-selected="true">A · Blueprint Scroll</button>
+      <button class="tab" role="tab" data-i="1" aria-selected="false">B · Walkthrough</button>
+      <button class="tab" role="tab" data-i="2" aria-selected="false">C · Control Room</button>
+      <a class="open" id="full" style="margin-left:auto;align-self:center" href="mock-a-blueprint.html" target="_blank" rel="noopener">Open full size ↗</a>
+    </div>
+    <div class="desc" id="desc"></div>
+  </header>
+  <div class="row">
+    <div>
+      <div class="cap"><h2>Desktop</h2><span>1280 px wide window</span></div>
+      <div class="win"><div class="chrome"><i></i><i></i><i></i><em id="url">yonam.example · Home</em></div><div id="deskBox"><iframe id="desk" title="Desktop homepage option" loading="eager"></iframe></div></div>
+    </div>
+    <div>
+      <div class="cap"><h2>Phone</h2><span>390 px wide</span></div>
+      <div class="phone-wrap"><div class="phone"><div id="phoneBox"><iframe id="phone" title="Phone homepage option"></iframe></div></div></div>
+    </div>
+  </div>
+</div>
+<script>
+(function(){
+  var OPT=[
+    {f:'mock-a-blueprint.html',t:'A · Blueprint Scroll',d:[
+      ['Look','Light blueprint page, as approved.'],
+      ['Scroll story','The planning section pins in place. As you scroll, the drawing highlights entrances, common areas, parking and the recording room in turn, and the matching chip lights up.'],
+      ['Also','Process line fills as you scroll. Each step has its own drawn illustration.']]},
+    {f:'mock-b-walkthrough.html',t:'B · Walkthrough',d:[
+      ['Look','Light page with a navy process band.'],
+      ['Scroll story','The six process steps become a horizontal journey. The page pins and slides sideways while a camera travels along a rail. Each card has a drawn illustration.'],
+      ['Also','On phones it falls back to simple stacked cards.']]},
+    {f:'mock-c-controlroom.html',t:'C · Control Room',d:[
+      ['Look','Dark navy hero with a glowing grid, like a control room. The plan sits in a bright monitor card.'],
+      ['Scroll story','The dark hero eases back as you scroll. The six process steps stack on top of each other as cards, earlier ones receding.'],
+      ['Also','Parallax glow orbs behind the hero.']]}
+  ];
+  var d=document.getElementById('desk'),p=document.getElementById('phone'),dB=document.getElementById('deskBox'),pB=document.getElementById('phoneBox');
+  function fit(box,frame,w,h){var s=Math.min(1,box.parentElement.clientWidth/w);frame.style.transform='scale('+s+')';box.style.height=(h*s)+'px';box.style.width=(w*s)+'px'}
+  function layout(){dB.style.width='100%';fit(dB,d,1280,800);dB.style.width='100%';pB.style.width='';fit(pB,p,390,780);var sc=Math.min(1,pB.parentElement.clientWidth/390);pB.style.width='100%';pB.style.height=(780*sc)+'px'}
+  window.addEventListener('resize',layout);
+  function show(i){
+    var o=OPT[i];
+    [].forEach.call(document.querySelectorAll('.tab'),function(t,k){t.setAttribute('aria-selected',k===i)});
+    d.src=o.f;p.src=o.f;document.getElementById('full').href=o.f;document.getElementById('url').textContent='yonam.example · Home · '+o.t;
+    document.getElementById('desc').innerHTML=o.d.map(function(x){return '<div class="n"><h2>'+x[0]+'</h2><ul><li>'+x[1]+'</li></ul></div>'}).join('');
+    layout();
+  }
+  [].forEach.call(document.querySelectorAll('.tab'),function(t){t.addEventListener('click',function(){show(+t.dataset.i)})});
+  var h=location.hash.replace('#','');show(h==='b'?1:h==='c'?2:0);
+})();
+</script>

@@ -37,15 +37,16 @@ body{margin:0;font-family:var(--f-body);font-size:16px;line-height:1.6;color:var
 img{max-width:100%}
 p{margin:0}
 h1,h2,h3,h4{margin:0;color:var(--navy-900);font-family:var(--f-disp);text-wrap:balance}
-h1{font-size:clamp(32px,4.9vw,54px);line-height:1.05;font-weight:800;font-stretch:100%;letter-spacing:-.01em}
-h2{font-size:clamp(26px,3.3vw,40px);line-height:1.12;font-weight:800;font-stretch:104%;letter-spacing:-.01em}
-h3{font-size:clamp(18px,1.8vw,21px);line-height:1.25;font-weight:700;font-stretch:100%}
-@media (min-width:1024px){h1{font-stretch:112%}h2{font-stretch:108%}}
+h1{font-size:clamp(30px,4.1vw,48px);line-height:1.08;font-weight:700;font-stretch:100%;letter-spacing:-.01em}
+h2{font-size:clamp(26px,3.2vw,38px);line-height:1.14;font-weight:700;font-stretch:102%;letter-spacing:-.01em}
+h3{font-size:clamp(18px,1.8vw,21px);line-height:1.25;font-weight:650;font-stretch:100%}
+@media (min-width:1024px){h1{font-stretch:102%}h2{font-stretch:105%}}
 a{color:var(--primary)}
 .wrap{max-width:1240px;margin-inline:auto;padding-inline:var(--gutter)}
+@media (min-width:1536px){.wrap{max-width:1380px}:root{--gutter:48px}}
 .lead{font-size:clamp(16px,1.45vw,18px);line-height:1.65;color:var(--muted-foreground);max-width:58ch}
-section{padding-block:56px}
-@media (min-width:1024px){section{padding-block:84px}}
+section{padding-block:46px}
+@media (min-width:1024px){section{padding-block:66px}}
 .alt{background:var(--secondary)}
 :focus-visible{outline:3px solid var(--ring);outline-offset:3px;border-radius:6px}
 .skip{position:absolute;left:-999px;top:8px;background:#fff;padding:8px 14px;border-radius:8px;z-index:100;font-weight:700}
@@ -56,11 +57,11 @@ section{padding-block:56px}
 /* ===== Button (shadcn: default / outline / secondary). One size, 52px. sm = header only. ===== */
 .btn{--bg:var(--primary);--fg:var(--primary-foreground);--sw:var(--navy-900);--bd:transparent;--fg-h:#fff;
   position:relative;isolation:isolate;overflow:hidden;display:inline-flex;align-items:center;justify-content:center;gap:12px;
-  height:52px;min-width:240px;padding:0 28px;border-radius:var(--radius);border:2px solid var(--bd);background:var(--bg);color:var(--fg);
-  font:700 16px/1 var(--f-disp);font-stretch:104%;text-decoration:none;cursor:pointer;white-space:nowrap;
-  transition:color .25s var(--ease),transform .15s var(--ease),box-shadow .25s var(--ease)}
-.btn::before{content:"";position:absolute;inset:0;background:var(--sw);transform:translateX(-102%);transition:transform .4s var(--ease);z-index:-1}
-.btn::after{content:"";width:18px;height:18px;flex:none;background:currentColor;-webkit-mask:var(--arrow) center/contain no-repeat;mask:var(--arrow) center/contain no-repeat;transition:transform .3s var(--ease)}
+  height:52px;min-width:216px;padding:0 26px;border-radius:var(--radius);border:2px solid var(--bd);background:var(--bg);color:var(--fg);
+  font:650 16px/1 var(--f-disp);font-stretch:104%;text-decoration:none;cursor:pointer;white-space:nowrap;
+  transition:color .18s var(--ease),transform .15s var(--ease),box-shadow .2s var(--ease)}
+.btn::before{content:"";position:absolute;inset:0;background:var(--sw);transform:translateX(-102%);transition:transform .26s var(--ease);z-index:-1}
+.btn::after{content:"";width:18px;height:18px;flex:none;background:currentColor;-webkit-mask:var(--arrow) center/contain no-repeat;mask:var(--arrow) center/contain no-repeat;transition:transform .22s var(--ease)}
 .btn:hover{color:var(--fg-h);box-shadow:0 10px 22px -10px rgb(22 80 208/.55)}
 .btn:hover::before{transform:none}
 .btn:hover::after{transform:translateX(5px)}
@@ -71,7 +72,7 @@ section{padding-block:56px}
 .btn-ping{animation:ping 1.4s 2.4s 1 both}
 @keyframes ping{0%{box-shadow:0 0 0 0 rgb(22 80 208/.55)}100%{box-shadow:0 0 0 16px rgb(22 80 208/0)}}
 @media (max-width:639px){.btn:not(.btn-sm){width:100%}}
-.tlink{display:inline-flex;align-items:center;gap:8px;font:700 16px var(--f-disp);font-stretch:104%;color:var(--primary);text-decoration:none;min-height:44px}
+.tlink{display:inline-flex;align-items:center;gap:8px;font:650 16px var(--f-disp);font-stretch:104%;color:var(--primary);text-decoration:none;min-height:44px}
 .tlink::after{content:"";width:16px;height:16px;background:currentColor;-webkit-mask:var(--arrow) center/contain no-repeat;mask:var(--arrow) center/contain no-repeat;transition:transform .3s var(--ease)}
 .tlink:hover::after{transform:translateX(5px)}
 .tlink:hover{text-decoration:underline;text-underline-offset:4px}
@@ -101,6 +102,9 @@ section{padding-block:56px}
 .sub a:hover{background:var(--secondary);color:var(--primary);padding-left:18px}
 .sub small{display:block;font-weight:500;color:var(--muted-foreground);font-size:13px}
 .hcta{margin-left:12px}
+.hph{display:none!important;font-weight:700!important;white-space:nowrap}
+.hph svg{width:16px;height:16px;stroke:var(--primary);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+@media (min-width:1200px){.hph{display:flex!important}}
 .menu-btn{margin-left:auto;width:48px;height:48px;border-radius:10px;border:1.5px solid var(--border);background:#fff;display:grid;place-content:center;gap:5px;cursor:pointer}
 .menu-btn i{display:block;width:22px;height:2px;background:var(--navy-900);border-radius:2px}
 @media (min-width:1024px){.nav{display:flex}.menu-btn,.sheet,.sheet-ov{display:none!important}}
@@ -118,21 +122,29 @@ section{padding-block:56px}
 .sheet a.m{display:flex;justify-content:space-between;align-items:center;min-height:58px;padding:0 var(--gutter);border-bottom:1px solid var(--border);text-decoration:none;color:var(--foreground);font:700 18px var(--f-disp);font-stretch:104%}
 .sheet a.m::after{content:"";width:16px;height:16px;background:var(--primary);-webkit-mask:var(--arrow) center/contain no-repeat;mask:var(--arrow) center/contain no-repeat}
 .sheet .pad{padding:20px var(--gutter) max(24px,env(safe-area-inset-bottom,0px));display:grid;gap:12px;border-top:1px solid var(--border)}
-.sheet .ph{font-size:14px;color:var(--muted-foreground);text-align:center}
+.sheet .ph{font-size:14px;color:var(--muted-foreground);text-align:center;display:grid;gap:6px}
+.sheet .ph a{color:var(--navy-900);font-weight:700;text-decoration:none;font-size:16px}
 
 /* ===== hero ===== */
-.hero{padding-block:28px 44px;background-color:var(--secondary);
+.hero{padding-block:24px 36px;background-color:var(--secondary);
   background-image:linear-gradient(rgba(22,80,208,.07) 1px,transparent 1px),linear-gradient(90deg,rgba(22,80,208,.07) 1px,transparent 1px);background-size:20px 20px}
-@media (min-width:1024px){.hero{padding-block:48px 64px}}
+@media (min-width:1024px){.hero{padding-block:36px 52px}}
 .hero-grid{display:grid;gap:28px;align-items:center}
-@media (min-width:980px){.hero-grid{grid-template-columns:1fr 1fr;gap:56px}}
+@media (min-width:980px){.hero-grid{grid-template-columns:1.05fr .95fr;gap:48px}}
 .hero h1{margin-bottom:18px}
+.eyebrow{display:inline-flex;align-items:center;gap:10px;margin-bottom:16px;padding:7px 14px 7px 12px;background:#fff;border:1px solid var(--border);border-radius:999px;box-shadow:0 1px 2px rgb(11 31 92/.06);font:700 13px var(--f-disp);font-stretch:104%;letter-spacing:.08em;text-transform:uppercase;color:var(--navy-900)}
+.eyebrow i{width:10px;height:10px;border-radius:50%;background:var(--orange);flex:none;animation:dotp 1.6s 1.2s 2}
+@keyframes dotp{0%{box-shadow:0 0 0 0 rgb(253 123 1/.55)}100%{box-shadow:0 0 0 10px rgb(253 123 1/0)}}
+@media (max-width:639px){.hero{padding-block:18px 32px}.hero-grid{gap:18px}.hero h1{margin-bottom:12px}.hero .lead{margin-bottom:16px}.eyebrow{margin-bottom:10px;font-size:12px}}
 .w{display:inline-block;overflow:hidden;vertical-align:top;padding-bottom:.12em;margin-bottom:-.12em}
 .w i{display:inline-block;font-style:normal}
 .js .w i{transform:translateY(112%);animation:rise .85s var(--ease) both;animation-delay:calc(var(--i)*65ms + 150ms)}
 @keyframes rise{to{transform:none}}
 .js .rise{opacity:0;transform:translateY(14px);animation:fadeup .8s var(--ease) forwards;animation-delay:var(--rd,.8s)}
 @keyframes fadeup{to{opacity:1;transform:none}}
+.bf{display:flex;flex-wrap:wrap;align-items:baseline;gap:8px;margin:0 0 14px;font:650 clamp(18px,1.7vw,21px)/1.3 var(--f-disp);color:var(--muted-foreground)}
+.bf b{display:inline-block;color:var(--primary);font-weight:700}
+.bf b::after{content:"";display:block;height:2px;margin-top:3px;background:linear-gradient(90deg,var(--primary),var(--cyan));border-radius:2px}
 .hero .lead{margin-bottom:24px}
 .ctas{display:grid;gap:12px}
 @media (min-width:640px){.ctas{grid-template-columns:repeat(2,max-content)}}
@@ -147,7 +159,7 @@ section{padding-block:56px}
 /* ===== Tabs (property picker) ===== */
 .pick{display:grid;grid-template-columns:repeat(2,1fr);gap:4px;background:var(--muted);padding:4px;border-radius:14px;margin-bottom:12px}
 @media (min-width:560px){.pick{grid-template-columns:repeat(4,1fr)}}
-.pk{display:grid;justify-items:center;align-content:center;gap:5px;min-height:62px;padding:8px 6px;border:0;border-radius:10px;background:transparent;color:var(--muted-foreground);font:700 13.5px/1.2 var(--f-body);cursor:pointer;transition:background .25s,color .25s,box-shadow .25s,transform .15s}
+.pk{display:grid;justify-items:center;align-content:center;gap:5px;min-height:58px;padding:8px 6px;border:0;border-radius:10px;background:transparent;color:var(--muted-foreground);font:700 13.5px/1.2 var(--f-body);cursor:pointer;transition:background .25s,color .25s,box-shadow .25s,transform .15s}
 .pk svg{width:22px;height:22px;stroke:currentColor;fill:none;stroke-width:1.75;stroke-linecap:round;stroke-linejoin:round}
 .pk:hover{color:var(--navy-900)}
 .pk:active{transform:scale(.97)}
@@ -165,13 +177,18 @@ section{padding-block:56px}
 .plan svg{display:block;width:100%;height:auto}
 .z-ent{--f:var(--f-ent);--s:var(--s-ent)}.z-park{--f:var(--f-park);--s:var(--s-park)}
 .z-com{--f:var(--f-com);--s:var(--s-com)}.z-rec{--f:var(--f-rec);--s:var(--s-rec)}
-.cone{fill:var(--f);fill-opacity:var(--fo);stroke:var(--s);stroke-width:1;stroke-opacity:.9}
+.cone{stroke:var(--s);stroke-width:1;stroke-opacity:.5;stroke-linejoin:round}
 .area{fill:var(--f);fill-opacity:.12;stroke:var(--s);stroke-width:1;stroke-dasharray:4 3}
 .st-iso .area{fill-opacity:.4}
 .door{fill:var(--f);fill-opacity:.9;stroke:var(--s);stroke-width:1}
 .bld{fill:var(--wall);stroke:var(--ink);stroke-width:2}
 .wall{fill:none;stroke:var(--ink);stroke-width:1.5}
 .cam{fill:var(--royal);stroke:#fff;stroke-width:1.5}
+.camring{fill:none;stroke:var(--royal);stroke-width:1.5;opacity:0;transform-box:fill-box;transform-origin:center;animation:ringp 1.8s 3s 2 ease-out}
+@keyframes ringp{0%{transform:scale(1);opacity:.7}100%{transform:scale(2.3);opacity:0}}
+.recdot{fill:var(--green);stroke:#fff;stroke-width:1;animation:blink 1.2s 2.6s 4}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.25}}
+.camp{fill:none;stroke:#fff;stroke-width:1.25;stroke-linecap:round;stroke-linejoin:round}
 .shelf{fill:#E6ECF8;stroke:var(--ink);stroke-width:.8}
 .road{fill:none;stroke:#DCE5F5;stroke-width:14}
 .roadc{fill:none;stroke:#fff;stroke-width:1.4;stroke-dasharray:6 5}
@@ -185,6 +202,12 @@ section{padding-block:56px}
 .ground{fill:var(--ground);stroke:#C5D2EA;stroke-width:1}
 .face-l{fill:var(--wl);stroke:var(--ink);stroke-width:1}.face-r{fill:var(--wr);stroke:var(--ink);stroke-width:1}
 .roof{fill:var(--roof);stroke:var(--ink);stroke-width:1}
+.two{fill:#fff;stroke:#6F7FA3;stroke-width:1}.twoh{fill:none;stroke:#6F7FA3;stroke-width:1.4;stroke-linecap:round}
+.cwall{fill:none;stroke:#8E9CBC;stroke-width:2.5;stroke-linejoin:round}
+.pier{fill:var(--navy-900)}
+.win{fill:#fff;fill-opacity:.9;stroke:var(--ink);stroke-width:.5}
+.shut{fill:none;stroke:var(--ink);stroke-width:.7;opacity:.65}
+.sign{fill:var(--navy-900);stroke:var(--ink);stroke-width:.6}
 .slot{stroke:var(--s-park);stroke-width:.8;opacity:.55;fill:none}
 .legend{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
 .lg{font:700 13px var(--f-body);color:var(--navy-900);background:#fff;border:1px solid var(--border);border-radius:999px;min-height:36px;padding:4px 14px 4px 10px;display:inline-flex;gap:8px;align-items:center;cursor:pointer;transition:background .2s,border-color .2s}
@@ -199,7 +222,7 @@ section{padding-block:56px}
 .plan[data-focus=park] [data-z]:not([data-z=park]){opacity:.12}
 .plan[data-focus=com] [data-z]:not([data-z=com]){opacity:.12}
 .plan[data-focus=rec] [data-z]:not([data-z=rec]){opacity:.12}
-@keyframes scan{0%{transform:rotate(0)}25%{transform:rotate(-5deg)}75%{transform:rotate(5deg)}100%{transform:rotate(0)}}
+@keyframes scan{0%{transform:rotate(0)}25%{transform:rotate(-12deg)}75%{transform:rotate(12deg)}100%{transform:rotate(0)}}
 @keyframes breathe{0%,100%{transform:scale(1);opacity:1}50%{transform:scale(.9);opacity:.55}}
 @keyframes draw{from{stroke-dashoffset:1}to{stroke-dashoffset:0}}
 .a-sweep .sw{animation:scan 2.4s ease-in-out var(--iter);animation-delay:calc(var(--sd) + var(--k,0)*.2s)}
@@ -210,16 +233,21 @@ section{padding-block:56px}
 @keyframes fadein{from{opacity:0}to{opacity:1}}
 
 /* ===== section head with dimension line ===== */
-.sec-head{display:grid;gap:12px;margin-bottom:32px;max-width:760px}
+.sec-head{display:grid;gap:12px;margin-bottom:26px;max-width:760px}
+.kick{display:flex;align-items:center;gap:10px;margin:0;font:700 12.5px var(--f-disp);font-stretch:106%;letter-spacing:.14em;text-transform:uppercase;color:var(--primary)}
+.kick b{color:var(--orange-6);font-weight:800}
+.kick b::after{content:"";display:inline-block;width:22px;height:1.5px;background:currentColor;vertical-align:middle;margin-left:10px;opacity:.7}
+.on-dark .kick{color:#7FD0FF}.on-dark .kick b{color:#FFB070}
+.faq .kick{justify-content:center}
 .dim{position:relative;height:12px;width:clamp(120px,22vw,220px)}
 .dim::before,.dim::after{content:"";position:absolute;top:0;bottom:0;width:1.5px;background:var(--primary)}
-.dim::before{left:0}.dim::after{right:0}
+.dim::before{left:0}.dim::after{right:0;background:var(--orange);width:2px}
 .dim i{position:absolute;left:0;right:0;top:calc(50% - .75px);height:1.5px;background:var(--primary);transform-origin:left}
 .js .dim i{transform:scaleX(0)}
 .js .dim::after{opacity:0;transition:opacity .3s .9s}
 .in .dim i{transform:scaleX(1);transition:transform 1s var(--ease)}
 .in .dim::after{opacity:1}
-.on-dark .dim::before,.on-dark .dim::after,.on-dark .dim i{background:#7FD0FF}
+.on-dark .dim::before,.on-dark .dim i{background:#7FD0FF}
 
 /* ===== reveal helpers ===== */
 .js .stg>*{opacity:0}
@@ -241,7 +269,10 @@ section{padding-block:56px}
 .seg{display:grid;gap:12px;grid-template-columns:repeat(2,1fr)}
 @media (min-width:1024px){.seg{grid-template-columns:repeat(4,1fr);gap:18px}}
 .tile{position:relative;display:grid;align-content:space-between;gap:16px;min-height:150px;padding:18px;background:#fff;border:1px solid var(--border);border-radius:16px;text-decoration:none;color:inherit;overflow:hidden;transition:transform .35s var(--ease),box-shadow .35s var(--ease),border-color .25s}
-@media (min-width:1024px){.tile{min-height:210px;padding:24px}}
+@media (min-width:1024px){.tile{min-height:196px;padding:22px}}
+.tile::before,.card::before{content:"";position:absolute;inset:0;pointer-events:none;opacity:0;transition:opacity .3s;background:radial-gradient(260px circle at var(--mx,50%) var(--my,0%),rgba(22,80,208,.09),transparent 65%)}
+.tile:hover::before,.card:hover::before{opacity:1}
+.b1::before{background:radial-gradient(300px circle at var(--mx,50%) var(--my,0%),rgba(111,163,255,.22),transparent 65%)}
 .tile::after{content:"";position:absolute;left:0;right:0;bottom:0;height:4px;background:linear-gradient(90deg,var(--cyan),var(--royal));transform:scaleX(0);transform-origin:left;transition:transform .45s var(--ease)}
 .tile:hover{transform:translateY(-4px);box-shadow:0 22px 36px -22px rgb(11 31 92/.45);border-color:#B9C7E4}
 .tile:hover::after{transform:scaleX(1)}
@@ -259,7 +290,7 @@ section{padding-block:56px}
 
 /* ===== about ===== */
 .about{display:grid;gap:28px}
-@media (min-width:960px){.about{grid-template-columns:1fr 1fr;gap:72px;align-items:start}}
+@media (min-width:960px){.about{grid-template-columns:1fr 1fr;gap:56px;align-items:start}}
 .about h2{margin-bottom:16px}
 .about .lead+.lead{margin-top:14px}
 .about .act{margin-top:24px}
@@ -280,7 +311,7 @@ section{padding-block:56px}
 
 /* ===== services bento (Card + Carousel on mobile) ===== */
 .bento{display:grid;gap:18px;grid-template-columns:repeat(2,1fr)}
-.card{position:relative;display:grid;gap:10px;align-content:start;padding:26px;background:#fff;border:1px solid var(--border);border-radius:18px;text-decoration:none;color:inherit;transition:transform .35s var(--ease),box-shadow .35s var(--ease),border-color .25s}
+.card{position:relative;display:grid;gap:10px;align-content:start;padding:26px;background:#fff;border:1px solid var(--border);border-radius:16px;text-decoration:none;color:inherit;overflow:hidden;transition:transform .35s var(--ease),box-shadow .35s var(--ease),border-color .25s}
 .card:hover{transform:translateY(-3px);box-shadow:0 22px 36px -22px rgb(11 31 92/.4);border-color:#B9C7E4}
 .card p{color:var(--muted-foreground);font-size:16px;line-height:1.6}
 .card .ico{margin-bottom:4px}
@@ -319,9 +350,32 @@ section{padding-block:56px}
 .dots i{width:6px;height:6px;border-radius:50%;background:#C5D0E4;transition:width .3s var(--ease),background .3s}
 .dots i.on{width:20px;border-radius:3px;background:var(--primary)}
 
+.svc5{margin-top:26px}
+.svc5-t{margin:0 0 12px;font:700 13px var(--f-disp);font-stretch:106%;letter-spacing:.12em;text-transform:uppercase;color:var(--muted-foreground)}
+.svc5 ul{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+@media (min-width:900px){.svc5 ul{grid-template-columns:repeat(5,1fr)}}
+@media (max-width:899px){.svc5 li:last-child{grid-column:1/-1}}
+.sv{display:flex;align-items:center;gap:12px;padding:12px 14px;border:1px solid var(--border);border-radius:14px;background:#fff;font:650 15px/1.25 var(--f-disp);color:var(--navy-900);transition:transform .3s var(--ease),border-color .25s,box-shadow .3s}
+.sv:hover{transform:translateY(-3px);border-color:#B9C7E4;box-shadow:0 16px 28px -20px rgb(11 31 92/.45)}
+.sv .ico{width:40px;height:40px;flex:none;border-radius:10px}.sv .ico svg{width:22px;height:22px}
+
+/* ===== brands ===== */
+.brands{padding-block:30px;background:#fff;border-block:1px solid var(--border)}
+@media (min-width:1024px){.brands{padding-block:36px}}
+.in3{display:grid;gap:16px;align-items:center}
+@media (min-width:900px){.in3{grid-template-columns:260px 1fr;gap:40px}}
+.brands h2{font-size:clamp(20px,2.1vw,26px);margin-bottom:4px}
+.brands .sub2{color:var(--muted-foreground);font-size:15px;line-height:1.5}
+.bl{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+@media (min-width:700px){.bl{grid-template-columns:repeat(5,1fr)}}
+.bn{display:grid;place-items:center;text-align:center;min-height:62px;padding:10px 12px;border:1px solid var(--border);border-radius:12px;background:var(--secondary);font:800 clamp(15px,1.5vw,18px)/1.15 var(--f-disp);letter-spacing:.01em;color:var(--navy-900);transition:transform .3s var(--ease),border-color .25s,background .25s,box-shadow .3s}
+.bn:hover{transform:translateY(-3px);border-color:#B9C7E4;background:#fff;box-shadow:0 16px 28px -20px rgb(11 31 92/.45)}
+.bn.more{font-weight:600;font-size:15px;color:var(--muted-foreground);border-style:dashed;background:#fff}
+@media (max-width:699px){.bl li:last-child{grid-column:1/-1}}
+
 /* ===== planning ===== */
 .plan-sec{display:grid;gap:32px;align-items:center}
-@media (min-width:980px){.plan-sec{grid-template-columns:.95fr 1.05fr;gap:64px}}
+@media (min-width:980px){.plan-sec{grid-template-columns:.95fr 1.05fr;gap:48px}}
 .plan-sec h2{margin-bottom:16px}
 .factors{display:flex;flex-wrap:wrap;gap:8px;list-style:none;padding:0;margin:22px 0 26px}
 .factors button{font:700 15px var(--f-body);color:var(--navy-900);background:#fff;border:1.5px solid var(--border);border-radius:999px;min-height:44px;padding:0 18px;cursor:pointer;display:inline-flex;align-items:center;gap:9px;transition:border-color .2s,background .2s,transform .15s}
@@ -338,7 +392,7 @@ section{padding-block:56px}
 .process{background:var(--navy-900);color:#fff;position:relative;overflow:hidden}
 .process h2{color:#fff}
 .process .lead{color:#C3D2F5}
-.tl{position:relative;margin-top:40px}
+.tl{position:relative;margin-top:30px}
 .tl .track{position:absolute;background:rgba(255,255,255,.2);border-radius:2px;overflow:hidden;left:19px;top:24px;bottom:24px;width:3px}
 .tl .track i{display:block;width:100%;height:100%;background:linear-gradient(180deg,var(--cyan),#6FA3FF)}
 .tl ol{list-style:none;margin:0;padding:0;display:grid;gap:4px;position:relative}
@@ -373,7 +427,7 @@ section{padding-block:56px}
 
 /* ===== why ===== */
 .why{display:grid;gap:28px}
-@media (min-width:980px){.why{grid-template-columns:.85fr 1.15fr;gap:72px}}
+@media (min-width:980px){.why{grid-template-columns:.85fr 1.15fr;gap:52px}}
 .why h2{margin-bottom:16px}
 .wlist{display:grid;gap:0;border-top:1px solid var(--border)}
 @media (min-width:700px){.wlist{grid-template-columns:1fr 1fr;column-gap:40px}}
@@ -384,7 +438,7 @@ section{padding-block:56px}
 @media (min-width:700px){.wl{align-items:flex-start;padding:20px 0}.wl span.t{display:block}}
 
 /* ===== support ===== */
-.support{background:#F1FAF0;border-block:1px solid #CFE8CB;padding-block:36px}
+.support{background:#F1FAF0;border-block:1px solid #CFE8CB;padding-block:26px}
 .support .in2{display:grid;grid-template-columns:auto 1fr;gap:20px;align-items:center}
 .support .badge2{position:relative;width:56px;height:56px;border-radius:50%;background:var(--green-7);display:grid;place-items:center}
 .support .badge2 svg{width:28px;height:28px;stroke:#fff;fill:none;stroke-width:2.6;stroke-linecap:round;stroke-linejoin:round}
@@ -408,16 +462,36 @@ details.q p{padding:0 4px 22px;color:var(--muted-foreground);max-width:64ch;anim
 .draft{display:inline-block;font:800 11px var(--f-disp);background:#FFF1E5;color:var(--orange-6);padding:3px 9px;border-radius:6px;margin-right:8px;font-style:normal}
 
 /* ===== final cta ===== */
-.cta{position:relative;overflow:hidden;background:linear-gradient(120deg,var(--navy-900),var(--navy-700));color:#fff;text-align:center}
+.cta{position:relative;overflow:hidden;background:radial-gradient(900px 420px at 85% 20%,rgba(0,173,252,.22),transparent 60%),linear-gradient(120deg,var(--navy-900),var(--navy-700));color:#fff;text-align:center}
+.cta::before{content:"";position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.05) 1px,transparent 1px);background-size:24px 24px;pointer-events:none}
 .cta .wrap{position:relative;z-index:1}
-.cta h2{color:#fff;max-width:19ch;margin-inline:auto}
-.cta p{color:#D5E0FA;max-width:54ch;margin:16px auto 26px;font-size:18px}
-.cta .bgdraw{position:absolute;right:-40px;bottom:-30px;width:min(520px,70%);opacity:.9;pointer-events:none}
-.cta .bgdraw .d{fill:none;stroke:rgba(255,255,255,.22);stroke-width:1.5}
-@media (max-width:639px){.cta .bgdraw{opacity:.5}}
+.cta-grid{display:grid;gap:30px;align-items:center}
+@media (min-width:980px){.cta-grid{grid-template-columns:1fr 1.05fr;gap:56px}.cta{text-align:left}.cta h2,.cta p{margin-inline:0!important}}
+.cta h2{color:#fff;max-width:20ch;margin-inline:auto}
+.cta p{color:#D5E0FA;max-width:52ch;margin:14px auto 24px;font-size:18px}
+.cta p.cta-call{margin:18px auto 0;font-size:16px;display:flex;flex-wrap:wrap;gap:6px 20px;justify-content:center;max-width:none}
+@media (min-width:980px){.cta p.cta-call{justify-content:flex-start;margin-inline:0!important}}
+.cta-call a{color:#fff;font-weight:700;text-decoration:none;border-bottom:1.5px solid rgba(255,255,255,.4)}
+.cta-call a:hover{border-color:#fff}
+.live{background:rgba(6,15,46,.55);border:1px solid rgba(127,208,255,.28);border-radius:16px;padding:10px;box-shadow:0 30px 60px -30px rgb(0 0 0/.6);backdrop-filter:blur(4px)}
+.live-bar{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:2px 6px 10px;font:700 12px var(--f-disp);letter-spacing:.1em;text-transform:uppercase;color:#CFE3FF}
+.live-bar em{font-style:normal;letter-spacing:.02em;text-transform:none;font:600 12px var(--f-body);color:#9FB4EA}
+.live-bar span::before{content:"";display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--green);margin-right:8px;animation:blink 1.2s 1s 6}
+.vgrid{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.vt{position:relative;aspect-ratio:16/10;border-radius:10px;overflow:hidden;background:linear-gradient(160deg,#0E2A73,#081A4A)}
+.vt svg{position:absolute;inset:0;width:100%;height:100%}
+.vt .ln{fill:none;stroke:#BFD8FF;stroke-width:1.4;stroke-linecap:round;stroke-linejoin:round;opacity:.9}
+.vt .ac{stroke:#FFB070}
+.vt::before{content:"";position:absolute;inset:7px;pointer-events:none;z-index:2;background:linear-gradient(#7FD0FF,#7FD0FF) 0 0/12px 2px no-repeat,linear-gradient(#7FD0FF,#7FD0FF) 0 0/2px 12px no-repeat,linear-gradient(#7FD0FF,#7FD0FF) 100% 0/12px 2px no-repeat,linear-gradient(#7FD0FF,#7FD0FF) 100% 0/2px 12px no-repeat,linear-gradient(#7FD0FF,#7FD0FF) 0 100%/12px 2px no-repeat,linear-gradient(#7FD0FF,#7FD0FF) 0 100%/2px 12px no-repeat,linear-gradient(#7FD0FF,#7FD0FF) 100% 100%/12px 2px no-repeat,linear-gradient(#7FD0FF,#7FD0FF) 100% 100%/2px 12px no-repeat;opacity:.8}
+.vl{position:absolute;left:12px;top:11px;z-index:3;font:700 10px var(--f-disp);letter-spacing:.08em;text-transform:uppercase;color:#fff;background:rgba(6,15,46,.7);padding:3px 7px;border-radius:5px}
+.vr{position:absolute;right:13px;top:14px;z-index:3;width:8px;height:8px;border-radius:50%;background:var(--green);animation:blink 1.2s 1.4s 6}
+.sl{position:absolute;left:8px;right:8px;top:6%;height:2px;z-index:2;background:linear-gradient(90deg,transparent,#7FD0FF,transparent);box-shadow:0 0 10px #7FD0FF;opacity:.9}
+.cta .sl{animation:slscan 2.4s 1s 3 alternate both}
+@keyframes slscan{from{top:6%}to{top:94%}}
+@media (max-width:639px){.vl{font-size:9px;left:9px;top:9px}.vt::before{inset:5px}.live-bar em{display:none}}
 
 /* ===== footer (light, so the transparent logo shows as designed) ===== */
-footer{background:var(--secondary);color:var(--muted-foreground);padding-block:52px 0;border-top:1px solid var(--border)}
+footer{background:var(--secondary);color:var(--muted-foreground);padding-block:42px 0;border-top:1px solid var(--border)}
 .fgrid{display:grid;gap:32px}
 @media (min-width:768px){.fgrid{grid-template-columns:1fr 1fr}}
 @media (min-width:1024px){.fgrid{grid-template-columns:1.4fr 1fr 1fr 1.2fr}}
@@ -426,6 +500,8 @@ footer h4{color:var(--navy-900);font-size:15px;margin-bottom:14px;font-stretch:1
 footer ul{list-style:none;margin:0;padding:0;display:grid;gap:10px}
 footer a{color:var(--muted-foreground);text-decoration:none;transition:color .2s}footer a:hover{color:var(--primary);text-decoration:underline;text-underline-offset:4px}
 footer p{font-size:15px}
+.fph b{color:var(--navy-900)}.fph{font-weight:600}
+footer li.br{font-size:14.5px;line-height:1.45}footer li.br b{display:block;color:var(--navy-900)}
 .pend{border:1.5px dashed #9AA9C8;border-radius:8px;padding:6px 12px;font-size:14px;color:#5B6B8C;display:inline-block;background:#fff}
 .fbottom{margin-top:40px;border-top:1px solid var(--border);padding-block:20px;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;font-size:14px}
 .abar-space{height:0}
@@ -475,6 +551,7 @@ footer p{font-size:15px}
           </div></li>
         <li><a class="nl" href="#contact">Contact Us</a></li>
       </ul>
+      <a class="nl hph" href="tel:+917041999963" aria-label="Call 70419 99963"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z"/></svg>70419 99963</a>
       <a class="btn btn-sm hcta" href="#contact">Discuss Your Project</a>
     </nav>
     <button class="menu-btn" id="menuBtn" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="sheet"><i></i><i></i><i></i></button>
@@ -486,7 +563,7 @@ footer p{font-size:15px}
 <aside class="sheet" id="sheet" role="dialog" aria-modal="true" aria-label="Menu" tabindex="-1">
   <div class="sh-head"><span class="lt"><img src="yonam-logo.png" alt="YONAM CCTV Surveillance"></span><button class="sh-close" id="closeBtn" type="button" aria-label="Close menu"><svg viewBox="0 0 20 20"><path d="M4 4l12 12M16 4L4 16"/></svg></button></div>
   <nav aria-label="Mobile"><a class="m" href="#top">Home</a><a class="m" href="#about">About Us</a><a class="m" href="#solutions">Solutions</a><a class="m" href="#services">Services</a><a class="m" href="#contact">Contact Us</a></nav>
-  <div class="pad"><a class="btn" href="#contact">Discuss Your Project</a><p class="ph">Phone number to be confirmed</p></div>
+  <div class="pad"><a class="btn" href="#contact">Discuss Your Project</a><p class="ph"><a href="tel:+917041999963">Vandan · 70419 99963</a><a href="tel:+919727455515">Jayraj · 97274 55515</a></p></div>
 </aside>
 
 <main id="main">
@@ -495,13 +572,14 @@ footer p{font-size:15px}
 <section class="hero" aria-labelledby="h-hero">
   <div class="wrap hero-grid">
     <div>
+      <p class="eyebrow"><i aria-hidden="true"></i>CCTV surveillance · Nadiad &amp; Kheda</p>
       <h1 id="h-hero" aria-label="Complete CCTV Surveillance Solutions, Planned Around Your Needs.">
         <span aria-hidden="true"><span class="w"><i style="--i:0">Complete</i></span> <span class="w"><i style="--i:1">CCTV</i></span> <span class="w"><i style="--i:2">Surveillance</i></span> <span class="w"><i style="--i:3">Solutions,</i></span> <span class="w"><i style="--i:4">Planned</i></span> <span class="w"><i style="--i:5">Around</i></span> <span class="w"><i style="--i:6">Your</i></span> <span class="w"><i style="--i:7">Needs.</i></span></span>
       </h1>
+      <p class="bf rise" style="--rd:.7s"><span>Planned for</span> <b id="bf" aria-live="polite">builders and new buildings</b></p>
       <p class="lead rise" style="--rd:.85s"><span class="long">From dedicated implementation planning and professional installation to system setup and long-term support, YONAM helps deliver CCTV surveillance solutions according to your property’s requirements.</span><span class="short">Planning, installation, setup and long-term support, built around your property.</span></p>
       <div class="ctas rise" style="--rd:1.05s"><a class="btn btn-ping" href="#contact">Discuss Your Project</a><a class="btn btn-outline" href="#contact">Request a Site Assessment</a></div>
       <a class="tlink mob-link rise" style="--rd:1.15s" href="#contact">Or request a site assessment</a>
-      <p class="loc rise" style="--rd:1.25s"><svg width="16" height="18" viewBox="0 0 16 18" fill="none" stroke="#1650D0" stroke-width="1.8" aria-hidden="true"><path d="M8 17s6-5.2 6-10A6 6 0 0 0 2 7c0 4.8 6 10 6 10z"/><circle cx="8" cy="7" r="2.2"/></svg>Based in Nadiad, Gujarat, India</p>
     </div>
     <div class="planbox">
       <div class="pick" role="tablist" aria-label="Choose a property type to see an example plan">
@@ -529,7 +607,7 @@ footer p{font-size:15px}
 <!-- SEGMENTS -->
 <section id="solutions" aria-labelledby="h-seg">
   <div class="wrap">
-    <div class="sec-head" data-rv><div class="dim" aria-hidden="true"><i></i></div><h2 id="h-seg">What are you securing?</h2><p class="lead">Choose the closest match. Each path explains how YONAM plans, installs and supports CCTV for that kind of property.</p></div>
+    <div class="sec-head" data-rv><div class="dim" aria-hidden="true"><i></i></div><p class="kick"><b>01</b>Every kind of property</p><h2 id="h-seg">What are you securing?</h2><p class="lead">Choose the closest match. Each path explains how YONAM plans, installs and supports CCTV for that kind of property.</p></div>
     <div class="seg stg" data-rv>
       <a class="tile" href="#contact" style="--k:0"><span class="ico"><svg viewBox="0 0 24 24"><path d="M4 21V6l8-3 8 3v15M4 21h16M9 9h2M13 9h2M9 13h2M13 13h2M10 21v-4h4v4"/></svg></span><div><h3>Building projects</h3><p>Builders, developers and new construction.</p></div><span class="go"><span>Explore building solutions</span></span></a>
       <a class="tile" href="#contact" style="--k:1"><span class="ico"><svg viewBox="0 0 24 24"><path d="M3 21V10l5-3 5 3v11M13 21V4l8 3v14M3 21h18M6 12h4M6 16h4M16 10h2M16 14h2"/></svg></span><div><h3>Housing societies</h3><p>Apartment complexes and residential communities.</p></div><span class="go"><span>Explore society solutions</span></span></a>
@@ -543,7 +621,7 @@ footer p{font-size:15px}
 <section class="alt" id="about" aria-labelledby="h-about">
   <div class="wrap about">
     <div data-rv>
-      <div class="sec-head" style="margin-bottom:20px"><div class="dim" aria-hidden="true"><i></i></div><h2 id="h-about">A surveillance partner, not just a camera seller.</h2></div>
+      <div class="sec-head" style="margin-bottom:20px"><div class="dim" aria-hidden="true"><i></i></div><p class="kick"><b>02</b>A partner, not a seller</p><h2 id="h-about">A surveillance partner, not just a camera seller.</h2></div>
       <p class="lead"><span class="long">YONAM is a CCTV surveillance solutions company based in Nadiad, Gujarat. Every property has different requirements, so we prepare a dedicated plan for yours instead of offering a one-size-fits-all package.</span><span class="short">YONAM prepares a dedicated CCTV plan for every property, then installs, configures and supports it.</span></p>
       <p class="lead long">You do not need to know camera quantities, placement or cabling before you call. We assess the property and recommend an approach.</p>
       <p class="act"><a class="btn btn-outline" href="#about">About YONAM</a></p>
@@ -563,7 +641,7 @@ footer p{font-size:15px}
 <!-- SERVICES -->
 <section id="services" aria-labelledby="h-svc">
   <div class="wrap">
-    <div class="sec-head" data-rv><div class="dim" aria-hidden="true"><i></i></div><h2 id="h-svc">From first plan to long-term support</h2></div>
+    <div class="sec-head" data-rv><div class="dim" aria-hidden="true"><i></i></div><p class="kick"><b>03</b>Plan to support</p><h2 id="h-svc">From first plan to long-term support</h2></div>
     <div class="bento snap" id="snap1">
       <a class="card b1" href="#planning" data-rv>
         <div><h3>CCTV Implementation Planning</h3><p style="margin-top:12px">We study your property and requirements and prepare a dedicated plan before any equipment is installed.</p></div>
@@ -571,9 +649,9 @@ footer p{font-size:15px}
           <rect class="s d" pathLength="1" x="10" y="12" width="200" height="124" rx="3" style="--k:0"/>
           <path class="s d" pathLength="1" d="M110 12V70M10 70H210M70 70V136" style="--k:1"/>
           <rect class="pk2" x="224" y="22" width="86" height="114" rx="3"/>
-          <g class="sw" style="transform-origin:40px 128px"><polygon class="k" points="40,128 16,80 64,80"/></g>
-          <g class="sw" style="transform-origin:60px 22px;animation-delay:.3s"><polygon class="k" points="60,22 22,64 98,64"/></g>
-          <g class="sw" style="transform-origin:216px 80px;animation-delay:.6s"><polygon class="k" points="216,80 310,30 310,130"/></g>
+          <g class="sw" style="transform-origin:40px 128px"><path class="k" d="M40 128L16 80Q40 65.6 64 80Z"/></g>
+          <g class="sw" style="transform-origin:60px 22px;animation-delay:.3s"><path class="k" d="M60 22L22 64Q60 76.6 98 64Z"/></g>
+          <g class="sw" style="transform-origin:216px 80px;animation-delay:.6s"><path class="k" d="M216 80L300 34Q325.2 80 300 126Z"/></g>
           <circle class="cm" cx="40" cy="128" r="4.5"/><circle class="cm" cx="60" cy="22" r="4.5"/><circle class="cm" cx="216" cy="80" r="4.5"/>
         </svg>
         <span class="tlink">Learn more</span>
@@ -583,6 +661,26 @@ footer p{font-size:15px}
       <a class="card b4" href="#services" data-rv><span class="ico"><svg viewBox="0 0 24 24"><path d="M12 3l8 3v6c0 4.5-3.2 8-8 9-4.8-1-8-4.5-8-9V6zM8.5 12l2.5 2.5 4.5-5"/></svg></span><div><h3>Long-Term Support</h3><p style="margin-top:6px">Support for the implemented CCTV surveillance solution, beyond the day of installation.</p></div><span class="tlink">Learn more</span></a>
     </div>
     <div class="swipe" aria-hidden="true">Swipe to see all services<span class="dots" id="dots1"><i class="on"></i><i></i><i></i><i></i></span></div>
+    <div class="svc5" data-rv>
+      <p class="svc5-t">Everything YONAM offers</p>
+      <ul class="stg">
+        <li class="sv"><span class="ico"><svg viewBox="0 0 24 24"><rect x="3" y="7" width="13" height="10" rx="2"/><path d="M16 10l5-2.5v9L16 14M7 4h4"/></svg></span>CCTV installation</li>
+        <li class="sv"><span class="ico"><svg viewBox="0 0 24 24"><path d="M3 5h18v11H3zM8 20h8M12 16v4M6.5 10.5s2.2-3 5.5-3 5.5 3 5.5 3-2.2 3-5.5 3-5.5-3-5.5-3z"/><circle cx="12" cy="10.5" r="1.2"/></svg></span>Remote monitoring</li>
+        <li class="sv"><span class="ico"><svg viewBox="0 0 24 24"><path d="M12 3l8 3v6c0 4.5-3.2 8-8 9-4.8-1-8-4.5-8-9V6zM8.5 12l2.5 2.5 4.5-5"/></svg></span>Security solutions</li>
+        <li class="sv"><span class="ico"><svg viewBox="0 0 24 24"><rect x="7" y="2.5" width="10" height="19" rx="2"/><circle cx="12" cy="10" r="2.5"/><path d="M11 18h2"/></svg></span>Smart surveillance</li>
+        <li class="sv"><span class="ico"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4M9 15l2 2 4-4"/></svg></span>AMC and support</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- BRANDS -->
+<section class="brands" id="brands" aria-labelledby="h-brands">
+  <div class="wrap in3">
+    <div data-rv><h2 id="h-brands">Our trusted brands</h2><p class="sub2">We work with these CCTV brands, and more.</p></div>
+    <ul class="bl stg" data-rv aria-label="CCTV brands">
+      <li class="bn">CP PLUS</li><li class="bn">Honeywell</li><li class="bn">Prama India</li><li class="bn">Dahua</li><li class="bn more">and many more</li>
+    </ul>
   </div>
 </section>
 
@@ -590,7 +688,7 @@ footer p{font-size:15px}
 <section class="alt" id="planning" aria-labelledby="h-plan">
   <div class="wrap plan-sec">
     <div data-rv>
-      <div class="sec-head" style="margin-bottom:18px"><div class="dim" aria-hidden="true"><i></i></div><h2 id="h-plan">Every property is different. So is every plan.</h2></div>
+      <div class="sec-head" style="margin-bottom:18px"><div class="dim" aria-hidden="true"><i></i></div><p class="kick"><b>04</b>Plan before camera</p><h2 id="h-plan">Every property is different. So is every plan.</h2></div>
       <p class="lead"><span class="long">YONAM develops a dedicated CCTV implementation plan based on your property, coverage requirements and expectations. We consider the whole property before proposing an approach.</span><span class="short">We consider the whole property before proposing an approach.</span></p>
       <ul class="factors" id="factors" aria-label="What we consider. Choose one to highlight it on the drawing.">
         <li><button type="button" data-k="all" aria-pressed="false">Property layout</button></li>
@@ -618,7 +716,7 @@ footer p{font-size:15px}
 <!-- PROCESS -->
 <section class="process on-dark" id="process" aria-labelledby="h-proc">
   <div class="wrap">
-    <div class="sec-head" data-rv><div class="dim" aria-hidden="true"><i></i></div><h2 id="h-proc">Six steps, from first call to long-term support</h2><p class="lead">You always know what happens next.</p></div>
+    <div class="sec-head" data-rv><div class="dim" aria-hidden="true"><i></i></div><p class="kick"><b>05</b>Six clear steps</p><h2 id="h-proc">Six steps, from first call to long-term support</h2><p class="lead">You always know what happens next.</p></div>
     <div class="tl" id="tl">
       <div class="track" aria-hidden="true"><i></i></div>
       <ol id="steps">
@@ -636,7 +734,7 @@ footer p{font-size:15px}
 <!-- WHY -->
 <section id="why" aria-labelledby="h-why">
   <div class="wrap why">
-    <div class="sec-head" data-rv style="margin-bottom:0"><div class="dim" aria-hidden="true"><i></i></div><h2 id="h-why">Planned for the property in front of us.</h2><p class="lead">What you can expect when you work with YONAM.</p></div>
+    <div class="sec-head" data-rv style="margin-bottom:0"><div class="dim" aria-hidden="true"><i></i></div><p class="kick"><b>06</b>Built around you</p><h2 id="h-why">Planned for the property in front of us.</h2><p class="lead">What you can expect when you work with YONAM.</p></div>
     <div class="wlist stg" data-rv>
       <div class="wl" style="--k:0"><span class="ico"><svg viewBox="0 0 24 24"><path d="M4 4h16v16H4zM4 10h16M10 4v16"/></svg></span><p><b>Dedicated implementation planning</b><span class="t">A plan for your property, not a standard package.</span></p></div>
       <div class="wl" style="--k:1"><span class="ico"><svg viewBox="0 0 24 24"><path d="M3 11l9-8 9 8M5 9.5V21h14V9.5"/></svg></span><p><b>Property-specific solutions</b><span class="t">Layout, entrances and requirements decide the approach.</span></p></div>
@@ -658,7 +756,7 @@ footer p{font-size:15px}
 <!-- FAQ -->
 <section class="alt" id="faq" aria-labelledby="h-faq">
   <div class="wrap faq">
-    <div class="sec-head" data-rv><div class="dim" aria-hidden="true"><i></i></div><h2 id="h-faq">Questions we are often asked</h2></div>
+    <div class="sec-head" data-rv><div class="dim" aria-hidden="true"><i></i></div><p class="kick"><b>07</b>Quick answers</p><h2 id="h-faq">Questions we are often asked</h2></div>
     <div id="acc">
     <details class="q" open><summary>How do I determine the CCTV requirements for my property?</summary><p><i class="draft">Draft</i>You do not need to work this out alone. Tell us about your property and what you want to protect, and we assess it and recommend an approach. Final wording to be confirmed by YONAM.</p></details>
     <details class="q"><summary>Does YONAM prepare a dedicated implementation plan?</summary><p><i class="draft">Draft</i>Answer to be confirmed by YONAM before launch.</p></details>
@@ -675,11 +773,23 @@ footer p{font-size:15px}
 
 <!-- FINAL CTA -->
 <section class="cta" id="contact" aria-labelledby="h-cta" data-rv>
-  <svg class="bgdraw" viewBox="0 0 360 222" aria-hidden="true"><rect class="d" pathLength="1" x="20" y="20" width="230" height="170" rx="3"/><path class="d" pathLength="1" d="M160 20V110M20 110H250M120 110V190" style="--k:2"/><rect class="d" pathLength="1" x="265" y="30" width="82" height="170" rx="3" style="--k:4"/></svg>
-  <div class="wrap">
-    <h2 id="h-cta">Let’s Plan the Right CCTV Solution for Your Property.</h2>
-    <p>Tell us about your property and requirements. YONAM can help you understand the next steps towards a dedicated surveillance implementation plan.</p>
-    <a class="btn btn-light" href="#contact">Get in Touch</a>
+
+  <div class="wrap cta-grid">
+    <div>
+      <h2 id="h-cta">Let’s Plan the Right CCTV Solution for Your Property.</h2>
+      <p>Tell us about your property and requirements. YONAM can help you understand the next steps towards a dedicated surveillance implementation plan.</p>
+      <a class="btn btn-light" href="#contact">Get in Touch</a>
+      <p class="cta-call"><span>Or call</span><a href="tel:+917041999963">Vandan · 70419 99963</a><a href="tel:+919727455515">Jayraj · 97274 55515</a></p>
+    </div>
+    <div class="live" aria-hidden="true">
+      <div class="live-bar"><span>Live view</span><em>Illustrative drawing, not real footage</em></div>
+      <div class="vgrid">
+        <div class="vt"><span class="vl">Cam 01 · Entrance</span><i class="vr"></i><i class="sl"></i><svg viewBox="0 0 160 100"><path class="ln" d="M44 92V38a36 36 0 0 1 72 0v54"/><path class="ln" d="M80 2V92M16 92H144"/><path class="ln ac" d="M56 70h10M94 70h10"/></svg></div>
+        <div class="vt"><span class="vl">Cam 02 · Lobby</span><i class="vr"></i><i class="sl"></i><svg viewBox="0 0 160 100"><path class="ln" d="M8 94L48 62H112L152 94"/><path class="ln" d="M48 62V22H112V62M8 94V8M152 94V8"/><path class="ln" d="M62 62V76H98V62"/><path class="ln ac" d="M70 22v8M90 22v8"/></svg></div>
+        <div class="vt"><span class="vl">Cam 03 · Parking</span><i class="vr"></i><i class="sl"></i><svg viewBox="0 0 160 100"><path class="ln" d="M16 94V48M48 94V48M80 94V48M112 94V48M144 94V48M16 48H144"/><rect class="ln" x="22" y="62" width="9" height="24" rx="4.5"/><rect class="ln" x="86" y="60" width="22" height="30" rx="6"/><rect class="ln ac" x="54" y="66" width="9" height="20" rx="4.5"/></svg></div>
+        <div class="vt"><span class="vl">Cam 04 · Back office</span><i class="vr"></i><i class="sl"></i><svg viewBox="0 0 160 100"><path class="ln" d="M14 82H146M26 82V96M134 82V96"/><rect class="ln" x="58" y="40" width="42" height="28" rx="3"/><path class="ln" d="M79 68V82M68 82H90"/><rect class="ln" x="114" y="30" width="26" height="52"/><path class="ln ac" d="M114 56H140"/></svg></div>
+      </div>
+    </div>
   </div>
 </section>
 </main>
@@ -687,16 +797,16 @@ footer p{font-size:15px}
 <footer>
   <div class="wrap">
     <div class="fgrid">
-      <div class="flogo"><span class="lt"><img src="yonam-logo.png" alt="YONAM CCTV Surveillance"></span><p>Complete CCTV surveillance solutions, from planning to long-term support.</p><p style="margin-top:10px;color:var(--navy-900);font-weight:700">Nadiad, Gujarat, India</p></div>
+      <div class="flogo"><span class="lt"><img src="yonam-logo.png" alt="YONAM CCTV Surveillance"></span><p>Complete CCTV surveillance solutions, from planning to long-term support.</p><p style="margin-top:10px;color:var(--navy-900);font-weight:700">Your Security, Our Priority</p></div>
       <div><h4>Solutions</h4><ul><li><a href="#solutions">Building CCTV Solutions</a></li><li><a href="#solutions">Housing Society CCTV Solutions</a></li><li><a href="#solutions">Residential CCTV Solutions</a></li><li><a href="#solutions">Commercial CCTV Solutions</a></li></ul></div>
       <div><h4>Services</h4><ul><li><a href="#services">Implementation Planning</a></li><li><a href="#services">Installation</a></li><li><a href="#services">System Setup</a></li><li><a href="#services">Long-Term Support</a></li></ul></div>
-      <div><h4>Contact</h4><ul><li>Nadiad, Gujarat, India</li><li><span class="pend">Phone: to be confirmed</span></li><li><span class="pend">WhatsApp: to be confirmed</span></li><li><span class="pend">Email: to be confirmed</span></li></ul></div>
+      <div><h4>Contact</h4><ul><li class="fph"><a href="tel:+917041999963"><b>Vandan</b> · 70419 99963</a></li><li class="fph"><a href="tel:+919727455515"><b>Jayraj</b> · 97274 55515</a></li><li class="br"><b>Nadiad</b>Petiad Highway, Piplag 387355</li><li class="br"><b>Kheda</b>Tarapur Highway, Traj 387530</li><li><span class="pend">WhatsApp and email: to be confirmed</span></li></ul></div>
     </div>
     <div class="fbottom"><span>© YONAM CCTV Surveillance. All rights reserved.</span><a href="#top">Privacy Policy</a></div>
   </div>
 </footer>
 <div class="abar-space"></div>
-<nav class="abar" aria-label="Quick contact"><a class="off" href="#contact" aria-disabled="true" tabindex="-1">Call</a><a class="off" href="#contact" aria-disabled="true" tabindex="-1">WhatsApp</a><a class="go" href="#contact">Enquire</a></nav>
+<nav class="abar" aria-label="Quick contact"><a href="tel:+917041999963" aria-label="Call Vandan, 70419 99963">Call</a><a class="off" href="#contact" aria-disabled="true" tabindex="-1">WhatsApp</a><a class="go" href="#contact">Enquire</a></nav>
 
 <script>
 (function(){
@@ -721,51 +831,63 @@ footer p{font-size:15px}
 
   /* ---------- illustrations: four property types, plan view + isometric ---------- */
   var T={
-    building:{cap:'New building project',ent:'Main entrance',com:'Lobby',rec:'Control room',cor:'Corridor',park:'Parking'},
-    society:{cap:'Housing society',ent:'Main gate',com:'Clubhouse',rec:'Security room',cor:'Internal road',park:'Visitor parking'},
-    home:{cap:'Home or villa',ent:'Front door',com:'Living area',rec:'Utility',cor:'Garden',park:'Driveway'},
-    shop:{cap:'Shop or office',ent:'Shop entrance',com:'Sales floor',rec:'Back office',cor:'Counter',park:'Loading bay'}
+    building:{bf:'builders and new buildings',cap:'New building project',ent:'Main entrance',com:'Lobby',rec:'Control room',cor:'Corridor',park:'Parking'},
+    society:{bf:'housing societies',cap:'Housing society',ent:'Main gate',com:'Clubhouse',rec:'Security cabin',cor:'Internal road',park:'Visitor parking'},
+    home:{bf:'homes and villas',cap:'Home or villa',ent:'Front door',com:'Living area',rec:'Utility',cor:'Garden',park:'Driveway'},
+    shop:{bf:'shops and offices',cap:'Shop or office',ent:'Shop entrance',com:'Sales floor',rec:'Back office',cor:'Counter',park:'Parking'}
   };
   function pts(a){return a.map(function(p){return p.join(',')}).join(' ')}
-  function cone(z,c,p,k){return '<g class="sw" data-z="'+z+'" style="--k:'+k+';transform-origin:'+c[0]+'px '+c[1]+'px"><polygon class="cone z-'+z+'" points="'+pts(p)+'"/></g>'}
-  function dot(z,x,y){return '<g data-z="'+z+'"><circle class="cam" cx="'+x+'" cy="'+y+'" r="4.5"/></g>'}
+  var gid=0;
+  function wedge(z,a,p1,p2,k){
+    var sh=function(q){return [+(a[0]+(q[0]-a[0])*.94).toFixed(1),+(a[1]+(q[1]-a[1])*.94).toFixed(1)]};p1=sh(p1);p2=sh(p2);
+    var mx=(p1[0]+p2[0])/2,my=(p1[1]+p2[1])/2,cx=a[0]+(mx-a[0])*1.18,cy=a[1]+(my-a[1])*1.18,
+        r=Math.max(Math.hypot(p1[0]-a[0],p1[1]-a[1]),Math.hypot(p2[0]-a[0],p2[1]-a[1]),Math.hypot(mx-a[0],my-a[1])*1.15).toFixed(1),id='cg'+(++gid),f=function(n){return +n.toFixed(1)};
+    return '<g class="sw" data-z="'+z+'" style="--k:'+k+';transform-origin:'+a[0]+'px '+a[1]+'px"><radialGradient id="'+id+'" class="z-'+z+'" gradientUnits="userSpaceOnUse" cx="'+a[0]+'" cy="'+a[1]+'" r="'+r+'"><stop offset="0" style="stop-color:var(--f)" stop-opacity=".62"/><stop offset="1" style="stop-color:var(--f)" stop-opacity=".1"/></radialGradient><path class="cone z-'+z+'" fill="url(#'+id+')" d="M'+a.join(' ')+'L'+p1.join(' ')+'Q'+f(cx)+' '+f(cy)+' '+p2.join(' ')+'Z"/></g>'}
+  function cone(z,c,p,k){return wedge(z,p[0],p[1],p[2],k)}
+  function camg(z,x,y,sc){return '<g data-z="'+z+'" transform="translate('+x+' '+y+') scale('+(sc||1.2)+')"><circle class="camring" r="8.5"/><circle class="cam" r="8.5"/><circle class="recdot" cx="6.6" cy="-6.6" r="2.6"/><path class="camp" d="M-4.6 -2.4h6a1.2 1.2 0 0 1 1.2 1.2v2.4a1.2 1.2 0 0 1-1.2 1.2h-6a1.2 1.2 0 0 1-1.2-1.2v-2.4a1.2 1.2 0 0 1 1.2-1.2zM2.6 -.5L5.8 -2.2v4.4L2.6 .5"/></g>'}
+  function dot(z,x,y){return camg(z,x,y)}
   function area(z,x,y,w,h){return '<rect class="area z-'+z+'" data-z="'+z+'" x="'+x+'" y="'+y+'" width="'+w+'" height="'+h+'" rx="3"/>'}
   function bld(x,y,w,h,r){return '<rect class="bld" pathLength="1" x="'+x+'" y="'+y+'" width="'+w+'" height="'+h+'" rx="'+(r||3)+'"/>'}
   function wl(d){return '<path class="wall" pathLength="1" d="'+d+'"/>'}
   function door(z,x,y,w,h){return '<rect class="door z-'+z+'" data-z="'+z+'" x="'+x+'" y="'+y+'" width="'+w+'" height="'+h+'" rx="2"/>'}
   function lb(x,y,t,z,sm){return '<text class="lab'+(sm?' sm':'')+'" data-z="'+z+'" x="'+x+'" y="'+y+'">'+t+'</text>'}
-  function tb(x){return '<rect class="tb" x="'+x+'" y="206" width="124" height="15" rx="1"/><text class="tbt" x="'+(x+6)+'" y="216.5">Illustrative · not to scale</text>'}
+  function tb(x){return ''}
   function slotsFlat(x,y,w,h){var s='';for(var i=1;i<5;i++){s+='<path class="slot" d="M'+(x+8)+' '+(y+i*h/5)+'H'+(x+w-8)+'"/>'}return s}
   function wrapFlat(v,inner){var L=T[v];return '<svg viewBox="0 0 360 226" role="img" aria-label="Illustrative plan view of a '+L.cap.toLowerCase()+'. Cameras cover the '+L.ent.toLowerCase()+', '+L.com.toLowerCase()+', '+L.rec.toLowerCase()+' and '+L.park.toLowerCase()+'.">'+inner+'</svg>'}
 
+  function two(x,y,r){return '<g class="tw" transform="translate('+x+' '+y+')'+(r?' rotate('+r+')':'')+'"><rect class="two" x="-3.5" y="-9" width="7" height="18" rx="3.5"/><path class="twoh" d="M-6 -4.5H6"/></g>'}
+  function bikes(x,y,cols,rows,dx,dy){var o='';for(var j=0;j<rows;j++)for(var i=0;i<cols;i++)o+=two(x+i*dx,y+j*dy);return o}
+  function pier(x,y){return '<rect class="pier" x="'+(x-3)+'" y="'+(y-5)+'" width="6" height="10" rx="1"/>'}
+  function cw(d){return '<path class="cwall" d="'+d+'"/>'}
+  function rick(x,y){return '<g transform="translate('+x+' '+y+')"><rect class="car" x="-11" y="-6" width="22" height="12" rx="5"/><path class="twoh" d="M5 -6V6"/></g>'}
   var FLAT={
-    building:function(L){return area('park',265,30,82,170)+bld(20,20,230,170)+wl('M160 20V110M20 110H250M120 110V190')+
+    building:function(L){return cw('M42 214H8V8H352V214H98')+pier(44,214)+pier(96,214)+area('park',265,30,82,170)+bikes(290,50,2,5,34,25)+bld(20,20,230,170)+wl('M160 20V110M20 110H250M120 110V190')+
       cone('ent',[70,182],[[70,182],[30,122],[110,122]],0)+cone('com',[90,28],[[90,28],[35,108],[145,108]],1)+cone('com',[240,150],[[240,150],[128,126],[128,186]],2)+cone('rec',[205,28],[[205,28],[168,96],[242,96]],3)+cone('park',[268,115],[[268,115],[346,36],[346,196]],4)+
       door('ent',50,186,40,7)+dot('ent',70,182)+dot('com',90,28)+dot('com',240,150)+dot('rec',205,28)+dot('park',268,115)+
-      lb(52,206,L.ent,'ent')+lb(28,37,L.com,'com')+lb(168,37,L.rec,'rec',1)+lb(130,176,L.cor,'com',1)+lb(272,192,L.park,'park')+tb(228)},
+      lb(52,206,L.ent,'ent')+lb(28,37,L.com,'com')+lb(166,54,L.rec,'rec',1)+lb(130,176,L.cor,'com',1)+lb(272,194,L.park,'park')},
     society:function(L){return '<path class="road" d="M150 206V100H300M26 100H150"/><path class="roadc" d="M150 206V100H300M26 100H150"/>'+
-      wl('M10 10H350V206H10Z')+bld(28,26,72,50)+bld(118,26,72,50)+bld(208,26,72,50)+
-      bld(28,122,86,50)+area('com',28,122,86,50)+area('park',204,122,90,60)+slotsFlat(204,122,90,60)+bld(168,170,32,24)+area('rec',168,170,32,24)+
+      wl('M10 10H350V206H10Z')+pier(128,206)+pier(172,206)+bld(28,26,72,50)+bld(118,26,72,50)+bld(208,26,72,50)+
+      bld(28,122,86,50)+area('com',28,122,86,50)+area('park',204,122,90,60)+bikes(216,136,5,2,15,24)+bld(168,170,32,24)+area('rec',168,170,32,24)+rick(84,100)+
       cone('ent',[150,200],[[150,200],[108,142],[192,142]],0)+cone('com',[154,76],[[154,76],[122,98],[186,98]],1)+cone('com',[296,100],[[296,100],[214,90],[214,110]],2)+cone('com',[114,148],[[114,148],[144,122],[144,176]],3)+cone('park',[248,122],[[248,122],[206,178],[290,178]],4)+
       door('ent',132,203,36,6)+dot('ent',150,200)+dot('com',154,76)+dot('com',296,100)+dot('com',114,148)+dot('park',248,122)+dot('rec',184,182)+
-      lb(54,52,'Block A','com',1)+lb(144,52,'Block B','com',1)+lb(234,52,'Block C','com',1)+lb(34,148,L.com,'com')+lb(210,138,L.park,'park',1)+lb(172,203,L.rec,'rec',1)+lb(74,198,L.ent,'ent')+lb(232,98,L.cor,'com',1)+tb(228)},
-    home:function(L){return wl('M10 10H350V206H10Z')+area('park',250,36,90,164)+
-      '<rect class="car" x="270" y="140" width="30" height="52" rx="8"/><path class="dash" d="M95 206V146"/>'+
+      lb(54,52,'Block A','com',1)+lb(144,52,'Block B','com',1)+lb(234,52,'Block C','com',1)+lb(34,148,L.com,'com')+lb(210,138,L.park,'park',1)+lb(172,203,L.rec,'rec',1)+lb(74,198,L.ent,'ent')+lb(232,98,L.cor,'com',1)},
+    home:function(L){return wl('M10 10H350V206H10Z')+pier(66,206)+pier(124,206)+area('park',250,36,90,164)+
+      '<rect class="car" x="270" y="140" width="30" height="52" rx="8"/>'+bikes(274,62,3,1,22,0)+'<path class="dash" d="M95 206V146"/>'+
       bld(46,34,176,106)+wl('M134 34V140M134 88H222')+area('rec',134,88,88,52)+
       cone('ent',[95,146],[[95,146],[55,202],[135,202]],0)+cone('com',[60,40],[[60,40],[46,104],[128,104]],1)+cone('rec',[178,94],[[178,94],[148,128],[214,128]],2)+cone('park',[232,100],[[232,100],[346,48],[346,194]],3)+
       door('ent',78,137,34,6)+door('ent',70,203,50,5)+dot('ent',95,146)+dot('com',60,40)+dot('rec',178,94)+dot('park',232,100)+
-      lb(54,52,L.com,'com')+lb(142,48,'Bedroom','com',1)+lb(142,104,L.rec,'rec',1)+lb(124,182,L.ent,'ent')+lb(256,52,L.park,'park')+lb(20,196,'Gate','ent',1)+tb(228)},
-    shop:function(L){return area('park',284,50,66,122)+bld(30,28,236,156)+
+      lb(76,56,L.com,'com')+lb(142,48,'Bedroom','com',1)+lb(142,104,L.rec,'rec',1)+lb(124,182,L.ent,'ent')+lb(256,52,L.park,'park')+lb(20,196,'Gate','ent',1)},
+    shop:function(L){return '<rect class="roadi" x="0" y="206" width="360" height="20"/><path class="roadc" style="stroke-width:1.2" d="M0 216H360"/>'+rick(312,216)+area('park',284,50,66,122)+bikes(300,78,2,4,26,24)+bld(30,28,236,156)+
       '<rect class="shelf" x="58" y="68" width="124" height="10"/><rect class="shelf" x="58" y="94" width="124" height="10"/><rect class="shelf" x="58" y="120" width="124" height="10"/><rect class="shelf" x="196" y="128" width="58" height="20"/>'+
       wl('M186 28V92M186 92H266')+area('rec',186,28,80,64)+
       cone('ent',[132,178],[[132,178],[84,132],[180,132]],0)+cone('com',[40,38],[[40,38],[176,58],[176,150]],1)+cone('com',[258,160],[[258,160],[198,150],[198,178]],2)+cone('rec',[226,34],[[226,34],[192,86],[262,86]],3)+cone('park',[276,118],[[276,118],[348,56],[348,180]],4)+
-      door('ent',96,181,72,7)+door('park',263,102,6,32)+dot('ent',132,178)+dot('com',40,38)+dot('com',258,160)+dot('rec',226,34)+dot('park',276,118)+
-      lb(98,203,L.ent,'ent')+lb(38,44,L.com,'com')+lb(194,44,L.rec,'rec',1)+lb(204,142,L.cor,'com',1)+lb(288,66,L.park,'park',1)+tb(228)}
+      door('ent',96,181,72,7)+'<path class="shut" d="M98 183.2H166M98 185H166M98 186.8H166"/>'+door('park',263,102,6,32)+dot('ent',132,178)+dot('com',40,38)+dot('com',258,160)+dot('rec',226,34)+dot('park',276,118)+
+      lb(98,200,L.ent,'ent')+lb(60,52,L.com,'com')+lb(194,66,L.rec,'rec',1)+lb(204,142,L.cor,'com',1)+lb(288,64,L.park,'park',1)}
   };
   function flat(v){return wrapFlat(v,FLAT[v](T[v]))}
 
   /* isometric helpers */
-  var S=.62,OX=130,OY=44;
+  var S=.62,OX=130,OY=62;
   function P(x,y,z){z=z||0;return [+(OX+(x-y)*.866*S).toFixed(1),+(OY+(x+y)*.5*S-z).toFixed(1)]}
   function poly(a){return a.map(function(p){return P(p[0],p[1],p[2]).join(',')}).join(' ')}
   function pg(cls,a,z){return '<polygon class="'+cls+(z?' z-'+z:'')+'"'+(z?' data-z="'+z+'"':'')+' points="'+poly(a)+'"/>'}
@@ -773,45 +895,53 @@ footer p{font-size:15px}
     return pg('face-l',[[x,y+d,z0],[x+w,y+d,z0],[x+w,y+d,H],[x,y+d,H]])+pg('face-r',[[x+w,y,z0],[x+w,y+d,z0],[x+w,y+d,H],[x+w,y,H]])+(o.noroof?'':pg('roof',[[x,y,H],[x+w,y,H],[x+w,y+d,H],[x,y+d,H]]))}
   function zroof(x,y,w,d,H,z){return pg('area',[[x,y,H],[x+w,y,H],[x+w,y+d,H],[x,y+d,H]],z)}
   function gnd(x,y,w,d,z){return pg('area',[[x,y,0],[x+w,y,0],[x+w,y+d,0],[x,y+d,0]],z)}
-  function icone(z,c,p,k){var o=P(c[0],c[1]);return '<g class="sw" data-z="'+z+'" style="--k:'+k+';transform-origin:'+o[0]+'px '+o[1]+'px"><polygon class="cone z-'+z+'" points="'+poly(p)+'"/></g>'}
-  function idot(z,x,y,h){var p=P(x,y,h);return '<g data-z="'+z+'"><circle class="cam" cx="'+p[0]+'" cy="'+p[1]+'" r="4.5"/></g>'}
+  function icone(z,c,p,k){var q=p.map(function(t){return P(t[0],t[1],t[2])});return wedge(z,q[0],q[1],q[2],k)}
+  function idot(z,x,y,h){var p=P(x,y,h);return camg(z,p[0],p[1],.95)}
   function ilab(x,y,t,z,sm,zz){var p=P(x,y,zz||0);return '<text class="lab'+(sm?' sm':'')+'" data-z="'+z+'" text-anchor="middle" x="'+p[0]+'" y="'+p[1]+'">'+t+'</text>'}
   function wpath(d){return '<path class="wall" pathLength="1" d="'+d+'"/>'}
   function outline(x,y,w,d,H){return 'M'+P(x,y,H)+' L'+P(x+w,y,H)+' L'+P(x+w,y+d,H)+' L'+P(x,y+d,H)+' Z M'+P(x,y+d,H)+' L'+P(x,y+d)+' L'+P(x+w,y+d)+' L'+P(x+w,y)+' L'+P(x+w,y,H)+' M'+P(x+w,y+d,H)+' L'+P(x+w,y+d)}
   function slotsIso(x,y,w,d,n){var s='';for(var i=1;i<n;i++){var yy=y+i*d/n;s+='<path class="slot" d="M'+P(x+8,yy).join(',')+' L'+P(x+w-8,yy).join(',')+'"/>'}return s}
-  function itb(x){return '<rect class="tb" x="'+x+'" y="207" width="124" height="15" rx="1"/><text class="tbt" x="'+(x+6)+'" y="217.5">Illustrative · not to scale</text>'}
+  function itb(x){return ''}
   var G=pg('ground',[[-10,-10],[310,-10],[310,210],[-10,210]]);
   function wrapIso(v,inner){var L=T[v];return '<svg viewBox="0 0 314 224" role="img" aria-label="Illustrative isometric view of a '+L.cap.toLowerCase()+'. Cameras cover the '+L.ent.toLowerCase()+' and '+L.park.toLowerCase()+'.">'+G+inner+'</svg>'}
 
+  function winsL(x,y,w,d,H,n,rows,r0){var o='',gw=w/n,fh=H/(rows+1);for(var r=r0;r<=rows;r++)for(var c=0;c<n;c++){var p=x+c*gw+gw*.22,q=x+c*gw+gw*.72,z0=r*fh+fh*.22,z1=z0+fh*.5;o+='<polygon class="win" points="'+poly([[p,y+d,z0],[q,y+d,z0],[q,y+d,z1],[p,y+d,z1]])+'"/>'}return o}
+  function winsR(x,y,w,d,H,n,rows,r0){var o='',gd=d/n,fh=H/(rows+1);for(var r=r0;r<=rows;r++)for(var c=0;c<n;c++){var p=y+c*gd+gd*.22,q=y+c*gd+gd*.72,z0=r*fh+fh*.22,z1=z0+fh*.5;o+='<polygon class="win" points="'+poly([[x+w,p,z0],[x+w,q,z0],[x+w,q,z1],[x+w,p,z1]])+'"/>'}return o}
+  function bikesI(x,y,cols,rows,dx,dy){var o='';for(var j=0;j<rows;j++)for(var i=0;i<cols;i++)o+=box(x+i*dx,y+j*dy,6,11,5);return o}
+  function shutI(x0,x1,y,zs){return '<path class="shut" d="'+zs.map(function(z){return 'M'+P(x0,y,z)+' L'+P(x1,y,z)}).join(' ')+'"/>'}
   var ISO={
-    building:function(L){var H=24;
-      return gnd(215,20,85,165,'park')+slotsIso(215,20,85,165,6)+icone('ent',[75,140],[[75,140],[32,206],[122,206]],0)+icone('park',[190,92],[[190,92],[298,28],[298,182]],1)+
-        box(0,0,190,140,H)+zroof(6,6,116,74,H,'com')+zroof(132,6,52,74,H,'rec')+pg('door',[[60,140,0],[92,140,0],[92,140,16],[60,140,16]],'ent')+
-        wpath(outline(0,0,190,140,H))+idot('ent',75,140,H-5)+idot('park',190,92,H-5)+
-        ilab(48,176,L.ent,'ent')+ilab(60,40,'Common area','com',1,H)+ilab(158,30,'Recording','rec',1,H)+ilab(255,198,L.park,'park')+itb(186)},
-    society:function(L){var H=30;
+    building:function(L){var H=46;
+      return gnd(215,20,85,165,'park')+bikesI(230,34,2,5,36,30)+icone('ent',[75,140],[[75,140],[32,206],[122,206]],0)+icone('park',[190,92],[[190,92],[298,28],[298,182]],1)+
+        box(0,0,190,140,H)+zroof(6,6,116,74,H,'com')+zroof(132,6,52,74,H,'rec')+box(150,98,16,16,10,{z:H})+box(10,102,22,24,9,{z:H})+
+        pg('door',[[60,140,0],[92,140,0],[92,140,18],[60,140,18]],'ent')+winsL(0,0,190,140,H,7,3,1)+winsR(0,0,190,140,H,5,3,0)+
+        wpath(outline(0,0,190,140,H))+idot('ent',75,140,26)+idot('park',190,92,30)+
+        ilab(48,176,L.ent,'ent')+ilab(60,40,'Common area','com',1,H)+ilab(158,30,'Recording','rec',1,H)+ilab(255,198,L.park,'park')},
+    society:function(L){var H=50;
+      function blk(x){return box(x,6,44,36,H)+winsL(x,6,44,36,H,3,3,0)+winsR(x,6,44,36,H,2,3,0)+box(x+4,10,12,12,9,{z:H})}
       return pg('roadi',[[-5,56],[305,56],[305,72],[-5,72]])+pg('roadi',[[140,72],[156,72],[156,206],[140,206]])+
-        gnd(196,92,84,56,'park')+slotsIso(196,92,84,56,5)+
+        gnd(196,92,84,56,'park')+bikesI(206,102,5,2,15,26)+
         icone('ent',[148,190],[[148,190],[124,146],[172,146]],0)+icone('com',[130,42],[[130,42],[104,78],[156,78]],1)+icone('park',[196,120],[[196,120],[280,100],[280,142]],2)+
-        box(8,6,44,36,H)+box(108,6,44,36,H)+box(208,6,44,36,H)+box(14,90,72,44,16)+zroof(14,90,72,44,16,'com')+box(162,160,24,20,14)+zroof(162,160,24,20,14,'rec')+
-        pg('door',[[140,196,0],[156,196,0],[156,196,9],[140,196,9]],'ent')+
-        wpath(outline(108,6,44,36,H))+idot('ent',148,190,10)+idot('com',130,42,H-4)+idot('park',196,120,6)+
-        ilab(130,22,'Blocks','com',1,H)+ilab(50,112,L.com,'com',1,16)+ilab(120,206,L.ent,'ent')+ilab(250,152,L.park,'park',1)+ilab(176,150,'Security','rec',1,14)+itb(186)},
-    home:function(L){var H=24,R=16;
-      return gnd(10,112,130,78,'com')+gnd(170,60,110,130,'park')+'<path class="dash" d="M'+P(69,112)+' L'+P(69,190)+'" />'+
+        blk(8)+blk(108)+blk(208)+box(14,90,72,44,16)+zroof(14,90,72,44,16,'com')+winsL(14,90,72,44,16,4,0,0)+box(162,160,24,20,14)+zroof(162,160,24,20,14,'rec')+
+        box(133,194,4,4,12)+box(159,194,4,4,12)+pg('door',[[140,196,0],[156,196,0],[156,196,9],[140,196,9]],'ent')+
+        wpath(outline(108,6,44,36,H))+idot('ent',148,190,16)+idot('com',130,42,30)+idot('park',196,120,8)+
+        ilab(92,-14,'Blocks','com',1,H+6)+ilab(50,112,L.com,'com',1,16)+ilab(92,214,L.ent,'ent')+ilab(250,152,L.park,'park',1)+ilab(176,150,'Security','rec',1,14)},
+    home:function(L){var H=38;
+      return box(6,-2,290,3,7)+box(6,-2,3,202,7)+gnd(10,112,130,78,'com')+gnd(170,60,110,130,'park')+bikesI(190,76,3,1,30,0)+box(216,124,22,40,9)+'<path class="dash" d="M'+P(69,112)+' L'+P(69,190)+'" />'+
         icone('ent',[69,100],[[69,100],[44,170],[96,170]],0)+icone('park',[150,60],[[150,60],[272,40],[272,150]],1)+
-        box(100,2,40,18,12)+zroof(100,2,40,18,12,'rec')+
-        box(30,24,120,76,H,{noroof:1})+pg('roof',[[30,62,H+R],[150,62,H+R],[150,100,H],[30,100,H]])+pg('face-r',[[150,24,H],[150,100,H],[150,62,H+R]])+
-        pg('door',[[60,100,0],[78,100,0],[78,100,14],[60,100,14]],'ent')+
-        wpath('M'+P(30,100,H)+' L'+P(30,62,H+R)+' L'+P(150,62,H+R)+' L'+P(150,100,H)+' Z M'+P(30,100,H)+' L'+P(30,100)+' L'+P(150,100)+' L'+P(150,24)+' L'+P(150,24,H)+' L'+P(150,62,H+R))+
-        idot('ent',69,100,H-6)+idot('park',150,60,H-4)+
-        ilab(69,198,L.ent,'ent')+ilab(34,132,'Garden','com',1)+ilab(228,168,L.park,'park')+ilab(120,10,L.rec,'rec',1,12)+itb(186)},
-    shop:function(L){var H=28;
-      return gnd(205,30,90,100,'park')+icone('ent',[86,120],[[86,120],[50,186],[132,186]],0)+icone('park',[194,70],[[194,70],[286,34],[286,126]],1)+
+        box(100,4,40,16,12)+zroof(100,4,40,16,12,'rec')+
+        box(30,24,120,76,H)+winsL(30,24,120,76,H,4,1,0)+winsR(30,24,120,76,H,3,1,0)+box(118,30,14,14,10,{z:H})+
+        pg('door',[[60,100,0],[78,100,0],[78,100,14],[60,100,14]],'ent')+box(52,100,36,14,3,{z:16})+box(52,112,3,3,16)+box(85,112,3,3,16)+
+        wpath(outline(30,24,120,76,H))+
+        idot('ent',69,100,26)+idot('park',150,60,28)+
+        box(6,198,38,3,7)+box(94,198,202,3,7)+box(293,-2,3,202,7)+
+        ilab(69,214,L.ent,'ent')+ilab(34,132,'Garden','com',1)+ilab(228,168,L.park,'park')+ilab(120,12,L.rec,'rec',1,12)},
+    shop:function(L){var H=36;
+      return gnd(205,30,90,100,'park')+bikesI(222,44,2,4,34,24)+icone('ent',[86,120],[[86,120],[50,186],[132,186]],0)+icone('park',[194,70],[[194,70],[286,34],[286,126]],1)+
         box(24,20,170,100,H)+zroof(30,26,108,88,H,'com')+zroof(148,26,40,50,H,'rec')+
-        pg('door',[[52,120,0],[120,120,0],[120,120,18],[52,120,18]],'ent')+pg('door',[[194,50,0],[194,92,0],[194,92,18],[194,50,18]],'park')+
-        wpath(outline(24,20,170,100,H))+idot('ent',86,120,H-4)+idot('park',194,70,H-4)+
-        ilab(86,146,L.ent,'ent')+ilab(70,44,L.com,'com',1,H)+ilab(170,40,L.rec,'rec',1,H)+ilab(250,138,L.park,'park')+itb(186)}
+        pg('door',[[52,120,0],[120,120,0],[120,120,13],[52,120,13]],'ent')+shutI(52,120,120,[3,6,9,12])+pg('sign',[[40,120,15],[132,120,15],[132,120,21],[40,120,21]])+
+        winsL(24,20,170,100,H,6,1,1)+winsR(24,20,170,100,H,4,1,0)+
+        wpath(outline(24,20,170,100,H))+idot('ent',86,120,28)+idot('park',194,70,30)+
+        ilab(86,146,L.ent,'ent')+ilab(70,44,L.com,'com',1,H)+ilab(170,40,L.rec,'rec',1,H)+ilab(250,138,L.park,'park')}
   };
   function iso(v){return wrapIso(v,ISO[v](T[v]))}
 
@@ -824,7 +954,7 @@ footer p{font-size:15px}
   function replay(host){var p=$('.plan',host);if(!p)return;var c=[].filter.call(p.classList,function(x){return x.indexOf('a-')===0});c.forEach(function(x){p.classList.remove(x)});void p.offsetWidth;c.forEach(function(x){p.classList.add(x)})}
 
   var hero=$('#heroPlan'),isoH=$('#isoPlan'),cur='building',isoRevealed=false;
-  function caps(){var h='<span>Example: <b>'+T[cur].cap+'</b></span><span>Illustrative</span>';$('#pcap').innerHTML=h;$('#pcap2').innerHTML=h}
+  function caps(){var h='<span>Example: <b>'+T[cur].cap+'</b></span><span>Illustrative</span>';$('#pcap').innerHTML=h;$('#pcap2').innerHTML=h;var b=$('#bf');if(b)b.textContent=T[cur].bf}
   function setType(v,first){
     cur=v;
     $$('.pk').forEach(function(b){b.setAttribute('aria-selected',b.dataset.v===v)});

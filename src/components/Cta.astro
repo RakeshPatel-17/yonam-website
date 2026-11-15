@@ -1,0 +1,24 @@
+---
+import { site } from '../data/site';
+---
+
+<section class="cta" id="contact" aria-labelledby="h-cta">
+
+  <div class="wrap cta-grid">
+    <div>
+      <h2 id="h-cta">Let’s Plan the Right CCTV Solution for Your Property.</h2>
+      <p>Tell us about your property and requirements. YONAM can help you understand the next steps towards a dedicated surveillance implementation plan.</p>
+      <a class="btn btn-light" href="#contact">Get in Touch</a>
+      <p class="cta-call"><span>Or call</span>{site.contacts.map((c) => <a href={`tel:${c.tel}`}>{c.name} · {c.display}</a>)}</p>
+    </div>
+    <div class="live" data-lag=".18" aria-hidden="true">
+      <div class="live-bar"><span>Live view</span><em>Illustrative drawing, not real footage</em></div>
+      <div class="vgrid">
+        <div class="vt"><span class="vl">Cam 01 · Entrance</span><i class="vr"></i><i class="sl"></i><svg viewBox="0 0 160 100"><path class="ln" d="M44 92V38a36 36 0 0 1 72 0v54"/><path class="ln" d="M80 2V92M16 92H144"/><path class="ln ac" d="M56 70h10M94 70h10"/></svg></div>
+        <div class="vt"><span class="vl">Cam 02 · Lobby</span><i class="vr"></i><i class="sl"></i><svg viewBox="0 0 160 100"><path class="ln" d="M8 94L48 62H112L152 94"/><path class="ln" d="M48 62V22H112V62M8 94V8M152 94V8"/><path class="ln" d="M62 62V76H98V62"/><path class="ln ac" d="M70 22v8M90 22v8"/></svg></div>
+        <div class="vt"><span class="vl">Cam 03 · Parking</span><i class="vr"></i><i class="sl"></i><svg viewBox="0 0 160 100"><path class="ln" d="M16 94V48M48 94V48M80 94V48M112 94V48M144 94V48M16 48H144"/><rect class="ln" x="22" y="62" width="9" height="24" rx="4.5"/><rect class="ln" x="86" y="60" width="22" height="30" rx="6"/><rect class="ln ac" x="54" y="66" width="9" height="20" rx="4.5"/></svg></div>
+        <div class="vt"><span class="vl">Cam 04 · Back office</span><i class="vr"></i><i class="sl"></i><svg viewBox="0 0 160 100"><path class="ln" d="M14 82H146M26 82V96M134 82V96"/><rect class="ln" x="58" y="40" width="42" height="28" rx="3"/><path class="ln" d="M79 68V82M68 82H90"/><rect class="ln" x="114" y="30" width="26" height="52"/><path class="ln ac" d="M114 56H140"/></svg></div>
+      </div>
+    </div>
+  </div>
+</section>

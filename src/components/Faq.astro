@@ -1,0 +1,26 @@
+---
+import { faqs } from '../data/site';
+---
+
+<section class="alt" id="faq" aria-labelledby="h-faq">
+  <div class="wrap faq">
+    <div class="sec-head">
+      <div class="dim" aria-hidden="true"><i></i></div>
+      <p class="kick"><b>06</b>Quick answers</p>
+      <h2 id="h-faq">Questions we are often asked</h2>
+    </div>
+    <div id="acc">
+      {
+        faqs.map((f, i) => (
+          <details class="q" open={i === 0}>
+            <summary>{f.q}</summary>
+            <p>
+              <i class="draft">Draft</i>
+              {f.a ?? 'Answer to be confirmed by YONAM before launch.'}
+            </p>
+          </details>
+        ))
+      }
+    </div>
+  </div>
+</section>

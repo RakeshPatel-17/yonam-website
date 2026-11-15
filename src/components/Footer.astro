@@ -1,0 +1,35 @@
+---
+import { site } from '../data/site';
+const solutions = ['Building', 'Housing Society', 'Residential', 'Commercial'];
+const services = ['Implementation Planning', 'Installation', 'System Setup', 'Long-Term Support'];
+---
+
+<footer>
+  <div class="wrap">
+    <div class="fgrid">
+      <div class="flogo">
+        <span class="lt"><img src="/yonam-logo.png" alt="YONAM CCTV Surveillance" width="1208" height="1095" loading="lazy" /></span>
+        <p>Complete CCTV surveillance solutions, from planning to long-term support.</p>
+        <p style="margin-top:10px;color:var(--navy-900);font-weight:700">{site.tagline}</p>
+      </div>
+      <div>
+        <h4>Solutions</h4>
+        <ul>{solutions.map((l) => <li><a href="#solutions">{l} CCTV Solutions</a></li>)}</ul>
+      </div>
+      <div>
+        <h4>Services</h4>
+        <ul>{services.map((l) => <li><a href="#services">{l}</a></li>)}</ul>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <ul>
+          {site.contacts.map((c) => <li class="fph"><a href={`tel:${c.tel}`}><b>{c.name}</b> · {c.display}</a></li>)}
+          {site.branches.map((b) => <li class="br"><b>{b.city}</b>{b.line} {b.pin}</li>)}
+          <li><span class="pend">WhatsApp and email: to be confirmed</span></li>
+        </ul>
+      </div>
+    </div>
+    <div class="fbottom"><span>© YONAM CCTV Surveillance. All rights reserved.</span><a href="#top">Privacy Policy</a></div>
+  </div>
+</footer>
+<div class="abar-space"></div>

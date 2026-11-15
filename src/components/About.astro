@@ -1,0 +1,36 @@
+---
+import { existsSync } from 'node:fs';
+import { site } from '../data/site';
+
+/* Use an official logo file when one has been added to public/brands (svg, png or webp); otherwise show the brand name as text. */
+const brands = site.brands.map((b) => {
+  const ext = ['svg', 'png', 'webp'].find((e) => existsSync(`public/brands/${b.logo}.${e}`));
+  return { name: b.name, src: ext ? `/brands/${b.logo}.${ext}` : null };
+});
+---
+
+<section class="alt" id="about" aria-labelledby="h-about">
+  <div class="wrap about">
+    <div>
+      <div class="sec-head" style="margin-bottom:20px">
+        <div class="dim" aria-hidden="true"><i></i></div>
+        <p class="kick"><b>02</b>A partner, not a seller</p>
+        <h2 id="h-about">A surveillance partner, not just a camera seller.</h2>
+      </div>
+      <p class="lead">
+        <span class="long">YONAM is a CCTV surveillance solutions company based in Nadiad, Gujarat. Every property has different requirements, so we prepare a dedicated plan for yours instead of offering a one-size-fits-all package.</span>
+        <span class="short">YONAM prepares a dedicated CCTV plan for every property, then installs, configures and supports it.</span>
+      </p>
+      <p class="lead long">You do not need to know camera quantities, placement or cabling before you call. We assess the property and recommend an approach.</p>
+      <p class="act"><a class="btn btn-outline" href="#contact">Talk to YONAM</a></p>
+    </div>
+    <div class="brandcard">
+      <h3 id="h-brands">Our trusted brands</h3>
+      <p class="sub2">We work with these CCTV brands, and more.</p>
+      <ul class="bl stg" aria-label="CCTV brands">
+        {brands.map((b) => <li class={b.src ? 'bn has-logo' : 'bn'}>{b.src ? <img src={b.src} alt={b.name} loading="lazy" height="32" /> : b.name}</li>)}
+        <li class="bn more">and many more</li>
+      </ul>
+    </div>
+  </div>
+</section>
