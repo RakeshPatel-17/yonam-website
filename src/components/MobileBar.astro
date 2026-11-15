@@ -1,0 +1,10 @@
+---
+import { site } from '../data/site';
+const call = site.contacts[0];
+---
+
+<nav class="abar" aria-label="Quick contact">
+  <a href={`tel:${call.tel}`} aria-label={`Call ${call.name}, ${call.display}`}>Call</a>
+  <a class="off" href="#contact" aria-disabled="true" tabindex="-1">WhatsApp</a>
+  <a class="go" href="#contact">Enquire</a>
+</nav>

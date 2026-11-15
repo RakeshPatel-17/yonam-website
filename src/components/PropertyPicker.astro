@@ -1,0 +1,20 @@
+---
+import { PROPERTY_TYPES } from '../lib/plans';
+interface Props {
+  label: string;
+}
+const { label } = Astro.props;
+---
+
+<div class="pick" role="tablist" aria-label={label}>
+  {
+    PROPERTY_TYPES.map((t, i) => (
+      <button class="pk" type="button" role="tab" data-v={t.v} aria-selected={i === 0 ? 'true' : 'false'}>
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path d={t.icon} />
+        </svg>
+        {t.label}
+      </button>
+    ))
+  }
+</div>

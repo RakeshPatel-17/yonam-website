@@ -1,0 +1,35 @@
+---
+import PropertyPicker from './PropertyPicker.astro';
+import { planMarkup } from '../lib/plans';
+---
+
+<section class="alt" id="planning" aria-labelledby="h-plan">
+  <div class="wrap plan-sec">
+    <div>
+      <div class="sec-head" style="margin-bottom:18px"><div class="dim" aria-hidden="true"><i></i></div><p class="kick"><b>04</b>Plan before camera</p><h2 id="h-plan">Every property is different. So is every plan.</h2></div>
+      <p class="lead"><span class="long">YONAM develops a dedicated CCTV implementation plan based on your property, coverage requirements and expectations. We consider the whole property before proposing an approach.</span><span class="short">We consider the whole property before proposing an approach.</span></p>
+      <ul class="factors" id="factors" aria-label="What we consider. Choose one to highlight it on the drawing.">
+        <li><button type="button" data-k="all" aria-pressed="false">Property layout</button></li>
+        <li><button type="button" data-k="ent" aria-pressed="false">Entrances and exits</button></li>
+        <li><button type="button" data-k="com" aria-pressed="false">Common areas</button></li>
+        <li><button type="button" data-k="park" aria-pressed="false">Parking</button></li>
+        <li><button type="button" data-k="com" aria-pressed="false">Indoor and outdoor areas</button></li>
+        <li><button type="button" data-k="rec" aria-pressed="false">Infrastructure needs</button></li>
+      </ul>
+      <a class="btn" href="#contact">Request a Site Assessment</a>
+    </div>
+    <div class="planbox">
+      <PropertyPicker label="Choose a property type" />
+      <div class="plan-host" id="isoPlan" data-style="iso" set:html={planMarkup('iso', 'building', 'i')}></div>
+      <div class="stage3d" id="stage3d" hidden></div>
+      <p class="pcap" id="pcap2" aria-live="polite"><span>Example: <b>New building project</b></span><span>Illustrative</span></p>
+      <div class="t3row">
+        <button class="t3" id="open3d" type="button" aria-pressed="false" aria-controls="stage3d">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l8 4.5v9L12 21l-8-4.5v-9zM12 12l8-4.5M12 12L4 7.5M12 12v9" /></svg>
+          <span class="t3label">Explore in 3D</span>
+        </button>
+        <span class="t3note" id="t3note" role="status"></span>
+      </div>
+    </div>
+  </div>
+</section>

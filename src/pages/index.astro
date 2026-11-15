@@ -1,11 +1,45 @@
 ---
-import Welcome from '../components/Welcome.astro';
 import Layout from '../layouts/Layout.astro';
+import Hero from '../components/Hero.astro';
+import Segments from '../components/Segments.astro';
+import About from '../components/About.astro';
+import Services from '../components/Services.astro';
+import Planning from '../components/Planning.astro';
+import Process from '../components/Process.astro';
+import Faq from '../components/Faq.astro';
+import Cta from '../components/Cta.astro';
+import { site } from '../data/site';
 
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+const title = 'CCTV Surveillance Solutions in Nadiad and Kheda | YONAM';
+const description = 'YONAM plans, installs, sets up and supports CCTV surveillance for buildings, housing societies, homes and businesses in Nadiad and Kheda, Gujarat.';
+
+/* Structured data uses only confirmed facts (docs/business-info.md). No url, rating or opening hours until they are confirmed. */
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'LocalBusiness',
+  name: site.name,
+  description,
+  telephone: site.contacts.map((c) => c.tel),
+  address: site.branches.map((b) => ({
+    '@type': 'PostalAddress',
+    streetAddress: b.line,
+    addressLocality: b.city,
+    postalCode: b.pin,
+    addressRegion: 'Gujarat',
+    addressCountry: 'IN',
+  })),
+  slogan: site.tagline,
+};
 ---
 
-<Layout>
-	<Welcome />
+<Layout title={title} description={description}>
+  <Hero />
+  <Segments />
+  <About />
+  <Services />
+  <Planning />
+  <Process />
+  <Faq />
+  <Cta />
+  <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
 </Layout>

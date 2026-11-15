@@ -1,0 +1,24 @@
+---
+import PropertyPicker from './PropertyPicker.astro';
+import { planMarkup } from '../lib/plans';
+---
+
+<section class="hero" aria-labelledby="h-hero">
+  <div class="wrap hero-grid">
+    <div>
+      <p class="eyebrow"><i aria-hidden="true"></i>CCTV surveillance · Nadiad &amp; Kheda</p>
+      <h1 id="h-hero" aria-label="Complete CCTV Surveillance Solutions, Planned Around Your Needs.">
+        <span aria-hidden="true"><span class="w"><i style="--i:0">Complete</i></span> <span class="w"><i style="--i:1">CCTV</i></span> <span class="w"><i style="--i:2">Surveillance</i></span> <span class="w"><i style="--i:3">Solutions,</i></span> <span class="w"><i style="--i:4">Planned</i></span> <span class="w"><i style="--i:5">Around</i></span> <span class="w"><i style="--i:6">Your</i></span> <span class="w"><i style="--i:7">Needs.</i></span></span>
+      </h1>
+      <p class="bf rise" style="--rd:.7s"><span>Planned for</span> <b id="bf" aria-live="polite">builders and new buildings</b></p>
+      <p class="lead rise" style="--rd:.85s"><span class="long">From dedicated implementation planning and professional installation to system setup and long-term support, YONAM helps deliver CCTV surveillance solutions according to your property’s requirements.</span><span class="short">Planning, installation, setup and long-term support, built around your property.</span></p>
+      <div class="ctas rise" style="--rd:1.05s"><a class="btn btn-ping" href="#contact">Discuss Your Project</a><a class="btn btn-outline" href="#contact">Request a Site Assessment</a></div>
+      <a class="tlink mob-link rise" style="--rd:1.15s" href="#contact">Or request a site assessment</a>
+    </div>
+    <div class="planbox" data-lag=".14">
+      <PropertyPicker label="Choose a property type to see an example plan" />
+      <div class="plan-host" id="heroPlan" data-style="flat" set:html={planMarkup('flat', 'building', 'h')}></div>
+      <p class="pcap" id="pcap" aria-live="polite"><span>Example: <b>New building project</b></span><span>Illustrative</span></p>
+    </div>
+  </div>
+</section>
