@@ -1,0 +1,20 @@
+---
+import { Image } from 'astro:assets';
+import logo from '../assets/logo/yonam-logo.png';
+import { solutions, services } from '../data/navigation';
+import { company } from '../data/company';
+const pending = (label: string, v: string | null) => v ?? `${label}: to be confirmed`;
+---
+<footer>
+  <div class="wrap">
+    <div class="fgrid">
+      <div class="flogo"><span class="lt"><Image src={logo} alt="YONAM CCTV Surveillance" width={184} height={167} loading="lazy" /></span><p>Complete CCTV surveillance solutions, from planning to long-term support.</p><p style="margin-top:10px;color:var(--navy-900);font-weight:700">{company.location}</p></div>
+      <div><h4>Solutions</h4><ul>{solutions.map((s) => <li><a href="#solutions">{s.label}</a></li>)}</ul></div>
+      <div><h4>Services</h4><ul>{services.map((s) => <li><a href="#process">{s}</a></li>)}</ul></div>
+      <div><h4>Contact</h4><ul><li>{company.location}</li><li><span class="pend">{pending('Phone', company.phone)}</span></li><li><span class="pend">{pending('WhatsApp', company.whatsapp)}</span></li><li><span class="pend">{pending('Email', company.email)}</span></li></ul></div>
+    </div>
+    <div class="fbottom"><span>© YONAM CCTV Surveillance. All rights reserved.</span><a href="#top">Privacy Policy</a></div>
+  </div>
+</footer>
+<div class="abar-space"></div>
+<nav class="abar" aria-label="Quick contact"><a class="off" href="#contact" aria-disabled="true" tabindex="-1">Call</a><a class="off" href="#contact" aria-disabled="true" tabindex="-1">WhatsApp</a><a class="go" href="#contact">Enquire</a></nav>

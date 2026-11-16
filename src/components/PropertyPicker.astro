@@ -1,0 +1,17 @@
+---
+import { icons } from '../data/navigation';
+const { label } = Astro.props;
+const tabs = [
+  ['building', 'Building', icons.building],
+  ['society', 'Housing society', icons.society],
+  ['home', 'Home', icons.home],
+  ['shop', 'Shop or office', icons.shop],
+];
+---
+<div class="pick" role="tablist" aria-label={label}>
+  {tabs.map(([v, t, d], i) => (
+    <button class="pk" type="button" role="tab" data-v={v} aria-selected={i === 0 ? 'true' : 'false'}>
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d={d} /></svg>{t}
+    </button>
+  ))}
+</div>

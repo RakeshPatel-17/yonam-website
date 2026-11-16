@@ -1,0 +1,42 @@
+---
+import { Image } from 'astro:assets';
+import logo from '../assets/logo/yonam-logo.png';
+import { solutions, services } from '../data/navigation';
+import { company } from '../data/company';
+const chev = '<svg width="10" height="6" viewBox="0 0 10 6" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M1 1l4 4 4-4"/></svg>';
+---
+<header class="site-header" id="top">
+  <div class="wrap hbar">
+    <a class="logo" href="#top" aria-label="YONAM CCTV Surveillance, home">
+      <span class="lt"><Image src={logo} alt="YONAM CCTV Surveillance" width={172} height={156} loading="eager" densities={[1, 2]} /></span>
+    </a>
+    <nav class="nav" aria-label="Main">
+      <ul>
+        <li><a class="nl" href="#top">Home</a></li>
+        <li><a class="nl" href="#about">About Us</a></li>
+        <li class="has-sub"><a class="nl" href="#solutions" aria-haspopup="true">Solutions <Fragment set:html={chev} /></a>
+          <div class="sub">{solutions.map((s) => <a href="#solutions">{s.label}<small>{s.note}</small></a>)}</div>
+        </li>
+        <li class="has-sub"><a class="nl" href="#process" aria-haspopup="true">Services <Fragment set:html={chev} /></a>
+          <div class="sub">{services.map((s) => <a href="#process">{s}</a>)}</div>
+        </li>
+        <li><a class="nl" href="#contact">Contact Us</a></li>
+      </ul>
+      <a class="btn btn-sm hcta" href="#contact">Discuss Your Project</a>
+    </nav>
+    <button class="menu-btn" id="menuBtn" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="sheet"><i></i><i></i><i></i></button>
+  </div>
+  <div class="prog" aria-hidden="true"><i id="prog"></i></div>
+</header>
+
+<div class="sheet-ov" id="ov"></div>
+<aside class="sheet" id="sheet" role="dialog" aria-modal="true" aria-label="Menu" tabindex="-1">
+  <div class="sh-head">
+    <span class="lt"><Image src={logo} alt="YONAM CCTV Surveillance" width={100} height={91} loading="lazy" /></span>
+    <button class="sh-close" id="closeBtn" type="button" aria-label="Close menu"><svg viewBox="0 0 20 20"><path d="M4 4l12 12M16 4L4 16"/></svg></button>
+  </div>
+  <nav aria-label="Mobile">
+    <a class="m" href="#top">Home</a><a class="m" href="#about">About Us</a><a class="m" href="#solutions">Solutions</a><a class="m" href="#process">Services</a><a class="m" href="#contact">Contact Us</a>
+  </nav>
+  <div class="pad"><a class="btn" href="#contact">Discuss Your Project</a><p class="ph">{company.phone ?? 'Phone number to be confirmed'}</p></div>
+</aside>

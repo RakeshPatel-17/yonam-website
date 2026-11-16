@@ -1,0 +1,20 @@
+---
+import SectionHead from './SectionHead.astro';
+import { icons } from '../data/navigation';
+const tiles = [
+  ['building', 'Building projects', 'Builders, developers and new construction.', 'Explore building solutions'],
+  ['society', 'Housing societies', 'Apartment complexes and residential communities.', 'Explore society solutions'],
+  ['home', 'Residential', 'Houses, flats, villas and bungalows.', 'Explore residential solutions'],
+  ['shop', 'Commercial', 'Shops, offices, showrooms and warehouses.', 'Explore commercial solutions'],
+] as const;
+---
+<section id="solutions" aria-labelledby="h-seg">
+  <div class="wrap">
+    <SectionHead id="h-seg" title="What are you securing?" lead="Choose the closest match. Each path explains how YONAM plans, installs and supports CCTV for that kind of property." />
+    <div class="seg" data-stagger>
+      {tiles.map(([k, t, p, go]) => (
+        <a class="tile" href="#contact"><span class="ico" data-icon><svg viewBox="0 0 24 24"><path d={icons[k]} /></svg></span><div><h3>{t}</h3><p>{p}</p></div><span class="go"><span>{go}</span></span></a>
+      ))}
+    </div>
+  </div>
+</section>

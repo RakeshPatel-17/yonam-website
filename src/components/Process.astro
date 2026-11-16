@@ -1,0 +1,24 @@
+---
+import SectionHead from './SectionHead.astro';
+const steps = [
+  ['Understand your requirements', 'Property type, location, what you need covered and any existing system.'],
+  ['Assess your property', 'Entrances, exits, parking, common spaces, layout and infrastructure.'],
+  ['Prepare a dedicated plan', 'An implementation plan built around your property.'],
+  ['Install the CCTV system', 'Equipment and infrastructure installed according to the plan.'],
+  ['Configure and test', 'The system is set up and tested against your requirements.'],
+  ['Long-term support', 'Support continues after implementation.'],
+];
+---
+<section class="process on-dark" id="process" aria-labelledby="h-proc">
+  <div class="wrap">
+    <SectionHead id="h-proc" title="Six steps, from first call to long-term support" lead="You always know what happens next." />
+    <div class="tl" id="tl">
+      <div class="track" aria-hidden="true"><i></i></div>
+      <ol id="steps">
+        {steps.map(([t, d], i) => (
+          <li class={i === 0 ? 'open' : ''}><button class="st" type="button" aria-expanded={i === 0 ? 'true' : 'false'}><b>{i + 1}</b><h3>{t}</h3></button><div class="pp"><div><p>{d}</p></div></div></li>
+        ))}
+      </ol>
+    </div>
+  </div>
+</section>

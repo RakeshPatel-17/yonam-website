@@ -1,0 +1,26 @@
+---
+import SectionHead from './SectionHead.astro';
+// Answers other than the first are drafts awaiting confirmation from YONAM. The whole section is hidden in production builds.
+const draftAnswer = 'Answer to be confirmed by YONAM before launch.';
+const faqs = [
+  ['How do I determine the CCTV requirements for my property?', 'You do not need to work this out alone. Tell us about your property and what you want to protect, and we assess it and recommend an approach. Final wording to be confirmed by YONAM.'],
+  ['Does YONAM prepare a dedicated implementation plan?', draftAnswer],
+  ['Do you provide installation and system setup?', draftAnswer],
+  ['Do you work with builders and housing societies?', draftAnswer],
+  ['Can you install CCTV in existing buildings?', draftAnswer],
+  ['What factors affect installation costs?', draftAnswer],
+  ['Do you provide long-term support?', draftAnswer],
+  ['Can an existing CCTV system be upgraded?', draftAnswer],
+  ['How can I request a site assessment?', draftAnswer],
+];
+---
+{import.meta.env.DEV && (
+<section class="alt" id="faq" aria-labelledby="h-faq">
+  <div class="wrap faq">
+    <SectionHead id="h-faq" title="Questions we are often asked" />
+    <div id="acc">
+      {faqs.map(([q, a], i) => <details class="q" open={i === 0}><summary>{q}</summary><p><i class="draft">Draft</i>{a}</p></details>)}
+    </div>
+  </div>
+</section>
+)}

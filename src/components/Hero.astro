@@ -1,0 +1,23 @@
+---
+import PropertyPicker from './PropertyPicker.astro';
+import { renderPlan, captionHtml } from '../lib/plans';
+const words = ['Complete', 'CCTV', 'Surveillance', 'Solutions,', 'Planned', 'Around', 'Your', 'Needs.'];
+---
+<section class="hero" aria-labelledby="h-hero">
+  <div class="wrap hero-grid">
+    <div>
+      <h1 id="h-hero" aria-label="Complete CCTV Surveillance Solutions, Planned Around Your Needs.">
+        <span aria-hidden="true">{words.map((w, i) => <><span class="w"><i style={`--i:${i}`}>{w}</i></span>{' '}</>)}</span>
+      </h1>
+      <p class="lead" data-hero="lead"><span class="long">From dedicated implementation planning and professional installation to system setup and long-term support, YONAM helps deliver CCTV surveillance solutions according to your property’s requirements.</span><span class="short">Planning, installation, setup and long-term support, built around your property.</span></p>
+      <div class="ctas" data-hero="ctas"><a class="btn btn-ping" href="#contact">Discuss Your Project</a><a class="btn btn-outline" href="#contact">Request a Site Assessment</a></div>
+      <a class="tlink mob-link" data-hero="mob" href="#contact">Or request a site assessment</a>
+      <p class="loc" data-hero="loc"><svg width="16" height="18" viewBox="0 0 16 18" fill="none" stroke="#1650D0" stroke-width="1.8" aria-hidden="true"><path d="M8 17s6-5.2 6-10A6 6 0 0 0 2 7c0 4.8 6 10 6 10z"/><circle cx="8" cy="7" r="2.2"/></svg>Based in Nadiad, Gujarat, India</p>
+    </div>
+    <div class="planbox" data-hero="plan">
+      <PropertyPicker label="Choose a property type to see an example plan" />
+      <div class="plan-host" id="heroPlan" data-style="flat" set:html={renderPlan('flat', 'building')}></div>
+      <p class="pcap" data-caption aria-live="polite" set:html={captionHtml('building')}></p>
+    </div>
+  </div>
+</section>
