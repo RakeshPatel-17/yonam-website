@@ -1,0 +1,21 @@
+---
+import SectionHead from './SectionHead.astro';
+const items = [
+  ['Dedicated planning', 'A plan prepared for your property, not a standard package.', 'M4 4h16v16H4zM4 10h16M10 4v16'],
+  ['Property-specific', 'Entrances, exits, parking and layout decide the approach.', 'M3 11l9-8 9 8M5 9.5V21h14V9.5'],
+  ['Installation and setup', 'One team from the plan to a configured, tested system.', 'M3 7h13v10H3zM16 10l5-2.5v9L16 14'],
+  ['Support after install', 'Our commitment continues once the system is in place.', 'M12 3l8 3v6c0 4.5-3.2 8-8 9-4.8-1-8-4.5-8-9V6z'],
+];
+---
+<section class="alt" id="about" aria-labelledby="h-about">
+  <div class="wrap why">
+    <div>
+      <SectionHead id="h-about" title="A surveillance partner, not just a camera seller." style="margin-bottom:16px" />
+      <p class="lead">YONAM is a CCTV surveillance solutions company based in Nadiad, Gujarat. You do not need to know camera quantities, placement or cabling before you call. We assess the property and recommend an approach.</p>
+      <p class="act" style="margin-top:20px"><a class="btn" href="#contact">Request a Site Assessment</a></p>
+    </div>
+    <div class="wlist" data-stagger>
+      {items.map(([b, t, d]) => <div class="wl"><span class="ico" data-icon><svg viewBox="0 0 24 24"><path d={d} /></svg></span><p><b>{b}</b><span class="t">{t}</span></p></div>)}
+    </div>
+  </div>
+</section>

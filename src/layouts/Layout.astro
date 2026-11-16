@@ -9,13 +9,13 @@ interface Props {
 }
 
 const {
-  title = 'YONAM — CCTV Surveillance & Security Solutions',
-  description = 'High-definition CCTV surveillance, smart biometric access control, AI motion detection, and 24/7 security monitoring for businesses and residences.',
+  title = 'YONAM CCTV Surveillance | Nadiad, Gujarat',
+  description = 'YONAM prepares a dedicated CCTV implementation plan for your property, then installs, configures and supports it. Based in Nadiad, Gujarat.',
 } = Astro.props;
 ---
 
 <!doctype html>
-<html lang="en" class="scroll-smooth">
+<html lang="en">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -24,12 +24,15 @@ const {
     <link rel="icon" href="/favicon.ico" />
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
+    <script is:inline>document.documentElement.className += ' js';</script>
   </head>
-  <body class="bg-slate-950 text-slate-100 min-h-screen flex flex-col font-sans antialiased selection:bg-cyan-500 selection:text-slate-950">
+  <body>
+    <a class="skip" href="#main">Skip to content</a>
     <Header />
-    <main class="flex-grow">
-      <slot />
-    </main>
+    <main id="main"><slot /></main>
     <Footer />
+    <script>
+      import '../scripts/motion/index';
+    </script>
   </body>
 </html>

@@ -1,155 +1,23 @@
 ---
-// src/components/Hero.astro
+import PropertyPicker from './PropertyPicker.astro';
+import { renderPlan, captionHtml } from '../lib/plans';
+const words = ['Complete', 'CCTV', 'Surveillance', 'Solutions,', 'Planned', 'Around', 'Your', 'Needs.'];
 ---
-
-<section class="relative bg-slate-950 text-slate-100 overflow-hidden py-16 md:py-24 border-b border-slate-800">
-  <!-- Subtle Background Grid & Glow Effects -->
-  <div class="absolute inset-0 bg-[radial-gradient(#1e293b_1px,transparent_1px)] [background-size:24px_24px] opacity-40"></div>
-  <div class="absolute -top-40 -right-40 w-96 h-96 bg-cyan-500/10 rounded-full blur-3xl pointer-events-none"></div>
-  <div class="absolute -bottom-40 -left-40 w-96 h-96 bg-blue-600/10 rounded-full blur-3xl pointer-events-none"></div>
-
-  <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-      
-      <!-- Left Column: Copy & CTAs -->
-      <div class="lg:col-span-7 space-y-8">
-        <!-- Live Status Pill -->
-        <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-slate-900 border border-cyan-500/30 text-cyan-400 text-xs font-semibold tracking-wide shadow-sm">
-          <span class="relative flex h-2 w-2">
-            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-cyan-400 opacity-75"></span>
-            <span class="relative inline-flex rounded-full h-2 w-2 bg-cyan-500"></span>
-          </span>
-          Next-Gen AI Surveillance & Smart Security
-        </div>
-
-        <!-- Main Headline -->
-        <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-white leading-tight">
-          Protecting What Matters with <span class="bg-gradient-to-r from-cyan-400 via-sky-400 to-blue-500 bg-clip-text text-transparent">Smart Surveillance</span>
-        </h1>
-
-        <!-- Subheading -->
-        <p class="text-lg sm:text-xl text-slate-300 max-w-2xl font-normal leading-relaxed">
-          Comprehensive CCTV, biometric access control, and 24/7 intelligent monitoring. Engineered for commercial enterprises, warehouses, retail spaces, and premium residences.
-        </p>
-
-        <!-- CTA Action Buttons -->
-        <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 pt-2">
-          <a
-            href="#contact"
-            class="inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-xl font-bold text-slate-950 bg-gradient-to-r from-cyan-400 to-sky-400 hover:from-cyan-300 hover:to-sky-300 shadow-lg shadow-cyan-500/25 hover:shadow-cyan-500/40 transition-all duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-300 text-base"
-          >
-            <span>Book Free Site Survey</span>
-            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-              <path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd" />
-            </svg>
-          </a>
-
-          <a
-            href="#services"
-            class="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl font-semibold text-slate-200 hover:text-white bg-slate-900/80 hover:bg-slate-800 border border-slate-700/80 transition-all duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-slate-500 text-base"
-          >
-            <span>Explore Solutions</span>
-            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-slate-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
-            </svg>
-          </a>
-        </div>
-
-        <!-- Trust Badges & Metrics -->
-        <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 pt-6 border-t border-slate-800/80">
-          <div>
-            <div class="text-2xl font-bold text-white tracking-tight">4K Ultra HD</div>
-            <div class="text-xs text-slate-400 mt-0.5">Crystal Clarity</div>
-          </div>
-          <div>
-            <div class="text-2xl font-bold text-white tracking-tight">AI Analytics</div>
-            <div class="text-xs text-slate-400 mt-0.5">Vehicle & Human Detect</div>
-          </div>
-          <div>
-            <div class="text-2xl font-bold text-white tracking-tight">24/7 Alert</div>
-            <div class="text-xs text-slate-400 mt-0.5">Mobile Live Stream</div>
-          </div>
-          <div>
-            <div class="text-2xl font-bold text-white tracking-tight">ISO Certified</div>
-            <div class="text-xs text-slate-400 mt-0.5">Guaranteed AMC</div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Right Column: Visual Surveillance Dashboard Simulation -->
-      <div class="lg:col-span-5">
-        <div class="relative rounded-2xl bg-gradient-to-b from-slate-800/90 to-slate-900 border border-slate-700/80 p-5 shadow-2xl shadow-cyan-950/40">
-          
-          <!-- Top Console Bar -->
-          <div class="flex items-center justify-between pb-4 border-b border-slate-800 text-xs">
-            <div class="flex items-center gap-2">
-              <span class="inline-block w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse"></span>
-              <span class="font-mono text-slate-300 font-semibold uppercase tracking-wider">SYSTEM ONLINE</span>
-            </div>
-            <span class="font-mono text-slate-400">FPS: 60 | CH: 08/08</span>
-          </div>
-
-          <!-- Video Feed 1: Main Gateway -->
-          <div class="relative mt-4 rounded-xl overflow-hidden bg-slate-950 border border-slate-800 aspect-video flex items-center justify-center group">
-            <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-slate-950/40 z-10 pointer-events-none"></div>
-            
-            <!-- Camera Feed Reticle Overlay -->
-            <div class="absolute inset-4 border border-cyan-500/20 rounded pointer-events-none z-20 flex flex-col justify-between p-2">
-              <div class="flex justify-between items-center text-[10px] font-mono text-cyan-400">
-                <span>CAM-01 • MAIN GATE</span>
-                <span class="text-red-400 flex items-center gap-1 font-bold">
-                  <span class="w-1.5 h-1.5 rounded-full bg-red-500 animate-ping"></span> REC
-                </span>
-              </div>
-              <div class="flex justify-between items-end text-[10px] font-mono text-slate-400">
-                <span>AI OBJECT DETECT: ACTIVE</span>
-                <span>COLOR NIGHT VISION</span>
-              </div>
-            </div>
-
-            <!-- Stylized Camera Icon / Sensor Graphic -->
-            <div class="flex flex-col items-center justify-center text-slate-600 group-hover:text-cyan-400/80 transition-colors duration-300">
-              <svg xmlns="http://www.w3.org/2000/svg" class="w-16 h-16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" />
-              </svg>
-              <span class="text-xs font-mono text-slate-500 mt-2">4K ULTRA SENSOR FEED</span>
-            </div>
-          </div>
-
-          <!-- Mini Feeds Grid -->
-          <div class="grid grid-cols-2 gap-3 mt-3">
-            <div class="bg-slate-950 border border-slate-800/80 rounded-lg p-2.5 flex items-center justify-between text-xs">
-              <div class="flex flex-col">
-                <span class="font-mono text-slate-300 font-medium">CAM-02: WAREHOUSE</span>
-                <span class="text-[10px] text-emerald-400 font-mono">MOTION CLEARED</span>
-              </div>
-              <span class="text-[10px] font-mono text-slate-500">1080p</span>
-            </div>
-
-            <div class="bg-slate-950 border border-slate-800/80 rounded-lg p-2.5 flex items-center justify-between text-xs">
-              <div class="flex flex-col">
-                <span class="font-mono text-slate-300 font-medium">CAM-03: PERIMETER</span>
-                <span class="text-[10px] text-cyan-400 font-mono">INFRARED ON</span>
-              </div>
-              <span class="text-[10px] font-mono text-slate-500">4K UHD</span>
-            </div>
-          </div>
-
-          <!-- Bottom Status Banner -->
-          <div class="mt-4 pt-3 border-t border-slate-800/80 flex items-center justify-between text-xs text-slate-400">
-            <span class="flex items-center gap-1.5">
-              <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-cyan-400" viewBox="0 0 20 20" fill="currentColor">
-                <path fill-rule="evenodd" d="M2.166 4.999A11.954 11.954 0 0010 1.944 11.954 11.954 0 0017.834 5c.11.65.166 1.32.166 2.001 0 5.225-3.34 9.67-8 11.317C5.34 16.67 2 12.225 2 7c0-.682.057-1.35.166-2.001zm11.541 3.708a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
-              </svg>
-              Encrypted Cloud Storage
-            </span>
-            <span class="font-mono text-slate-300">99.98% Uptime</span>
-          </div>
-
-        </div>
-      </div>
-
+<section class="hero" aria-labelledby="h-hero">
+  <div class="wrap hero-grid">
+    <div>
+      <h1 id="h-hero" aria-label="Complete CCTV Surveillance Solutions, Planned Around Your Needs.">
+        <span aria-hidden="true">{words.map((w, i) => <><span class="w"><i style={`--i:${i}`}>{w}</i></span>{' '}</>)}</span>
+      </h1>
+      <p class="lead" data-hero="lead"><span class="long">From dedicated implementation planning and professional installation to system setup and long-term support, YONAM helps deliver CCTV surveillance solutions according to your property’s requirements.</span><span class="short">Planning, installation, setup and long-term support, built around your property.</span></p>
+      <div class="ctas" data-hero="ctas"><a class="btn btn-ping" href="#contact">Discuss Your Project</a><a class="btn btn-outline" href="#contact">Request a Site Assessment</a></div>
+      <a class="tlink mob-link" data-hero="mob" href="#contact">Or request a site assessment</a>
+      <p class="loc" data-hero="loc"><svg width="16" height="18" viewBox="0 0 16 18" fill="none" stroke="#1650D0" stroke-width="1.8" aria-hidden="true"><path d="M8 17s6-5.2 6-10A6 6 0 0 0 2 7c0 4.8 6 10 6 10z"/><circle cx="8" cy="7" r="2.2"/></svg>Based in Nadiad, Gujarat, India</p>
+    </div>
+    <div class="planbox" data-hero="plan">
+      <PropertyPicker label="Choose a property type to see an example plan" />
+      <div class="plan-host" id="heroPlan" data-style="flat" set:html={renderPlan('flat', 'building')}></div>
+      <p class="pcap" data-caption aria-live="polite" set:html={captionHtml('building')}></p>
     </div>
   </div>
 </section>
-

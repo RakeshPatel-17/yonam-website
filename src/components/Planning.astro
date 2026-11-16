@@ -1,0 +1,23 @@
+---
+import SectionHead from './SectionHead.astro';
+import PropertyPicker from './PropertyPicker.astro';
+import { renderPlan, captionHtml } from '../lib/plans';
+const factors = [['all', 'Property layout'], ['ent', 'Entrances and exits'], ['com', 'Common areas'], ['park', 'Parking'], ['rec', 'Infrastructure needs']];
+---
+<section class="alt" id="planning" aria-labelledby="h-plan">
+  <div class="wrap plan-sec">
+    <div>
+      <SectionHead id="h-plan" title="Every property is different. So is every plan." style="margin-bottom:18px" />
+      <p class="lead"><span class="long">YONAM develops a dedicated CCTV implementation plan based on your property, coverage requirements and expectations. We consider the whole property before proposing an approach.</span><span class="short">We consider the whole property before proposing an approach.</span></p>
+      <ul class="factors" id="factors" aria-label="What we consider. Choose one to highlight it on the drawing.">
+        {factors.map(([k, t]) => <li><button type="button" data-k={k} aria-pressed="false">{t}</button></li>)}
+      </ul>
+      <a class="btn" href="#contact">Request a Site Assessment</a>
+    </div>
+    <div class="planbox" id="isoBox">
+      <PropertyPicker label="Choose a property type" />
+      <div class="plan-host" id="isoPlan" data-style="iso" set:html={renderPlan('iso', 'building')}></div>
+      <p class="pcap" data-caption aria-live="polite" set:html={captionHtml('building')}></p>
+    </div>
+  </div>
+</section>

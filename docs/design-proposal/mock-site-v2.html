@@ -1,0 +1,816 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>YONAM CCTV Surveillance · Homepage mock v2</title>
+<script>document.documentElement.className+=' js'</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,500..900&family=Manrope:wght@400;500;600;700;800&display=swap">
+<style>
+/* v2: Blueprint direction, Zone Coded colours.
+   Type: Archivo extra-wide heavy for headlines (echoes the wordmark), Manrope for reading, Archivo condensed capitals for drawing lettering.
+   Motion: one hero sequence; everything else answers an action or reveals once. Mobile: short copy, swipe cards, tap-to-expand steps. */
+:root{
+  --navy-950:#060F2E;--navy-900:#0B1F5C;--navy-700:#1243B0;--royal:#1650D0;
+  --cyan:#00ADFC;--cyan-7:#0369A1;--sky:#E3F2FD;--ice:#F3F7FE;
+  --orange:#FD7B01;--orange-6:#C2540A;--green:#1CAD00;--green-7:#15803D;
+  --ink:#0E1A33;--slate:#475569;--line:#DDE4F0;
+  --f-body:'Manrope',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;
+  --f-disp:'Archivo','Manrope',system-ui,sans-serif;
+  --ease:cubic-bezier(.2,.7,.2,1);
+  --gutter:20px;
+  --arrow:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><path d='M4 10h11M11 5l5 5-5 5'/></svg>");
+}
+@media (min-width:768px){:root{--gutter:28px}}
+@media (min-width:1024px){:root{--gutter:36px}}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:96px}
+body{margin:0;font-family:var(--f-body);font-size:16px;line-height:1.65;color:var(--ink);background:#fff;font-weight:500;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+@media (min-width:768px){body{font-size:17px}}
+img{max-width:100%}
+p{margin:0}
+h1,h2,h3,h4{margin:0;color:var(--navy-900);font-family:var(--f-disp);text-wrap:balance}
+h1{font-size:clamp(34px,5.4vw,60px);line-height:1.04;font-weight:800;font-stretch:100%;letter-spacing:-.01em}
+h2{font-size:clamp(28px,3.6vw,44px);line-height:1.1;font-weight:800;font-stretch:104%;letter-spacing:-.01em}
+h3{font-size:clamp(19px,1.9vw,22px);line-height:1.25;font-weight:700;font-stretch:100%;letter-spacing:0}
+@media (min-width:1024px){h1{font-stretch:114%}h2{font-stretch:110%}}
+a{color:var(--royal)}
+.wrap{max-width:1240px;margin-inline:auto;padding-inline:var(--gutter)}
+.lead{font-size:clamp(16px,1.5vw,19px);line-height:1.65;color:var(--slate);max-width:60ch}
+section{padding-block:72px}
+@media (min-width:1024px){section{padding-block:112px}}
+.alt{background:var(--ice)}
+:focus-visible{outline:3px solid var(--royal);outline-offset:3px;border-radius:6px}
+.skip{position:absolute;left:-999px;top:8px;background:#fff;padding:8px 14px;border-radius:8px;z-index:100;font-weight:700}
+.skip:focus{left:8px}
+.short{display:none}
+@media (max-width:639px){.long{display:none}.short{display:inline}}
+
+/* ---------- buttons: one size site-wide (52px). Header uses the one compact variant (44px). ---------- */
+.btn{--bg:var(--royal);--fg:#fff;--sw:var(--navy-900);--bd:transparent;--fg-h:#fff;
+  position:relative;isolation:isolate;overflow:hidden;display:inline-flex;align-items:center;justify-content:center;gap:12px;
+  height:52px;min-width:240px;padding:0 28px;border-radius:10px;border:2px solid var(--bd);background:var(--bg);color:var(--fg);
+  font:700 16px/1 var(--f-disp);font-stretch:104%;letter-spacing:.005em;text-decoration:none;cursor:pointer;white-space:nowrap;
+  transition:color .25s var(--ease),transform .15s var(--ease),box-shadow .25s var(--ease)}
+.btn::before{content:"";position:absolute;inset:0;background:var(--sw);transform:translateX(-102%);transition:transform .4s var(--ease);z-index:-1}
+.btn::after{content:"";width:18px;height:18px;flex:none;background:currentColor;-webkit-mask:var(--arrow) center/contain no-repeat;mask:var(--arrow) center/contain no-repeat;transition:transform .3s var(--ease)}
+.btn:hover{color:var(--fg-h);box-shadow:0 10px 22px -10px rgb(22 80 208/.55)}
+.btn:hover::before{transform:none}
+.btn:hover::after{transform:translateX(5px)}
+.btn:active{transform:scale(.98)}
+.btn-secondary{--bg:#fff;--fg:var(--navy-900);--bd:var(--navy-900);--sw:var(--navy-900);--fg-h:#fff}
+.btn-dark{--bg:#fff;--fg:var(--navy-900);--sw:var(--sky);--fg-h:var(--navy-900)}
+.btn-sm{height:44px;min-width:0;padding:0 22px;font-size:15px}
+.btn-ping{animation:ping 1.4s 2.4s 1 both}
+@keyframes ping{0%{box-shadow:0 0 0 0 rgb(22 80 208/.55)}100%{box-shadow:0 0 0 16px rgb(22 80 208/0)}}
+@media (max-width:639px){.btn:not(.btn-sm){width:100%}}
+.tlink{display:inline-flex;align-items:center;gap:8px;font:700 16px var(--f-disp);font-stretch:104%;color:var(--royal);text-decoration:none;min-height:44px}
+.tlink::after{content:"";width:16px;height:16px;background:currentColor;-webkit-mask:var(--arrow) center/contain no-repeat;mask:var(--arrow) center/contain no-repeat;transition:transform .3s var(--ease)}
+.tlink:hover::after{transform:translateX(5px)}
+.tlink:hover{text-decoration:underline;text-underline-offset:4px}
+
+/* ---------- header ---------- */
+.site-header{position:sticky;top:0;z-index:30;background:rgb(255 255 255/.94);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid var(--line);transition:box-shadow .3s}
+.site-header.scrolled{box-shadow:0 8px 24px -14px rgb(11 31 92/.35)}
+.hbar{display:flex;align-items:center;gap:20px;min-height:72px;transition:min-height .3s var(--ease)}
+@media (min-width:1024px){.hbar{min-height:96px}.scrolled .hbar{min-height:74px}}
+.scrolled .hbar{min-height:62px}
+@media (min-width:1024px){.scrolled .hbar{min-height:74px}}
+.logo{display:block;flex:none}
+.lt{display:block;overflow:hidden;aspect-ratio:1195/1083;width:58px;transition:width .3s var(--ease)}
+@media (min-width:1024px){.lt{width:88px}.scrolled .lt{width:66px}}
+.scrolled .lt{width:50px}
+@media (min-width:1024px){.scrolled .lt{width:66px}}
+.lt img{display:block;width:104.94%;max-width:none;margin-left:-2.51%;margin-top:-2.93%}
+.prog{position:absolute;left:0;right:0;bottom:-1px;height:3px;background:transparent;pointer-events:none}
+.prog i{display:block;height:100%;background:linear-gradient(90deg,var(--cyan),var(--royal));transform:scaleX(0);transform-origin:left}
+.nav{display:none;margin-left:auto;align-items:center;gap:8px}
+.nav>ul{list-style:none;margin:0;padding:0;display:flex;gap:2px}
+.nav a.nl{position:relative;display:flex;align-items:center;gap:6px;padding:12px 14px;border-radius:8px;color:var(--ink);text-decoration:none;font-weight:600;font-size:15px}
+.nav a.nl::after{content:"";position:absolute;left:14px;right:14px;bottom:6px;height:2px;background:var(--royal);transform:scaleX(0);transform-origin:left;transition:transform .3s var(--ease)}
+.nav a.nl:hover::after,.nav .has-sub:focus-within>a.nl::after{transform:scaleX(1)}
+.has-sub{position:relative}
+.sub{position:absolute;top:100%;left:0;min-width:290px;background:#fff;border:1px solid var(--line);border-radius:14px;padding:8px;box-shadow:0 18px 40px -16px rgb(11 31 92/.35);opacity:0;visibility:hidden;transform:translateY(8px);transition:opacity .2s,transform .25s var(--ease),visibility .2s}
+.has-sub:hover .sub,.has-sub:focus-within .sub{opacity:1;visibility:visible;transform:none}
+.sub a{display:block;padding:11px 14px;border-radius:9px;text-decoration:none;color:var(--ink);font-weight:700;font-size:15px;transition:background .15s,padding .2s var(--ease)}
+.sub a:hover{background:var(--ice);color:var(--royal);padding-left:18px}
+.sub small{display:block;font-weight:500;color:var(--slate);font-size:13px}
+.hcta{margin-left:12px}
+.menu-btn{margin-left:auto;width:48px;height:48px;border-radius:10px;border:1.5px solid var(--line);background:#fff;display:grid;place-content:center;gap:5px;cursor:pointer}
+.menu-btn i{display:block;width:22px;height:2px;background:var(--navy-900);border-radius:2px;transition:transform .3s var(--ease),opacity .2s}
+.open .menu-btn i:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.open .menu-btn i:nth-child(2){opacity:0}
+.open .menu-btn i:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+.mpanel{display:grid;grid-template-rows:0fr;transition:grid-template-rows .35s var(--ease);border-top:0 solid var(--line)}
+.mpanel>div{overflow:hidden}
+.open .mpanel{grid-template-rows:1fr;border-top-width:1px}
+.mpanel a.m{display:flex;justify-content:space-between;align-items:center;min-height:56px;padding:0 var(--gutter);border-bottom:1px solid var(--line);text-decoration:none;color:var(--ink);font:700 18px var(--f-disp);font-stretch:104%}
+.mpanel a.m::after{content:"";width:16px;height:16px;background:var(--royal);-webkit-mask:var(--arrow) center/contain no-repeat;mask:var(--arrow) center/contain no-repeat}
+.mpanel .pad{padding:20px var(--gutter) 24px;display:grid;gap:12px}
+.mpanel .ph{font-size:14px;color:var(--slate);text-align:center}
+@media (min-width:1024px){.nav{display:flex}.menu-btn,.mpanel{display:none!important}}
+
+/* ---------- hero ---------- */
+.hero{padding-block:36px 56px;background-color:var(--ice);
+  background-image:linear-gradient(rgba(22,80,208,.07) 1px,transparent 1px),linear-gradient(90deg,rgba(22,80,208,.07) 1px,transparent 1px);background-size:20px 20px}
+@media (min-width:1024px){.hero{padding-block:80px 96px}}
+.hero-grid{display:grid;gap:32px;align-items:center}
+@media (min-width:980px){.hero-grid{grid-template-columns:1.05fr .95fr;gap:64px}}
+.hero h1{margin-bottom:20px}
+.w{display:inline-block;overflow:hidden;vertical-align:top;padding-bottom:.12em;margin-bottom:-.12em}
+.w i{display:inline-block;font-style:normal}
+.js .w i{transform:translateY(112%);animation:rise .85s var(--ease) both;animation-delay:calc(var(--i)*65ms + 150ms)}
+@keyframes rise{to{transform:none}}
+.js .rise{opacity:0;transform:translateY(14px);animation:fadeup .8s var(--ease) forwards;animation-delay:var(--rd,.8s)}
+@keyframes fadeup{to{opacity:1;transform:none}}
+.hero .lead{margin-bottom:28px}
+.ctas{display:grid;gap:12px}
+@media (min-width:640px){.ctas{grid-template-columns:repeat(2,max-content)}}
+.hero .mob-link{display:none}
+@media (max-width:639px){.hero .ctas .btn-secondary{display:none}.hero .mob-link{display:inline-flex;margin-top:4px}}
+.loc{display:flex;gap:10px;align-items:center;margin-top:22px;font-size:15px;font-weight:600;color:var(--slate)}
+.planbox{background:#fff;border:1px solid var(--line);border-radius:18px;padding:14px;box-shadow:0 24px 48px -28px rgb(11 31 92/.35)}
+.js .hero .planbox{clip-path:inset(0 0 100% 0 round 18px);animation:wipe 1s .35s var(--ease) forwards}
+@keyframes wipe{to{clip-path:inset(0 0 0 0 round 18px)}}
+@media (min-width:640px){.planbox{padding:18px}}
+.pick{display:grid;grid-template-columns:repeat(2,1fr);gap:8px;margin-bottom:14px}
+@media (min-width:560px){.pick{grid-template-columns:repeat(4,1fr)}}
+.pk{display:grid;justify-items:center;align-content:center;gap:6px;min-height:68px;padding:8px 6px;border:1.5px solid var(--line);border-radius:12px;background:#fff;color:var(--navy-900);font:700 13.5px/1.2 var(--f-body);cursor:pointer;transition:background .25s,border-color .25s,color .25s,transform .15s}
+.pk svg{width:24px;height:24px;stroke:currentColor;fill:none;stroke-width:1.75;stroke-linecap:round;stroke-linejoin:round}
+.pk:hover{border-color:var(--navy-900)}
+.pk:active{transform:scale(.97)}
+.pk[aria-pressed=true]{background:var(--navy-900);border-color:var(--navy-900);color:#fff}
+.pcap{display:flex;justify-content:space-between;gap:10px;font-size:13.5px;color:var(--slate);margin-top:10px;font-weight:600}
+.pcap b{color:var(--navy-900)}
+
+/* ---------- plan svg ---------- */
+.plan{--ink:#0B1F5C;--wall:#F3F7FE;--ground:#EAF0FA;--wl:#C9D6EE;--wr:#AFC2E4;--roof:#F8FAFF;--halo:#fff;--fo:.22;--iter:2;--sd:0s;--dd:0s;
+  --f-ent:#FD7B01;--s-ent:#C2540A;--f-park:#0B1F5C;--s-park:#0B1F5C;--f-com:#00ADFC;--s-com:#0369A1;--f-rec:#1CAD00;--s-rec:#15803D;color:var(--ink)}
+.plan.quick{--sd:.7s;--dd:0s}
+.hero .plan{--sd:2.4s;--dd:.95s}
+.hero .plan.quick{--sd:.7s;--dd:0s}
+.plan svg{display:block;width:100%;height:auto}
+.z-ent{--f:var(--f-ent);--s:var(--s-ent)}.z-park{--f:var(--f-park);--s:var(--s-park)}
+.z-com{--f:var(--f-com);--s:var(--s-com)}.z-rec{--f:var(--f-rec);--s:var(--s-rec)}
+.cone{fill:var(--f);fill-opacity:var(--fo);stroke:var(--s);stroke-width:1;stroke-opacity:.9}
+.area{fill:var(--f);fill-opacity:.12;stroke:var(--s);stroke-width:1;stroke-dasharray:4 3}
+.st-iso .area{fill-opacity:.4}
+.door{fill:var(--f);fill-opacity:.9;stroke:var(--s);stroke-width:1}
+.bld{fill:var(--wall);stroke:var(--ink);stroke-width:2}
+.wall{fill:none;stroke:var(--ink);stroke-width:1.5}
+.cam{fill:var(--royal);stroke:#fff;stroke-width:1.5}
+.lab{font-family:var(--f-disp);font-stretch:75%;font-weight:700;font-size:9.5px;letter-spacing:.04em;text-transform:uppercase;fill:var(--ink);paint-order:stroke;stroke:var(--halo);stroke-width:3;stroke-linejoin:round}
+.lab.sm{font-size:8.5px}
+.tb{fill:#fff;stroke:#5B6B8C;stroke-width:.8}
+.tbt{font-family:var(--f-disp);font-stretch:75%;font-weight:600;font-size:7.5px;letter-spacing:.05em;text-transform:uppercase;fill:#5B6B8C}
+.ground{fill:var(--ground);stroke:#C5D2EA;stroke-width:1}
+.face-l{fill:var(--wl);stroke:var(--ink);stroke-width:1}.face-r{fill:var(--wr);stroke:var(--ink);stroke-width:1}
+.roof{fill:var(--roof);stroke:var(--ink);stroke-width:1}
+.slot{stroke:var(--s-park);stroke-width:.8;opacity:.55;fill:none}
+.legend{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+.lg{font:700 13px var(--f-body);color:var(--navy-900);background:#fff;border:1px solid var(--line);border-radius:999px;min-height:36px;padding:4px 14px 4px 10px;display:inline-flex;gap:8px;align-items:center;cursor:pointer;transition:background .2s,border-color .2s}
+.lg:hover,.lg[aria-pressed=true]{border-color:var(--navy-900);background:var(--ice)}
+.lg i{width:12px;height:12px;border-radius:3px;border:1.5px solid;display:block}
+.lg .sw-ent{background:color-mix(in srgb,var(--f-ent) 45%,#fff);border-color:var(--s-ent)}
+.lg .sw-park{background:color-mix(in srgb,var(--f-park) 45%,#fff);border-color:var(--s-park)}
+.lg .sw-com{background:color-mix(in srgb,var(--f-com) 45%,#fff);border-color:var(--s-com)}
+.lg .sw-rec{background:color-mix(in srgb,var(--f-rec) 45%,#fff);border-color:var(--s-rec)}
+[data-z]{transition:opacity .25s}
+.plan[data-focus=ent] [data-z]:not([data-z=ent]){opacity:.12}
+.plan[data-focus=park] [data-z]:not([data-z=park]){opacity:.12}
+.plan[data-focus=com] [data-z]:not([data-z=com]){opacity:.12}
+.plan[data-focus=rec] [data-z]:not([data-z=rec]){opacity:.12}
+@keyframes scan{0%{transform:rotate(0)}25%{transform:rotate(-5deg)}75%{transform:rotate(5deg)}100%{transform:rotate(0)}}
+@keyframes draw{from{stroke-dashoffset:1}to{stroke-dashoffset:0}}
+.a-sweep .sw{animation:scan 2.4s ease-in-out var(--iter);animation-delay:calc(var(--sd) + var(--k,0)*.2s)}
+@keyframes breathe{0%,100%{transform:scale(1);opacity:1}50%{transform:scale(.9);opacity:.55}}
+.st-iso.a-sweep .sw{animation-name:breathe}
+.a-draw .wall,.a-draw .bld{stroke-dasharray:1;stroke-dashoffset:0;animation:draw 1.8s ease-out both;animation-delay:var(--dd)}
+.quick.a-draw .wall,.quick.a-draw .bld{animation-duration:.9s}
+.fadeswap{animation:fadein .4s var(--ease)}
+@keyframes fadein{from{opacity:.0}to{opacity:1}}
+
+/* ---------- section head with dimension line ---------- */
+.sec-head{display:grid;gap:14px;margin-bottom:44px;max-width:760px}
+.dim{position:relative;height:12px;width:clamp(120px,22vw,220px)}
+.dim::before,.dim::after{content:"";position:absolute;top:0;bottom:0;width:1.5px;background:var(--royal)}
+.dim::before{left:0}.dim::after{right:0}
+.dim i{position:absolute;left:0;right:0;top:calc(50% - .75px);height:1.5px;background:var(--royal);transform-origin:left}
+.js .dim i{transform:scaleX(0)}
+.js .dim::after{opacity:0;transition:opacity .3s .9s}
+.in .dim i{transform:scaleX(1);transition:transform 1s var(--ease)}
+.in .dim::after{opacity:1}
+.on-dark .dim::before,.on-dark .dim::after,.on-dark .dim i{background:#7FD0FF}
+
+/* ---------- reveal helpers ---------- */
+.js .stg>*{opacity:0}
+.js .in.stg>*,.js .in .stg>*{animation:stgin .7s var(--ease) both;animation-delay:calc(var(--k,0)*80ms)}
+@keyframes stgin{from{opacity:0;translate:0 16px}to{opacity:1;translate:0 0}}
+.js .d{stroke-dasharray:1;stroke-dashoffset:1}
+.in .d{animation:draw 1.4s ease-out forwards;animation-delay:calc(var(--k,0)*140ms)}
+
+/* ---------- fact strip ---------- */
+.facts{background:var(--navy-900);color:#fff}
+.facts ul{list-style:none;margin:0;padding:0;display:flex;gap:0;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none}
+.facts ul::-webkit-scrollbar{display:none}
+.facts li{flex:0 0 78%;scroll-snap-align:start;display:flex;align-items:center;gap:14px;padding:22px 20px;border-left:1px solid rgba(255,255,255,.14);font:700 16px/1.3 var(--f-disp);font-stretch:100%}
+.facts li:first-child{border-left:0;padding-left:0}
+@media (min-width:768px){.facts li{flex:1 1 0;padding:30px 24px}.facts li:first-child{padding-left:0}}
+.facts svg{width:24px;height:24px;flex:none;stroke:var(--cyan);fill:none;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+
+/* ---------- segment tiles ---------- */
+.seg{display:grid;gap:12px;grid-template-columns:repeat(2,1fr)}
+@media (min-width:1024px){.seg{grid-template-columns:repeat(4,1fr);gap:20px}}
+.tile{position:relative;display:grid;align-content:space-between;gap:20px;min-height:168px;padding:20px 18px;background:#fff;border:1px solid var(--line);border-radius:16px;text-decoration:none;color:inherit;overflow:hidden;transition:transform .35s var(--ease),box-shadow .35s var(--ease),border-color .25s}
+@media (min-width:1024px){.tile{min-height:280px;padding:28px}}
+.tile::after{content:"";position:absolute;left:0;right:0;bottom:0;height:4px;background:linear-gradient(90deg,var(--cyan),var(--royal));transform:scaleX(0);transform-origin:left;transition:transform .45s var(--ease)}
+.tile:hover{transform:translateY(-4px);box-shadow:0 22px 36px -22px rgb(11 31 92/.45);border-color:#B9C7E4}
+.tile:hover::after{transform:scaleX(1)}
+.ico{width:48px;height:48px;border-radius:12px;background:var(--sky);display:grid;place-items:center}
+.ico svg{width:26px;height:26px;stroke:var(--royal);fill:none;stroke-width:1.75;stroke-linecap:round;stroke-linejoin:round}
+.tile:hover .ico svg *,.card:hover .ico svg *,.wl:hover .ico svg *{stroke-dasharray:1;animation:draw .9s ease-out}
+.tile h3{margin-bottom:6px}
+.tile p{color:var(--slate);font-size:15px;line-height:1.55;display:none}
+@media (min-width:1024px){.tile p{display:block}}
+.tile .go{display:flex;align-items:center;justify-content:space-between;font:700 15px var(--f-disp);color:var(--royal)}
+.tile .go::after{content:"";width:18px;height:18px;background:currentColor;-webkit-mask:var(--arrow) center/contain no-repeat;mask:var(--arrow) center/contain no-repeat;transition:transform .3s var(--ease)}
+.tile:hover .go::after{transform:translateX(6px)}
+.tile .go span{display:none}
+@media (min-width:1024px){.tile .go span{display:inline}}
+
+/* ---------- about ---------- */
+.about{display:grid;gap:36px}
+@media (min-width:960px){.about{grid-template-columns:1fr 1fr;gap:80px;align-items:start}}
+.about h2{margin-bottom:20px}
+.about .lead+.lead{margin-top:16px}
+.about .act{margin-top:28px}
+.more{border:1px solid var(--line);border-radius:14px;background:#fff;overflow:hidden}
+.more summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;min-height:56px;padding:0 20px;font:700 17px var(--f-disp);color:var(--navy-900)}
+.more summary::-webkit-details-marker{display:none}
+.more summary::after{content:"";width:12px;height:12px;border-right:2px solid var(--royal);border-bottom:2px solid var(--royal);transform:rotate(45deg) translateY(-3px);transition:transform .3s var(--ease)}
+.more[open] summary::after{transform:rotate(225deg)}
+.more.static summary{display:none}
+.ticks{list-style:none;margin:0;padding:0}
+.ticks li{display:flex;gap:16px;align-items:flex-start;padding:18px 20px;border-top:1px solid var(--line)}
+.more.static .ticks li:first-child{border-top:0}
+.more.static{border:0;background:transparent;border-radius:0}
+.more.static .ticks li{padding-inline:0}
+.ticks .n{width:30px;height:30px;border-radius:50%;background:var(--sky);color:var(--royal);display:grid;place-items:center;flex:none;font:800 14px var(--f-disp)}
+.ticks b{display:block;color:var(--navy-900);font:700 17px var(--f-disp)}
+.ticks span.t{color:var(--slate);font-size:15px;line-height:1.5}
+
+/* ---------- services bento ---------- */
+.bento{display:grid;gap:20px;grid-template-columns:repeat(2,1fr)}
+.card{position:relative;display:grid;gap:12px;align-content:start;padding:28px;background:#fff;border:1px solid var(--line);border-radius:18px;text-decoration:none;color:inherit;transition:transform .35s var(--ease),box-shadow .35s var(--ease),border-color .25s}
+.card:hover{transform:translateY(-3px);box-shadow:0 22px 36px -22px rgb(11 31 92/.4);border-color:#B9C7E4}
+.card p{color:var(--slate);font-size:16px;line-height:1.6}
+.card .ico{margin-bottom:6px}
+.b1{grid-row:1/3;grid-column:1;background:var(--navy-900);border-color:var(--navy-900);color:#fff;padding:36px;align-content:space-between;gap:28px}
+.b1 h3{color:#fff;font-size:clamp(24px,2.6vw,32px);font-stretch:108%;font-weight:800;line-height:1.12}
+.b1 p{color:#C9D6F6;font-size:17px;max-width:44ch}
+.b1:hover{border-color:var(--navy-900);box-shadow:0 26px 44px -22px rgb(11 31 92/.7)}
+.b1 .tlink{color:#fff}
+.b2{grid-column:2;grid-row:1}.b3{grid-column:2;grid-row:2}
+.b4{grid-column:1/-1;grid-row:3;background:#F1FAF0;border-color:#CFE8CB;grid-template-columns:auto 1fr auto;align-items:center;column-gap:24px}
+.b4 .ico{background:var(--green-7);margin:0}
+.b4 .ico svg{stroke:#fff}
+.mini{width:100%;height:auto;display:block}
+.mini .s{fill:none;stroke:#fff;stroke-width:1.6;opacity:.95}
+.mini .k{fill:rgba(0,173,252,.22);stroke:#37C2FF;stroke-width:1}
+.mini .cm{fill:#6FA3FF;stroke:#fff;stroke-width:1.5}
+.mini .pk2{fill:none;stroke:#7F93C9;stroke-width:1;stroke-dasharray:4 3}
+.mini .sw{animation:scan 2.4s ease-in-out infinite}
+@media (max-width:1023px){
+  .bento{grid-template-columns:1fr}
+  .b1,.b2,.b3,.b4{grid-column:1;grid-row:auto}
+  .b4{grid-template-columns:auto 1fr}
+  .b4 .tlink{grid-column:1/-1}
+}
+@media (max-width:767px){
+  .snap{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:14px;margin-inline:calc(var(--gutter)*-1);padding:4px var(--gutter) 20px;scroll-padding-inline:var(--gutter);scrollbar-width:none}
+  .snap::-webkit-scrollbar{display:none}
+  .snap>*{flex:0 0 84%;scroll-snap-align:start;grid-column:auto;grid-row:auto}
+  .b1{padding:26px}
+  .b4{grid-template-columns:1fr}
+  .card p{font-size:15px}
+}
+.swipe{display:none;align-items:center;gap:8px;margin-top:-8px;font:700 13px var(--f-disp);color:var(--slate)}
+@media (max-width:767px){.swipe{display:flex}}
+.dots{display:flex;gap:6px;margin-left:auto}
+.dots i{width:6px;height:6px;border-radius:50%;background:#C5D0E4;transition:width .3s var(--ease),background .3s}
+.dots i.on{width:20px;border-radius:3px;background:var(--royal)}
+
+/* ---------- planning ---------- */
+.plan-sec{display:grid;gap:40px;align-items:center}
+@media (min-width:980px){.plan-sec{grid-template-columns:1fr 1.05fr;gap:72px}}
+.plan-sec h2{margin-bottom:18px}
+.factors{display:flex;flex-wrap:wrap;gap:10px;list-style:none;padding:0;margin:26px 0 32px}
+.factors button{font:700 15px var(--f-body);color:var(--navy-900);background:#fff;border:1.5px solid var(--line);border-radius:999px;min-height:44px;padding:0 18px;cursor:pointer;display:inline-flex;align-items:center;gap:9px;transition:border-color .2s,background .2s,transform .15s}
+.factors button::before{content:"";width:10px;height:10px;border-radius:3px;background:var(--cyan);flex:none}
+.factors button[data-k=ent]::before{background:var(--orange)}
+.factors button[data-k=park]::before{background:var(--navy-900)}
+.factors button[data-k=rec]::before{background:var(--green)}
+.factors button:hover,.factors button[aria-pressed=true]{border-color:var(--navy-900);background:#fff;transform:translateY(-1px)}
+.factors button[aria-pressed=true]{background:var(--navy-900);color:#fff}
+.plan-hint{font-size:14px;color:var(--slate);margin:-18px 0 28px}
+
+/* ---------- process ---------- */
+.process{background:var(--navy-900);color:#fff;position:relative;overflow:hidden}
+.process h2{color:#fff}
+.process .lead{color:#C3D2F5}
+.tl{position:relative;margin-top:52px}
+.tl .track{position:absolute;background:rgba(255,255,255,.2);border-radius:2px;overflow:hidden;left:19px;top:24px;bottom:24px;width:3px}
+.tl .track i{display:block;width:100%;height:100%;background:linear-gradient(180deg,var(--cyan),#6FA3FF)}
+.tl ol{list-style:none;margin:0;padding:0;display:grid;gap:6px;position:relative}
+.tl li{display:grid}
+.st{all:unset;box-sizing:border-box;display:grid;grid-template-columns:auto 1fr auto;align-items:center;column-gap:18px;min-height:56px;cursor:pointer;width:100%;-webkit-tap-highlight-color:transparent}
+.st:focus-visible{outline:3px solid #7FD0FF;outline-offset:2px;border-radius:10px}
+.tl li b{width:42px;height:42px;border-radius:50%;background:#fff;color:var(--navy-900);border:3px solid var(--cyan);display:grid;place-items:center;font:800 15px var(--f-disp);transition:transform .3s var(--ease),background .3s}
+.tl li:last-child b{border-color:var(--green)}
+.tl h3{color:#fff;font-size:18px;font-stretch:100%}
+.st::after{content:"";width:10px;height:10px;border-right:2px solid #9FB4EA;border-bottom:2px solid #9FB4EA;transform:rotate(45deg) translateY(-3px);transition:transform .3s var(--ease)}
+.tl li.open .st::after{transform:rotate(225deg)}
+.tl li.open b{transform:scale(1.08);background:#E3F2FD}
+.tl .pp{display:grid;grid-template-rows:0fr;transition:grid-template-rows .35s var(--ease)}
+.tl .pp>div{overflow:hidden}
+.tl .pp p{color:#C3D2F5;font-size:15px;line-height:1.55;padding:0 0 14px 60px}
+.tl li.open .pp{grid-template-rows:1fr}
+@media (min-width:980px){
+  .tl .track{left:calc(100%/12);right:calc(100%/12);top:21px;bottom:auto;height:3px;width:auto}
+  .tl .track i{background:linear-gradient(90deg,var(--cyan),#6FA3FF)}
+  .tl ol{grid-template-columns:repeat(6,1fr);gap:0}
+  .st{grid-template-columns:1fr;justify-items:center;text-align:center;row-gap:16px;cursor:default;min-height:0}
+  .st::after{display:none}
+  .tl h3{font-size:18px}
+  .tl .pp{grid-template-rows:1fr}
+  .tl .pp p{padding:12px 14px 0;text-align:center}
+}
+@keyframes fillw{from{width:0}to{width:100%}}
+@keyframes fillh{from{height:0}to{height:100%}}
+@keyframes lit{from{border-color:rgba(255,255,255,.3);background:rgba(255,255,255,.35);color:rgba(11,31,92,.6);transform:scale(.8)}to{transform:scale(1)}}
+.tl.run .track i{animation:fillh 3.4s linear both}
+@media (min-width:980px){.tl.run .track i{animation-name:fillw}}
+.tl.run li b{animation:lit .45s ease-out both;animation-delay:calc(var(--i)*.6s)}
+
+/* ---------- why ---------- */
+.why{display:grid;gap:40px}
+@media (min-width:980px){.why{grid-template-columns:.85fr 1.15fr;gap:80px}}
+.why h2{margin-bottom:18px}
+.wlist{display:grid;gap:0;border-top:1px solid var(--line)}
+@media (min-width:700px){.wlist{grid-template-columns:1fr 1fr;column-gap:40px}}
+.wl{display:flex;gap:16px;align-items:center;padding:20px 0;border-bottom:1px solid var(--line)}
+.wl .ico{flex:none}
+.wl b{display:block;color:var(--navy-900);font:700 17px/1.3 var(--f-disp)}
+.wl span.t{display:none;color:var(--slate);font-size:15px;line-height:1.5;margin-top:4px}
+@media (min-width:700px){.wl{align-items:flex-start}.wl span.t{display:block}}
+
+/* ---------- support ---------- */
+.support{background:#F1FAF0;border-block:1px solid #CFE8CB;padding-block:48px}
+.support .in2{display:grid;grid-template-columns:auto 1fr;gap:22px;align-items:center}
+.support .badge{position:relative;width:60px;height:60px;border-radius:50%;background:var(--green-7);display:grid;place-items:center}
+.support .badge svg{width:30px;height:30px;stroke:#fff;fill:none;stroke-width:2.6;stroke-linecap:round;stroke-linejoin:round}
+.support .badge::after{content:"";position:absolute;inset:0;border-radius:50%;border:2px solid var(--green-7);opacity:0}
+.in .badge::after{animation:halo 1.6s 1.2s ease-out 2}
+@keyframes halo{0%{transform:scale(1);opacity:.6}100%{transform:scale(1.9);opacity:0}}
+.support h2{font-size:clamp(22px,2.6vw,32px);margin-bottom:6px}
+.support p{color:var(--slate);max-width:64ch}
+
+/* ---------- faq ---------- */
+.faq{max-width:860px;margin-inline:auto}
+.faq .sec-head{margin-inline:auto;text-align:center;justify-items:center}
+details.q{border-bottom:1px solid var(--line)}
+details.q:first-of-type{border-top:1px solid var(--line)}
+details.q summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;gap:20px;align-items:center;min-height:64px;padding:14px 4px;font:700 18px/1.35 var(--f-disp);color:var(--navy-900);transition:color .2s}
+details.q summary::-webkit-details-marker{display:none}
+details.q summary:hover{color:var(--royal)}
+details.q summary::after{content:"";width:28px;height:28px;flex:none;border-radius:50%;background:var(--sky) linear-gradient(var(--royal),var(--royal)) center/12px 2px no-repeat;position:relative;transition:transform .3s var(--ease)}
+details.q summary::before{content:"";position:absolute}
+details.q[open] summary::after{transform:rotate(180deg);background:var(--royal) linear-gradient(#fff,#fff) center/12px 2px no-repeat}
+details.q p{padding:0 4px 24px;color:var(--slate);max-width:64ch;animation:fadein .4s var(--ease)}
+.draft{display:inline-block;font:800 11px var(--f-disp);background:#FFF1E5;color:var(--orange-6);padding:3px 9px;border-radius:6px;margin-right:8px;font-style:normal}
+
+/* ---------- final cta ---------- */
+.cta{position:relative;overflow:hidden;background:linear-gradient(120deg,var(--navy-900),var(--navy-700));color:#fff;text-align:center}
+.cta .wrap{position:relative;z-index:1}
+.cta h2{color:#fff;max-width:19ch;margin-inline:auto}
+.cta p{color:#D5E0FA;max-width:54ch;margin:20px auto 32px;font-size:18px}
+.cta .bgdraw{position:absolute;right:-40px;bottom:-30px;width:min(520px,70%);opacity:.9;pointer-events:none}
+.cta .bgdraw .d{fill:none;stroke:rgba(255,255,255,.22);stroke-width:1.5}
+@media (max-width:639px){.cta .bgdraw{opacity:.5}}
+
+/* ---------- footer ---------- */
+footer{background:var(--navy-950);color:#C3D0EA;padding-block:64px 0}
+.fgrid{display:grid;gap:40px}
+@media (min-width:768px){.fgrid{grid-template-columns:1fr 1fr}}
+@media (min-width:1024px){.fgrid{grid-template-columns:1.4fr 1fr 1fr 1.2fr}}
+.plate{display:inline-block;background:#fff;border-radius:12px;padding:10px;margin-bottom:18px}
+.plate .lt{width:88px}
+footer h4{color:#fff;font-size:15px;margin-bottom:16px;font-stretch:100%}
+footer ul{list-style:none;margin:0;padding:0;display:grid;gap:10px}
+footer a{color:#C3D0EA;text-decoration:none;transition:color .2s}footer a:hover{color:#fff;text-decoration:underline;text-underline-offset:4px}
+footer p{font-size:15px}
+.pend{border:1.5px dashed #5E71A3;border-radius:8px;padding:6px 12px;font-size:14px;color:#9FB2DE;display:inline-block}
+.fbottom{margin-top:48px;border-top:1px solid #1B2A58;padding-block:22px;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;font-size:14px;color:#8EA0CC}
+.abar-space{height:0}
+
+/* ---------- mobile action bar ---------- */
+.abar{display:none}
+@media (max-width:767px){
+  .abar-space{height:76px}
+  .abar{display:grid;grid-template-columns:1fr 1fr 1.4fr;gap:8px;position:fixed;left:0;right:0;bottom:0;z-index:25;background:rgb(255 255 255/.96);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-top:1px solid var(--line);padding:10px var(--gutter) max(10px,env(safe-area-inset-bottom,0px))}
+  .abar a{height:52px;display:grid;place-items:center;border-radius:10px;font:700 15px var(--f-disp);text-decoration:none;border:2px solid var(--navy-900);color:var(--navy-900);transition:transform .15s}
+  .abar a:active{transform:scale(.97)}
+  .abar a.off{border:2px dashed #9AA7C0;color:#6B7A99;pointer-events:none}
+  .abar a.go{background:var(--royal);border-color:var(--royal);color:#fff}
+}
+
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation:none!important;transition:none!important}
+  .js .w i{transform:none}.js .rise,.js .stg>*{opacity:1;transform:none}
+  .js .hero .planbox{clip-path:none}
+  .js .dim i{transform:none}.js .dim::after{opacity:1}
+  .js .d{stroke-dashoffset:0}
+}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="site-header" id="top">
+  <div class="wrap hbar">
+    <a class="logo" href="#top" aria-label="YONAM CCTV Surveillance, home"><span class="lt"><img src="yonam-logo.jpg" alt="YONAM CCTV Surveillance"></span></a>
+    <nav class="nav" aria-label="Main">
+      <ul>
+        <li><a class="nl" href="#top">Home</a></li>
+        <li><a class="nl" href="#about">About Us</a></li>
+        <li class="has-sub"><a class="nl" href="#solutions" aria-haspopup="true">Solutions <svg width="10" height="6" viewBox="0 0 10 6" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M1 1l4 4 4-4"/></svg></a>
+          <div class="sub">
+            <a href="#solutions">Building CCTV Solutions<small>Builders and developers</small></a>
+            <a href="#solutions">Housing Society CCTV Solutions<small>Apartments and communities</small></a>
+            <a href="#solutions">Residential CCTV Solutions<small>Houses, flats and villas</small></a>
+            <a href="#solutions">Commercial CCTV Solutions<small>Shops, offices and warehouses</small></a>
+          </div></li>
+        <li class="has-sub"><a class="nl" href="#services" aria-haspopup="true">Services <svg width="10" height="6" viewBox="0 0 10 6" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M1 1l4 4 4-4"/></svg></a>
+          <div class="sub">
+            <a href="#services">CCTV Implementation Planning</a><a href="#services">CCTV Installation</a>
+            <a href="#services">CCTV System Setup</a><a href="#services">Long-Term Support</a>
+          </div></li>
+        <li><a class="nl" href="#contact">Contact Us</a></li>
+      </ul>
+      <a class="btn btn-sm hcta" href="#contact">Discuss Your Project</a>
+    </nav>
+    <button class="menu-btn" id="menuBtn" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="mpanel"><i></i><i></i><i></i></button>
+  </div>
+  <div class="mpanel" id="mpanel"><div>
+    <a class="m" href="#top">Home</a><a class="m" href="#about">About Us</a><a class="m" href="#solutions">Solutions</a><a class="m" href="#services">Services</a><a class="m" href="#contact">Contact Us</a>
+    <div class="pad"><a class="btn" href="#contact">Discuss Your Project</a><p class="ph">Phone number to be confirmed</p></div>
+  </div></div>
+  <div class="prog" aria-hidden="true"><i id="prog"></i></div>
+</header>
+
+<main id="main">
+
+<!-- HERO -->
+<section class="hero" aria-labelledby="h-hero">
+  <div class="wrap hero-grid">
+    <div>
+      <h1 id="h-hero" aria-label="Complete CCTV Surveillance Solutions, Planned Around Your Needs.">
+        <span aria-hidden="true"><span class="w"><i style="--i:0">Complete</i></span> <span class="w"><i style="--i:1">CCTV</i></span> <span class="w"><i style="--i:2">Surveillance</i></span> <span class="w"><i style="--i:3">Solutions,</i></span> <span class="w"><i style="--i:4">Planned</i></span> <span class="w"><i style="--i:5">Around</i></span> <span class="w"><i style="--i:6">Your</i></span> <span class="w"><i style="--i:7">Needs.</i></span></span>
+      </h1>
+      <p class="lead rise" style="--rd:.85s"><span class="long">From dedicated implementation planning and professional installation to system setup and long-term support, YONAM helps deliver CCTV surveillance solutions according to your property’s requirements.</span><span class="short">Planning, installation, setup and long-term support, built around your property.</span></p>
+      <div class="ctas rise" style="--rd:1.05s"><a class="btn btn-ping" href="#contact">Discuss Your Project</a><a class="btn btn-secondary" href="#contact">Request a Site Assessment</a></div>
+      <a class="tlink mob-link rise" style="--rd:1.15s" href="#contact">Or request a site assessment</a>
+      <p class="loc rise" style="--rd:1.25s"><svg width="16" height="18" viewBox="0 0 16 18" fill="none" stroke="#1650D0" stroke-width="1.8" aria-hidden="true"><path d="M8 17s6-5.2 6-10A6 6 0 0 0 2 7c0 4.8 6 10 6 10z"/><circle cx="8" cy="7" r="2.2"/></svg>Based in Nadiad, Gujarat, India</p>
+    </div>
+    <div class="planbox">
+      <div class="pick" role="group" aria-label="Choose a property type to see an example plan">
+        <button class="pk" type="button" data-v="building" aria-pressed="true"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 21V6l8-3 8 3v15M4 21h16M9 9h2M13 9h2M9 13h2M13 13h2M10 21v-4h4v4"/></svg>Building</button>
+        <button class="pk" type="button" data-v="society" aria-pressed="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 21V10l5-3 5 3v11M13 21V4l8 3v14M3 21h18M6 12h4M6 16h4M16 10h2M16 14h2"/></svg>Housing society</button>
+        <button class="pk" type="button" data-v="home" aria-pressed="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 11l9-8 9 8M5 9.5V21h14V9.5M10 21v-6h4v6"/></svg>Home</button>
+        <button class="pk" type="button" data-v="shop" aria-pressed="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 9l1.5-5h15L21 9M3 9c0 1.7 1.3 3 3 3s3-1.3 3-3c0 1.7 1.3 3 3 3s3-1.3 3-3c0 1.7 1.3 3 3 3s3-1.3 3-3M5 12v9h14v-9M10 21v-5h4v5"/></svg>Shop or office</button>
+      </div>
+      <div class="plan-host" id="heroPlan" data-style="flat" data-anim="sweep draw"></div>
+      <p class="pcap" id="pcap" aria-live="polite"></p>
+    </div>
+  </div>
+</section>
+
+<!-- FACT STRIP -->
+<div class="facts" aria-label="What YONAM provides">
+  <div class="wrap"><ul class="stg" id="facts" data-rv>
+    <li style="--k:0"><svg viewBox="0 0 24 24" aria-hidden="true"><path class="d" d="M4 12.5l5 5L20 6.5"/></svg>Dedicated implementation plan</li>
+    <li style="--k:1"><svg viewBox="0 0 24 24" aria-hidden="true"><path class="d" d="M4 12.5l5 5L20 6.5"/></svg>Professional installation</li>
+    <li style="--k:2"><svg viewBox="0 0 24 24" aria-hidden="true"><path class="d" d="M4 12.5l5 5L20 6.5"/></svg>System setup and configuration</li>
+    <li style="--k:3"><svg viewBox="0 0 24 24" aria-hidden="true"><path class="d" d="M4 12.5l5 5L20 6.5"/></svg>Long-term support</li>
+  </ul></div>
+</div>
+
+<!-- SEGMENTS -->
+<section id="solutions" aria-labelledby="h-seg">
+  <div class="wrap">
+    <div class="sec-head" data-rv><div class="dim" aria-hidden="true"><i></i></div><h2 id="h-seg">What are you securing?</h2><p class="lead">Choose the closest match. Each path explains how YONAM plans, installs and supports CCTV for that kind of property.</p></div>
+    <div class="seg stg" data-rv>
+      <a class="tile" href="#contact" style="--k:0"><span class="ico"><svg viewBox="0 0 24 24"><path d="M4 21V6l8-3 8 3v15M4 21h16M9 9h2M13 9h2M9 13h2M13 13h2M10 21v-4h4v4"/></svg></span><div><h3>Building projects</h3><p>Builders, developers and new construction.</p></div><span class="go"><span>Explore building solutions</span></span></a>
+      <a class="tile" href="#contact" style="--k:1"><span class="ico"><svg viewBox="0 0 24 24"><path d="M3 21V10l5-3 5 3v11M13 21V4l8 3v14M3 21h18M6 12h4M6 16h4M16 10h2M16 14h2"/></svg></span><div><h3>Housing societies</h3><p>Apartment complexes and residential communities.</p></div><span class="go"><span>Explore society solutions</span></span></a>
+      <a class="tile" href="#contact" style="--k:2"><span class="ico"><svg viewBox="0 0 24 24"><path d="M3 11l9-8 9 8M5 9.5V21h14V9.5M10 21v-6h4v6"/></svg></span><div><h3>Residential</h3><p>Houses, flats, villas and bungalows.</p></div><span class="go"><span>Explore residential solutions</span></span></a>
+      <a class="tile" href="#contact" style="--k:3"><span class="ico"><svg viewBox="0 0 24 24"><path d="M3 9l1.5-5h15L21 9M3 9c0 1.7 1.3 3 3 3s3-1.3 3-3c0 1.7 1.3 3 3 3s3-1.3 3-3c0 1.7 1.3 3 3 3s3-1.3 3-3M5 12v9h14v-9M10 21v-5h4v5"/></svg></span><div><h3>Commercial</h3><p>Shops, offices, showrooms and warehouses.</p></div><span class="go"><span>Explore commercial solutions</span></span></a>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="alt" id="about" aria-labelledby="h-about">
+  <div class="wrap about">
+    <div data-rv>
+      <div class="sec-head" style="margin-bottom:24px"><div class="dim" aria-hidden="true"><i></i></div><h2 id="h-about">A surveillance partner, not just a camera seller.</h2></div>
+      <p class="lead"><span class="long">YONAM is a CCTV surveillance solutions company based in Nadiad, Gujarat. Every property has different requirements, so we prepare a dedicated plan for yours instead of offering a one-size-fits-all package.</span><span class="short">YONAM prepares a dedicated CCTV plan for every property, then installs, configures and supports it.</span></p>
+      <p class="lead long">You do not need to know camera quantities, placement or cabling before you call. We assess the property and recommend an approach.</p>
+      <p class="act"><a class="btn btn-secondary" href="#about">About YONAM</a></p>
+    </div>
+    <details class="more" id="more"><summary>See how we work</summary>
+      <ol class="ticks stg" data-rv>
+        <li style="--k:0"><span class="n">1</span><div><b>Dedicated planning</b><span class="t">A plan prepared for your property and requirements.</span></div></li>
+        <li style="--k:1"><span class="n">2</span><div><b>Property-specific requirements</b><span class="t">Entrances, exits, parking, common areas and layout considered.</span></div></li>
+        <li style="--k:2"><span class="n">3</span><div><b>Installation</b><span class="t">Required CCTV infrastructure installed according to the plan.</span></div></li>
+        <li style="--k:3"><span class="n">4</span><div><b>System configuration</b><span class="t">Configured and tested for your requirements.</span></div></li>
+        <li style="--k:4"><span class="n">5</span><div><b>Long-term support</b><span class="t">Our commitment continues after the system is in place.</span></div></li>
+      </ol>
+    </details>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services" aria-labelledby="h-svc">
+  <div class="wrap">
+    <div class="sec-head" data-rv><div class="dim" aria-hidden="true"><i></i></div><h2 id="h-svc">From first plan to long-term support</h2></div>
+    <div class="bento snap" id="snap1">
+      <a class="card b1" href="#planning" data-rv>
+        <div><h3>CCTV Implementation Planning</h3><p style="margin-top:12px">We study your property and requirements and prepare a dedicated plan before any equipment is installed.</p></div>
+        <svg class="mini drawme" viewBox="0 0 320 150" role="img" aria-label="Line drawing of a plan with camera coverage">
+          <rect class="s d" pathLength="1" x="10" y="12" width="200" height="124" rx="3" style="--k:0"/>
+          <path class="s d" pathLength="1" d="M110 12V70M10 70H210M70 70V136" style="--k:1"/>
+          <rect class="pk2" x="224" y="22" width="86" height="114" rx="3"/>
+          <g class="sw" style="transform-origin:40px 128px"><polygon class="k" points="40,128 16,80 64,80"/></g>
+          <g class="sw" style="transform-origin:60px 22px;animation-delay:.3s"><polygon class="k" points="60,22 22,64 98,64"/></g>
+          <g class="sw" style="transform-origin:216px 80px;animation-delay:.6s"><polygon class="k" points="216,80 310,30 310,130"/></g>
+          <circle class="cm" cx="40" cy="128" r="4.5"/><circle class="cm" cx="60" cy="22" r="4.5"/><circle class="cm" cx="216" cy="80" r="4.5"/>
+        </svg>
+        <span class="tlink">Learn more</span>
+      </a>
+      <a class="card b2" href="#services" data-rv><span class="ico"><svg viewBox="0 0 24 24"><rect x="3" y="7" width="13" height="10" rx="2"/><path d="M16 10l5-2.5v9L16 14M7 4h4"/></svg></span><h3>CCTV Installation</h3><p>The required CCTV infrastructure and equipment are installed according to the approved plan.</p><span class="tlink">Learn more</span></a>
+      <a class="card b3" href="#services" data-rv><span class="ico"><svg viewBox="0 0 24 24"><path d="M4 7h10M18 7h2M4 17h2M10 17h10M14 4v6M8 14v6"/></svg></span><h3>System Setup and Configuration</h3><p>The system is configured and tested according to the implementation requirements.</p><span class="tlink">Learn more</span></a>
+      <a class="card b4" href="#services" data-rv><span class="ico"><svg viewBox="0 0 24 24"><path d="M12 3l8 3v6c0 4.5-3.2 8-8 9-4.8-1-8-4.5-8-9V6zM8.5 12l2.5 2.5 4.5-5"/></svg></span><div><h3>Long-Term Support</h3><p style="margin-top:6px">Support for the implemented CCTV surveillance solution, beyond the day of installation.</p></div><span class="tlink">Learn more</span></a>
+    </div>
+    <div class="swipe" aria-hidden="true">Swipe to see all services<span class="dots" id="dots1"><i class="on"></i><i></i><i></i><i></i></span></div>
+  </div>
+</section>
+
+<!-- PLANNING -->
+<section class="alt" id="planning" aria-labelledby="h-plan">
+  <div class="wrap plan-sec">
+    <div data-rv>
+      <div class="sec-head" style="margin-bottom:22px"><div class="dim" aria-hidden="true"><i></i></div><h2 id="h-plan">Every property is different. So is every plan.</h2></div>
+      <p class="lead"><span class="long">YONAM develops a dedicated CCTV implementation plan based on your property, coverage requirements and expectations. We consider the whole property before proposing an approach.</span><span class="short">We consider the whole property before proposing an approach.</span></p>
+      <ul class="factors" id="factors" aria-label="What we consider. Choose one to highlight it on the drawing.">
+        <li><button type="button" data-k="all" aria-pressed="false">Property layout</button></li>
+        <li><button type="button" data-k="ent" aria-pressed="false">Entrances and exits</button></li>
+        <li><button type="button" data-k="com" aria-pressed="false">Common areas</button></li>
+        <li><button type="button" data-k="park" aria-pressed="false">Parking</button></li>
+        <li><button type="button" data-k="com" aria-pressed="false">Indoor and outdoor areas</button></li>
+        <li><button type="button" data-k="rec" aria-pressed="false">Infrastructure needs</button></li>
+      </ul>
+      <a class="btn" href="#contact">Request a Site Assessment</a>
+    </div>
+    <div class="planbox" data-rv>
+      <div class="plan-host" id="isoPlan" data-style="iso" data-anim=""></div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section class="process on-dark" id="process" aria-labelledby="h-proc">
+  <div class="wrap">
+    <div class="sec-head" data-rv><div class="dim" aria-hidden="true"><i></i></div><h2 id="h-proc">Six steps, from first call to long-term support</h2><p class="lead">You always know what happens next.</p></div>
+    <div class="tl" id="tl">
+      <div class="track" aria-hidden="true"><i></i></div>
+      <ol id="steps">
+        <li class="open" style="--i:0"><button class="st" type="button" aria-expanded="true"><b>1</b><h3>Understand your requirements</h3></button><div class="pp"><div><p>Property type, location, what you need covered and any existing system.</p></div></div></li>
+        <li style="--i:1"><button class="st" type="button" aria-expanded="false"><b>2</b><h3>Assess your property</h3></button><div class="pp"><div><p>Entrances, exits, parking, common spaces, layout and infrastructure.</p></div></div></li>
+        <li style="--i:2"><button class="st" type="button" aria-expanded="false"><b>3</b><h3>Prepare a dedicated plan</h3></button><div class="pp"><div><p>An implementation plan built around your property.</p></div></div></li>
+        <li style="--i:3"><button class="st" type="button" aria-expanded="false"><b>4</b><h3>Install the CCTV system</h3></button><div class="pp"><div><p>Equipment and infrastructure installed according to the plan.</p></div></div></li>
+        <li style="--i:4"><button class="st" type="button" aria-expanded="false"><b>5</b><h3>Configure and test</h3></button><div class="pp"><div><p>The system is set up and tested against your requirements.</p></div></div></li>
+        <li style="--i:5"><button class="st" type="button" aria-expanded="false"><b>6</b><h3>Long-term support</h3></button><div class="pp"><div><p>Support continues after implementation.</p></div></div></li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<!-- WHY -->
+<section id="why" aria-labelledby="h-why">
+  <div class="wrap why">
+    <div class="sec-head" data-rv style="margin-bottom:0"><div class="dim" aria-hidden="true"><i></i></div><h2 id="h-why">Planned for the property in front of us.</h2><p class="lead">What you can expect when you work with YONAM.</p></div>
+    <div class="wlist stg" data-rv>
+      <div class="wl" style="--k:0"><span class="ico"><svg viewBox="0 0 24 24"><path d="M4 4h16v16H4zM4 10h16M10 4v16"/></svg></span><p><b>Dedicated implementation planning</b><span class="t">A plan for your property, not a standard package.</span></p></div>
+      <div class="wl" style="--k:1"><span class="ico"><svg viewBox="0 0 24 24"><path d="M3 11l9-8 9 8M5 9.5V21h14V9.5"/></svg></span><p><b>Property-specific solutions</b><span class="t">Layout, entrances and requirements decide the approach.</span></p></div>
+      <div class="wl" style="--k:2"><span class="ico"><svg viewBox="0 0 24 24"><rect x="3" y="7" width="13" height="10" rx="2"/><path d="M16 10l5-2.5v9L16 14"/></svg></span><p><b>Installation and system setup</b><span class="t">One team from the plan to a configured system.</span></p></div>
+      <div class="wl" style="--k:3"><span class="ico"><svg viewBox="0 0 24 24"><path d="M12 3l8 3v6c0 4.5-3.2 8-8 9-4.8-1-8-4.5-8-9V6z"/></svg></span><p><b>Support beyond installation</b><span class="t">Long-term support is part of the offering.</span></p></div>
+      <div class="wl" style="--k:4"><span class="ico"><svg viewBox="0 0 24 24"><path d="M4 21V6l8-3 8 3v15M4 21h16"/></svg></span><p><b>Solutions for different property types</b><span class="t">Buildings, societies, homes and businesses.</span></p></div>
+    </div>
+  </div>
+</section>
+
+<!-- SUPPORT -->
+<div class="support" id="support" data-rv aria-labelledby="h-sup">
+  <div class="wrap in2">
+    <span class="badge"><svg viewBox="0 0 24 24" aria-hidden="true"><path class="d" pathLength="1" d="M5 12.5l4.5 4.5L19 7.5"/></svg></span>
+    <div><h2 id="h-sup">Our commitment continues beyond installation.</h2><p>YONAM provides long-term support for the implemented CCTV surveillance solution.</p></div>
+  </div>
+</div>
+
+<!-- FAQ -->
+<section class="alt" id="faq" aria-labelledby="h-faq">
+  <div class="wrap faq">
+    <div class="sec-head" data-rv><div class="dim" aria-hidden="true"><i></i></div><h2 id="h-faq">Questions we are often asked</h2></div>
+    <details class="q" open><summary>How do I determine the CCTV requirements for my property?</summary><p><i class="draft">Draft</i>You do not need to work this out alone. Tell us about your property and what you want to protect, and we assess it and recommend an approach. Final wording to be confirmed by YONAM.</p></details>
+    <details class="q"><summary>Does YONAM prepare a dedicated implementation plan?</summary><p><i class="draft">Draft</i>Answer to be confirmed by YONAM before launch.</p></details>
+    <details class="q"><summary>Do you provide installation and system setup?</summary><p><i class="draft">Draft</i>Answer to be confirmed by YONAM before launch.</p></details>
+    <details class="q"><summary>Do you work with builders and housing societies?</summary><p><i class="draft">Draft</i>Answer to be confirmed by YONAM before launch.</p></details>
+    <details class="q"><summary>Can you install CCTV in existing buildings?</summary><p><i class="draft">Draft</i>Answer to be confirmed by YONAM before launch.</p></details>
+    <details class="q"><summary>What factors affect installation costs?</summary><p><i class="draft">Draft</i>Answer to be confirmed by YONAM before launch.</p></details>
+    <details class="q"><summary>Do you provide long-term support?</summary><p><i class="draft">Draft</i>Answer to be confirmed by YONAM before launch.</p></details>
+    <details class="q"><summary>Can an existing CCTV system be upgraded?</summary><p><i class="draft">Draft</i>Answer to be confirmed by YONAM before launch.</p></details>
+    <details class="q"><summary>How can I request a site assessment?</summary><p><i class="draft">Draft</i>Answer to be confirmed by YONAM before launch.</p></details>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="cta" id="contact" aria-labelledby="h-cta" data-rv>
+  <svg class="bgdraw" viewBox="0 0 360 222" aria-hidden="true"><rect class="d" pathLength="1" x="20" y="20" width="230" height="170" rx="3"/><path class="d" pathLength="1" d="M160 20V110M20 110H250M120 110V190" style="--k:2"/><rect class="d" pathLength="1" x="265" y="30" width="82" height="170" rx="3" style="--k:4"/></svg>
+  <div class="wrap">
+    <h2 id="h-cta">Let’s Plan the Right CCTV Solution for Your Property.</h2>
+    <p>Tell us about your property and requirements. YONAM can help you understand the next steps towards a dedicated surveillance implementation plan.</p>
+    <a class="btn btn-dark" href="#contact">Get in Touch</a>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="fgrid">
+      <div><span class="plate"><span class="lt"><img src="yonam-logo.jpg" alt="YONAM CCTV Surveillance"></span></span><p>Complete CCTV surveillance solutions, from planning to long-term support.</p><p style="margin-top:10px">Nadiad, Gujarat, India</p></div>
+      <div><h4>Solutions</h4><ul><li><a href="#solutions">Building CCTV Solutions</a></li><li><a href="#solutions">Housing Society CCTV Solutions</a></li><li><a href="#solutions">Residential CCTV Solutions</a></li><li><a href="#solutions">Commercial CCTV Solutions</a></li></ul></div>
+      <div><h4>Services</h4><ul><li><a href="#services">Implementation Planning</a></li><li><a href="#services">Installation</a></li><li><a href="#services">System Setup</a></li><li><a href="#services">Long-Term Support</a></li></ul></div>
+      <div><h4>Contact</h4><ul><li>Nadiad, Gujarat, India</li><li><span class="pend">Phone: to be confirmed</span></li><li><span class="pend">WhatsApp: to be confirmed</span></li><li><span class="pend">Email: to be confirmed</span></li></ul></div>
+    </div>
+    <div class="fbottom"><span>© YONAM CCTV Surveillance. All rights reserved.</span><a href="#top">Privacy Policy</a></div>
+  </div>
+</footer>
+<div class="abar-space"></div>
+<nav class="abar" aria-label="Quick contact"><a class="off" href="#contact" aria-disabled="true" tabindex="-1">Call</a><a class="off" href="#contact" aria-disabled="true" tabindex="-1">WhatsApp</a><a class="go" href="#contact">Enquire</a></nav>
+
+<script>
+(function(){
+  var $=function(s,r){return (r||document).querySelector(s)},$$=function(s,r){return [].slice.call((r||document).querySelectorAll(s))};
+  var mq=window.matchMedia('(min-width:980px)');
+
+  /* header: menu, shrink on scroll, read progress */
+  var hd=$('.site-header'),mb=$('#menuBtn'),pr=$('#prog');
+  mb.addEventListener('click',function(){var o=hd.classList.toggle('open');mb.setAttribute('aria-expanded',o);mb.setAttribute('aria-label',o?'Close menu':'Open menu')});
+  $('#mpanel').addEventListener('click',function(e){if(e.target.closest('a')){hd.classList.remove('open');mb.setAttribute('aria-expanded','false')}});
+  var tick=false;
+  function onScroll(){hd.classList.toggle('scrolled',window.scrollY>24);var h=document.documentElement.scrollHeight-innerHeight;pr.style.transform='scaleX('+(h>0?Math.min(1,window.scrollY/h):0)+')';tick=false}
+  window.addEventListener('scroll',function(){if(!tick){tick=true;requestAnimationFrame(onScroll)}},{passive:true});onScroll();
+
+  /* icons: normalise path length so they can redraw on hover */
+  $$('.ico svg *').forEach(function(e){e.setAttribute('pathLength','1')});
+
+  /* plan builders */
+  var BASE=[
+    {z:'ent',c:[70,182],p:[[70,182],[30,122],[110,122]]},
+    {z:'com',c:[90,28],p:[[90,28],[35,108],[145,108]]},
+    {z:'com',c:[240,150],p:[[240,150],[128,126],[128,186]]},
+    {z:'rec',c:[205,28],p:[[205,28],[168,96],[242,96]]},
+    {z:'park',c:[268,115],p:[[268,115],[346,36],[346,196]]}
+  ];
+  var VAR={
+    building:{ent:'Main entrance',com:'Lobby',rec:'Control room',cor:'Corridor',park:'Parking',cap:'New building project'},
+    society:{ent:'Main gate',com:'Clubhouse',rec:'Security room',cor:'Internal road',park:'Visitor parking',cap:'Housing society'},
+    home:{ent:'Front door',com:'Living area',rec:'Utility',cor:'Passage',park:'Driveway',cap:'Home or villa'},
+    shop:{ent:'Shop entrance',com:'Sales floor',rec:'Back office',cor:'Aisle',park:'Loading bay',cap:'Shop or office'}
+  };
+  function pts(a){return a.map(function(p){return p.join(',')}).join(' ')}
+  function dot(z,x,y){return '<g data-z="'+z+'"><circle class="cam" cx="'+x+'" cy="'+y+'" r="4.5"/></g>'}
+  function flat(v){
+    var L=VAR[v];
+    var cones=BASE.map(function(m,i){return '<g class="sw" data-z="'+m.z+'" style="--k:'+i+';transform-origin:'+m.c[0]+'px '+m.c[1]+'px"><polygon class="cone z-'+m.z+'" points="'+pts(m.p)+'"/></g>'}).join('');
+    var dots=BASE.map(function(m){return dot(m.z,m.c[0],m.c[1])}).join('');
+    return '<svg viewBox="0 0 360 226" role="img" aria-label="Illustrative floor plan for a '+L.cap.toLowerCase()+'. Cameras cover the '+L.ent.toLowerCase()+', '+L.com.toLowerCase()+', '+L.cor.toLowerCase()+', '+L.rec.toLowerCase()+' and '+L.park.toLowerCase()+'.">'+
+      '<rect class="area z-park" data-z="park" x="265" y="30" width="82" height="170" rx="3"/>'+
+      '<rect class="bld" pathLength="1" x="20" y="20" width="230" height="170" rx="3"/>'+
+      '<path class="wall" pathLength="1" d="M160 20V110M20 110H250M120 110V190"/>'+
+      cones+'<rect class="door z-ent" data-z="ent" x="50" y="186" width="40" height="7" rx="2"/>'+dots+
+      '<text class="lab" x="52" y="206" data-z="ent">'+L.ent+'</text><text class="lab" x="28" y="37" data-z="com">'+L.com+'</text>'+
+      '<text class="lab sm" x="168" y="37" data-z="rec">'+L.rec+'</text><text class="lab sm" x="130" y="176" data-z="com">'+L.cor+'</text>'+
+      '<text class="lab" x="272" y="192" data-z="park">'+L.park+'</text>'+
+      '<rect class="tb" x="228" y="206" width="124" height="15" rx="1"/><text class="tbt" x="234" y="216.5">Illustrative · not to scale</text></svg>';
+  }
+  function iso(){
+    var s=.62,ox=130,oy=44,H=24;
+    function P(x,y,z){z=z||0;return [+(ox+(x-y)*.866*s).toFixed(1),+(oy+(x+y)*.5*s-z).toFixed(1)]}
+    function poly(a){return a.map(function(p){return P(p[0],p[1],p[2]).join(',')}).join(' ')}
+    var slots='';for(var i=1;i<6;i++){var y=20+i*27.5;slots+='<path class="slot" d="M'+P(225,y).join(',')+' L'+P(290,y).join(',')+'"/>'}
+    var c1=P(75,140,H-5),c2=P(190,92,H-5);
+    var edge='M'+P(0,0,H)+' L'+P(190,0,H)+' L'+P(190,140,H)+' L'+P(0,140,H)+' Z M'+P(0,140,H)+' L'+P(0,140,0)+' L'+P(190,140,0)+' L'+P(190,0,0)+' L'+P(190,0,H)+' M'+P(190,140,H)+' L'+P(190,140,0);
+    function lab(x,y,t,z,c){var p=P(x,y);return '<text class="lab '+(c||'')+'" data-z="'+z+'" text-anchor="middle" x="'+p[0]+'" y="'+p[1]+'">'+t+'</text>'}
+    function sw(z,x,y,k,inner){var o=P(x,y);return '<g class="sw" data-z="'+z+'" style="--k:'+k+';transform-origin:'+o[0]+'px '+o[1]+'px">'+inner+'</g>'}
+    return '<svg viewBox="0 0 314 224" role="img" aria-label="Illustrative isometric view of a building. Cameras cover the main entrance and the parking area. Roof zones show a common area and a recording room.">'+
+      '<polygon class="ground" points="'+poly([[-10,-10],[310,-10],[310,210],[-10,210]])+'"/>'+
+      '<polygon class="area z-park" data-z="park" points="'+poly([[215,20],[300,20],[300,185],[215,185]])+'"/>'+slots+
+      sw('ent',75,140,0,'<polygon class="cone z-ent" points="'+poly([[75,140],[32,206],[122,206]])+'"/>')+
+      sw('park',190,92,1,'<polygon class="cone z-park" points="'+poly([[190,92],[298,28],[298,182]])+'"/>')+
+      '<polygon class="face-l" points="'+poly([[0,140,0],[190,140,0],[190,140,H],[0,140,H]])+'"/>'+
+      '<polygon class="face-r" points="'+poly([[190,0,0],[190,140,0],[190,140,H],[190,0,H]])+'"/>'+
+      '<polygon class="roof" points="'+poly([[0,0,H],[190,0,H],[190,140,H],[0,140,H]])+'"/>'+
+      '<polygon class="area z-com" data-z="com" points="'+poly([[6,6,H],[122,6,H],[122,80,H],[6,80,H]])+'"/>'+
+      '<polygon class="area z-rec" data-z="rec" points="'+poly([[132,6,H],[184,6,H],[184,80,H],[132,80,H]])+'"/>'+
+      '<polygon class="door z-ent" data-z="ent" points="'+poly([[60,140,0],[92,140,0],[92,140,16],[60,140,16]])+'"/>'+
+      '<path class="wall" pathLength="1" d="'+edge+'"/>'+dot('ent',c1[0],c1[1])+dot('park',c2[0],c2[1])+
+      lab(48,176,'Main entrance','ent')+lab(60,40,'Common area','com','sm')+lab(158,30,'Recording','rec','sm')+lab(255,198,'Parking','park')+
+      '<rect class="tb" x="186" y="208" width="124" height="15" rx="1"/><text class="tbt" x="192" y="218.5">Illustrative · not to scale</text></svg>';
+  }
+  var LEG=[['ent','Entrances and exits'],['park','Outdoor and parking'],['com','Common areas'],['rec','Recording room']];
+  function render(host,o){
+    o=o||{};
+    var st=host.dataset.style,an=(o.anim!==undefined?o.anim:(host.dataset.anim||'')).split(' ').filter(Boolean);
+    host.innerHTML='<div class="plan st-'+st+' '+(o.quick?'quick ':'')+an.map(function(a){return 'a-'+a}).join(' ')+'">'+(st==='iso'?iso():flat(o.v||'building'))+
+      '<div class="legend" role="group" aria-label="Highlight a zone">'+LEG.map(function(i){return '<button type="button" class="lg" data-k="'+i[0]+'" aria-pressed="false"><i class="sw-'+i[0]+'"></i>'+i[1]+'</button>'}).join('')+'</div></div>';
+  }
+  function replay(host){var p=$('.plan',host);if(!p)return;var c=[].filter.call(p.classList,function(x){return x.indexOf('a-')===0});c.forEach(function(x){p.classList.remove(x)});void p.offsetWidth;c.forEach(function(x){p.classList.add(x)})}
+
+  var hero=$('#heroPlan'),cap=$('#pcap');
+  function setCap(v){cap.innerHTML='<span>Example: <b>'+VAR[v].cap+'</b></span><span>Illustrative</span>'}
+  render(hero,{v:'building'});setCap('building');
+  $$('.pk').forEach(function(b){b.addEventListener('click',function(){
+    $$('.pk').forEach(function(x){x.setAttribute('aria-pressed',x===b)});
+    render(hero,{v:b.dataset.v,quick:true});setCap(b.dataset.v);$('.plan',hero).classList.add('fadeswap');
+  })});
+  hero.addEventListener('mouseenter',function(){var p=$('.plan',hero);if(p&&p.classList.contains('quick')===false)replay(hero)});
+
+  var isoH=$('#isoPlan');render(isoH,{anim:''});
+
+  /* zone focus: legend + factor chips */
+  function setFocus(p,k,btn){
+    $$('.lg',p).forEach(function(x){x.setAttribute('aria-pressed',btn===x)});
+    if(k&&k!=='all'){p.dataset.focus=k}else{delete p.dataset.focus}
+  }
+  document.addEventListener('mouseover',function(e){var b=e.target.closest&&e.target.closest('.lg');if(b)setFocus(b.closest('.plan'),b.dataset.k,b)});
+  document.addEventListener('mouseout',function(e){var b=e.target.closest&&e.target.closest('.lg');if(b)setFocus(b.closest('.plan'),null,null)});
+  document.addEventListener('focusin',function(e){var b=e.target.closest&&e.target.closest('.lg');if(b)setFocus(b.closest('.plan'),b.dataset.k,b)});
+  document.addEventListener('focusout',function(e){var b=e.target.closest&&e.target.closest('.lg');if(b)setFocus(b.closest('.plan'),null,null)});
+  document.addEventListener('click',function(e){var b=e.target.closest&&e.target.closest('.lg');if(b)setFocus(b.closest('.plan'),b.dataset.k,b)});
+  $('#factors').addEventListener('click',function(e){
+    var b=e.target.closest('button');if(!b)return;
+    var on=b.getAttribute('aria-pressed')==='true';
+    $$('#factors button').forEach(function(x){x.setAttribute('aria-pressed','false')});
+    var p=$('.plan',isoH);
+    if(on){delete p.dataset.focus}else{b.setAttribute('aria-pressed','true');setFocus(p,b.dataset.k,null)}
+  });
+
+  /* reveal once on scroll */
+  $$('#facts li,.stg>*').forEach(function(el){});
+  $$('.stg').forEach(function(g){[].forEach.call(g.children,function(c,i){if(!c.style.getPropertyValue('--k'))c.style.setProperty('--k',i)})});
+  var tl=$('#tl');
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){
+    e.target.classList.add('in');
+    if(e.target===isoH.parentNode){var p=$('.plan',isoH);p.classList.add('a-draw','a-sweep')}
+    io.unobserve(e.target)}})},{threshold:.2});
+  $$('[data-rv]').forEach(function(el){io.observe(el)});
+  var io2=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){tl.classList.add('run');io2.disconnect()}})},{threshold:.35});io2.observe(tl);
+
+  /* process: tap to expand on mobile, always open on desktop */
+  var steps=$$('#steps li');
+  function syncSteps(){
+    steps.forEach(function(li){var b=$('.st',li);b.tabIndex=mq.matches?-1:0;if(mq.matches){li.classList.add('open');b.setAttribute('aria-expanded','true')}});
+  }
+  steps.forEach(function(li){$('.st',li).addEventListener('click',function(){
+    if(mq.matches)return;var o=li.classList.contains('open');
+    steps.forEach(function(x){x.classList.remove('open');$('.st',x).setAttribute('aria-expanded','false')});
+    if(!o){li.classList.add('open');$('.st',li).setAttribute('aria-expanded','true')}
+  })});
+  mq.addEventListener('change',syncSteps);syncSteps();
+
+  /* about: details open and static on desktop */
+  var more=$('#more');
+  function syncMore(){if(mq.matches){more.open=true;more.classList.add('static')}else{more.classList.remove('static')}}
+  mq.addEventListener('change',syncMore);syncMore();
+
+  /* services carousel dots (mobile) */
+  var sn=$('#snap1'),dots=$$('#dots1 i');
+  sn.addEventListener('scroll',function(){var i=Math.round(sn.scrollLeft/(sn.scrollWidth/sn.children.length));dots.forEach(function(d,k){d.classList.toggle('on',k===i)})},{passive:true});
+})();
+</script>
+</body>
+</html>

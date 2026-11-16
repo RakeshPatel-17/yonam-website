@@ -1,0 +1,523 @@
+<!doctype html>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>YONAM Blueprint Explorations</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap">
+<style>
+/* Layout: comparison sheet. Each section shows options side by side, then a live picker combines them.
+   Page chrome flips with theme. Plans and site mockups are fixed light, because the real site is light. */
+:root{
+  --bg:#F5F8FD; --surface:#FFFFFF; --fg:#0E1A33; --muted:#4F5E7A; --line:#DAE2F0;
+  --accent:#1650D0; --accent-soft:#E4ECFB; --ok:#15803D; --warn:#B24A06;
+  --font:'Manrope',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;
+  --navy9:#0B1F5C; --navy95:#060F2E; --royal:#1650D0; --royal7:#1243B0; --cyan:#00ADFC; --cyan7:#0369A1;
+  --sky:#E3F2FD; --ice:#F3F7FE; --orange:#FD7B01; --orange6:#C2540A; --green:#1CAD00; --green7:#15803D;
+  --sline:#DDE4F0; --sbody:#475569;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#0A1226; --surface:#111C38; --fg:#E8EEFB; --muted:#9FAECB; --line:#24355C;
+  --accent:#7BA5FF; --accent-soft:#17274F; --ok:#4ADE80; --warn:#FDA25A; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0A1226; --surface:#111C38; --fg:#E8EEFB; --muted:#9FAECB; --line:#24355C;
+  --accent:#7BA5FF; --accent-soft:#17274F; --ok:#4ADE80; --warn:#FDA25A; color-scheme:dark}
+
+*{box-sizing:border-box}
+img{max-width:100%}
+body{margin:0;background:var(--bg);color:var(--fg);font-family:var(--font);font-size:16px;line-height:1.6;
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:0 80px}
+.wrap{max-width:1120px;margin-inline:auto}
+h1,h2,h3,h4{margin:0;line-height:1.15;text-wrap:balance;font-weight:800;letter-spacing:-.02em}
+p{margin:0}
+section{padding-top:72px}
+section>h2{font-size:clamp(26px,4vw,36px);margin:8px 0 12px}
+section>.lead{margin-bottom:26px}
+h3{font-size:19px}
+.eyebrow{font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--accent)}
+.lead{font-size:18px;color:var(--muted);max-width:70ch}
+.muted{color:var(--muted)}.small{font-size:14px}
+.cap{font-size:13px;color:var(--muted);margin-top:10px;max-width:80ch}
+code{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:.88em;background:var(--accent-soft);padding:1px 6px;border-radius:4px}
+.pill{display:inline-flex;font-size:13px;font-weight:700;padding:5px 12px;border-radius:999px;background:var(--accent-soft);color:var(--accent)}
+.panel{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:20px;min-width:0}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.grid4{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
+.tag{display:inline-block;font-size:12px;font-weight:700;padding:2px 9px;border-radius:999px;border:1px solid currentColor}
+.tag.ok{color:var(--ok)}.tag.warn{color:var(--warn)}
+a:focus-visible,button:focus-visible,input:focus-visible+span{outline:3px solid var(--accent);outline-offset:2px;border-radius:4px}
+
+/* intro */
+.intro{display:grid;grid-template-columns:1.3fr .7fr;gap:36px;align-items:center;padding-top:48px}
+.intro h1{font-size:clamp(32px,5.5vw,54px);margin:10px 0 16px}
+.logo-card{background:#fff;border-radius:16px;padding:12px;border:1px solid var(--line);max-width:300px;justify-self:center;width:100%}
+.logo-card img{display:block;width:100%;height:auto;border-radius:8px}
+
+/* role table */
+.table-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:12px;background:var(--surface)}
+table{border-collapse:collapse;width:100%;font-size:14px;min-width:620px}
+th,td{padding:11px 14px;text-align:left;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+tr:last-child td{border-bottom:0}
+.dotc{display:inline-block;width:14px;height:14px;border-radius:4px;margin-right:8px;vertical-align:-2px;border:1px solid rgba(0,0,0,.15)}
+.strip{display:flex;flex-wrap:wrap;gap:12px;align-items:center;background:#fff;color:var(--navy9);border:1px solid var(--line);border-radius:14px;padding:18px;margin-top:18px;font-size:13px;font-weight:700}
+.b-pri{background:var(--royal);color:#fff;padding:10px 16px;border-radius:8px}
+.b-sec{border:2px solid var(--navy9);color:var(--navy9);padding:8px 14px;border-radius:8px}
+.b-link{color:var(--royal);text-decoration:underline}
+.c-sel{background:var(--sky);color:var(--royal7);border:1.5px solid var(--royal);padding:6px 12px;border-radius:999px}
+.c-info{color:var(--cyan7);border-left:4px solid var(--cyan);padding-left:10px}
+.c-sig{background:var(--orange);color:var(--navy95);padding:6px 12px;border-radius:6px}
+.c-ok{color:var(--green7);display:inline-flex;align-items:center;gap:6px}
+.c-ok i{width:18px;height:18px;border-radius:50%;background:var(--green7);color:#fff;font-style:normal;display:grid;place-items:center;font-size:11px}
+
+/* plan system */
+.stage{background:#fff;border:1px solid var(--sline);border-radius:12px;padding:12px;min-width:0;
+  background-image:linear-gradient(rgba(22,80,208,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(22,80,208,.06) 1px,transparent 1px);background-size:18px 18px}
+.plan{--ink:#0B1F5C;--wall:#F3F7FE;--ground:#EAF0FA;--wl:#C9D6EE;--wr:#AFC2E4;--roof:#F8FAFF;--halo:#fff;--fo:.22;--iter:2;color:var(--ink)}
+.plan svg{display:block;width:100%;height:auto}
+.st-line{--fo:.07;--wall:transparent}
+.sc-calm{--f-ent:#FD7B01;--s-ent:#C2540A;--f-park:#00ADFC;--s-park:#0369A1;--f-com:#00ADFC;--s-com:#0369A1;--f-rec:#00ADFC;--s-rec:#0369A1}
+.sc-zones{--f-ent:#FD7B01;--s-ent:#C2540A;--f-park:#0B1F5C;--s-park:#0B1F5C;--f-com:#00ADFC;--s-com:#0369A1;--f-rec:#1CAD00;--s-rec:#15803D}
+.sc-mono{--f-ent:#FD7B01;--s-ent:#C2540A;--f-park:#0B1F5C;--s-park:#0B1F5C;--f-com:#0B1F5C;--s-com:#0B1F5C;--f-rec:#0B1F5C;--s-rec:#0B1F5C}
+.z-ent{--f:var(--f-ent);--s:var(--s-ent)}.z-park{--f:var(--f-park);--s:var(--s-park)}
+.z-com{--f:var(--f-com);--s:var(--s-com)}.z-rec{--f:var(--f-rec);--s:var(--s-rec)}
+.cone{fill:var(--f);fill-opacity:var(--fo);stroke:var(--s);stroke-width:1;stroke-opacity:.9}
+.st-line .cone{stroke-dasharray:3 3}
+.area{fill:var(--f);fill-opacity:.12;stroke:var(--s);stroke-width:1;stroke-dasharray:4 3}
+.st-iso .area{fill-opacity:.4}
+.door{fill:var(--f);fill-opacity:.9;stroke:var(--s);stroke-width:1}
+.bld{fill:var(--wall);stroke:var(--ink);stroke-width:2}
+.st-line .bld{stroke-width:1.3}
+.wall{fill:none;stroke:var(--ink);stroke-width:1.5}
+.st-line .wall{stroke-width:1}
+.cam{fill:var(--royal);stroke:#fff;stroke-width:1.5}
+.ring{fill:none;stroke:var(--royal);stroke-width:1.5;opacity:0;transform-box:fill-box;transform-origin:center}
+.lab{font:700 8.5px var(--font);fill:var(--ink);paint-order:stroke;stroke:var(--halo);stroke-width:3;stroke-linejoin:round}
+.lab.sm{font-size:7.5px}
+.lab.mut{font-weight:600;font-size:7px;fill:#5B6B8C}
+.ground{fill:var(--ground);stroke:#C5D2EA;stroke-width:1}
+.face-l{fill:var(--wl);stroke:var(--ink);stroke-width:1}.face-r{fill:var(--wr);stroke:var(--ink);stroke-width:1}
+.roof{fill:var(--roof);stroke:var(--ink);stroke-width:1}
+.slot{stroke:var(--s-park);stroke-width:.8;opacity:.55;fill:none}
+.dim{stroke:#5B6B8C;stroke-width:.8;fill:none}
+.legend{display:flex;flex-wrap:wrap;gap:6px 10px;margin-top:10px}
+.lg{font:700 11.5px var(--font);color:var(--navy9);background:#fff;border:1px solid var(--sline);border-radius:999px;padding:5px 11px 5px 8px;display:inline-flex;gap:7px;align-items:center;cursor:default}
+.lg:hover,.lg:focus-visible{border-color:var(--navy9)}
+.lg i{width:12px;height:12px;border-radius:3px;border:1.5px solid;display:block}
+.lg .sw-ent{background:color-mix(in srgb,var(--f-ent) 45%,#fff);border-color:var(--s-ent)}
+.lg .sw-park{background:color-mix(in srgb,var(--f-park) 45%,#fff);border-color:var(--s-park)}
+.lg .sw-com,.lg .sw-cov{background:color-mix(in srgb,var(--f-com) 45%,#fff);border-color:var(--s-com)}
+.lg .sw-rec{background:color-mix(in srgb,var(--f-rec) 45%,#fff);border-color:var(--s-rec)}
+[data-z]{transition:opacity .2s}
+.plan[data-focus=ent] [data-z]:not([data-z=ent]){opacity:.12}
+.plan[data-focus=park] [data-z]:not([data-z=park]){opacity:.12}
+.plan[data-focus=com] [data-z]:not([data-z=com]){opacity:.12}
+.plan[data-focus=rec] [data-z]:not([data-z=rec]){opacity:.12}
+.plan[data-focus=cov] [data-z=ent]{opacity:.12}
+
+/* motion */
+@keyframes scan{0%{transform:rotate(0)}25%{transform:rotate(-5deg)}75%{transform:rotate(5deg)}100%{transform:rotate(0)}}
+@keyframes breathe{0%,100%{transform:scale(1);opacity:1}50%{transform:scale(.9);opacity:.55}}
+@keyframes ringp{0%{transform:scale(1);opacity:.7}100%{transform:scale(3.4);opacity:0}}
+@keyframes draw{from{stroke-dashoffset:1}to{stroke-dashoffset:0}}
+.loop{--iter:infinite}
+.a-sweep .sw{animation:scan 2.4s ease-in-out var(--iter)}
+.a-sweep.st-iso .sw{animation:breathe 2.4s ease-in-out var(--iter)}
+.a-pulse .ring{animation:ringp 2.4s ease-out var(--iter)}
+.a-draw .wall{stroke-dasharray:1;stroke-dashoffset:0;animation:draw 1.8s ease-out both}
+.a-draw .bld{stroke-dasharray:1;animation:draw 1.8s ease-out both}
+.a-sweep .sw:nth-of-type(2){animation-delay:.2s}.a-sweep .sw:nth-of-type(3){animation-delay:.4s}
+@media (prefers-reduced-motion:reduce){.plan *,.tl *{animation:none!important}}
+.rm .plan *,.rm .tl *{animation:none!important}
+
+/* option cards */
+.opt-card{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:16px;display:grid;gap:12px;align-content:start;min-width:0}
+.opt-card h3{display:flex;justify-content:space-between;gap:10px;align-items:baseline;flex-wrap:wrap}
+.opt-card ul{margin:0;padding-left:18px;font-size:14px;display:grid;gap:4px}
+.opt-card.rec{border:2px solid var(--accent)}
+.btn{font:700 13px var(--font);background:var(--accent-soft);color:var(--accent);border:1px solid var(--accent);border-radius:8px;padding:7px 12px;cursor:pointer;justify-self:start}
+.btn:hover{background:var(--accent);color:var(--bg)}
+.spec{display:grid;grid-template-columns:auto 1fr;gap:3px 12px;font-size:13px}
+.spec dt{color:var(--muted);font-weight:700}.spec dd{margin:0}
+
+/* timeline demo */
+.tl-band{background:var(--navy9);border-radius:14px;padding:26px 20px 22px;color:#fff;min-width:0;overflow-x:auto}
+.tl{position:relative;min-width:620px}
+.tl .track{position:absolute;left:8.33%;right:8.33%;top:14px;height:3px;background:rgba(255,255,255,.22);border-radius:2px;overflow:hidden}
+.tl .track i{display:block;height:100%;width:100%;background:linear-gradient(90deg,var(--cyan),#6FA3FF)}
+.tl ol{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(6,1fr);position:relative}
+.tl li{display:grid;justify-items:center;gap:9px;text-align:center;font-size:12.5px;font-weight:700;padding:0 6px}
+.tl li b{width:30px;height:30px;border-radius:50%;background:#fff;color:var(--navy9);border:3px solid var(--cyan);display:grid;place-items:center;font-size:12px;font-weight:800}
+.tl li:last-child b{border-color:var(--green)}
+@keyframes fillw{from{width:0}to{width:100%}}
+@keyframes lit{from{border-color:rgba(255,255,255,.3);background:rgba(255,255,255,.35);color:rgba(11,31,92,.6);transform:scale(.86)}to{transform:scale(1)}}
+.tl.run .track i{animation:fillw 3.4s linear both}
+.tl.run li b{animation:lit .45s ease-out both;animation-delay:calc(var(--i)*.6s)}
+
+/* picker */
+.picker{display:grid;grid-template-columns:300px 1fr;gap:20px;align-items:start}
+.controls{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:18px;display:grid;gap:18px;position:sticky;top:12px}
+fieldset{border:0;margin:0;padding:0;display:grid;gap:7px;min-width:0}
+legend{font-size:12px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);padding:0;margin-bottom:4px}
+.ch{display:block}
+.ch input{position:absolute;opacity:0;width:1px;height:1px}
+.ch>span{display:flex;gap:10px;align-items:center;border:1.5px solid var(--line);border-radius:10px;padding:9px 12px;font-weight:700;font-size:14px;cursor:pointer;background:var(--bg)}
+.ch input:checked+span{border-color:var(--accent);background:var(--accent-soft);color:var(--accent)}
+.ch input:focus-visible+span{outline:3px solid var(--accent);outline-offset:2px}
+.ch small{display:block;font-weight:500;color:var(--muted);font-size:12px}
+.mini{display:flex;gap:3px;flex:none}.mini i{width:11px;height:20px;border-radius:3px;display:block;border:1px solid rgba(0,0,0,.18)}
+.result{border:2px dashed var(--accent);border-radius:12px;padding:12px 14px;font-size:14px;font-weight:700;display:grid;gap:8px}
+.result output{display:block;font-weight:600;color:var(--fg)}
+.previews{display:grid;gap:20px;min-width:0}
+.scroll{overflow-x:auto;padding-bottom:6px}
+.site{background:#fff;color:var(--navy9);border:1px solid var(--sline);border-radius:12px;overflow:hidden;font-size:11.5px;line-height:1.4;font-weight:500;min-width:0}
+.desk{min-width:680px}
+.lt{display:block;overflow:hidden;aspect-ratio:1195/1083;flex:none}
+.lt img{display:block;width:104.94%;max-width:none;margin-left:-2.51%;margin-top:-2.93%}
+.s-head{display:flex;align-items:center;gap:16px;padding:8px 18px;border-bottom:1px solid var(--sline)}
+.s-nav{display:flex;gap:14px;margin-left:auto;font-weight:600;color:var(--sbody);white-space:nowrap}
+.s-btn{background:var(--royal);color:#fff;font-weight:700;padding:7px 12px;border-radius:7px;display:inline-block;white-space:nowrap}
+.s-btn.ghost{background:transparent;color:var(--navy9);border:1.5px solid var(--navy9)}
+.s-h{font-weight:800;letter-spacing:-.02em;line-height:1.08;font-size:28px;margin:6px 0 10px}
+.s-p{color:var(--sbody)}
+.eb{font-size:9px;letter-spacing:.14em;text-transform:uppercase;font-weight:800;color:var(--royal)}
+.heroB{display:grid;grid-template-columns:1fr 1fr;gap:20px;padding:26px 22px;align-items:center;background-color:var(--ice);
+  background-image:linear-gradient(rgba(22,80,208,.07) 1px,transparent 1px),linear-gradient(90deg,rgba(22,80,208,.07) 1px,transparent 1px);background-size:18px 18px}
+.ctas{display:flex;gap:8px;margin-top:14px;flex-wrap:wrap}
+.planbox{background:#fff;border:1px solid var(--sline);border-radius:10px;padding:8px;min-width:0}
+.phones{display:flex;gap:20px;flex-wrap:wrap}
+.phone{width:290px;border:8px solid var(--navy95);border-radius:34px;background:#fff;overflow:hidden;flex:none;color:var(--navy9)}
+.ph-head{display:flex;align-items:center;justify-content:space-between;padding:7px 12px;border-bottom:1px solid var(--sline)}
+.burger{display:grid;gap:3px;width:20px}.burger i{display:block;height:2px;background:var(--navy9);border-radius:2px}
+.ph-hero{padding:14px;display:grid;gap:8px;background-color:var(--ice);background-image:linear-gradient(rgba(22,80,208,.07) 1px,transparent 1px),linear-gradient(90deg,rgba(22,80,208,.07) 1px,transparent 1px);background-size:16px 16px;font-size:10.5px}
+.ph-hero .s-h{font-size:21px}
+.stickybar{display:grid;grid-template-columns:1fr 1fr 1.3fr;gap:6px;padding:8px 10px;border-top:1px solid var(--sline);font-size:10.5px}
+.stickybar span{border-radius:8px;padding:9px 4px;text-align:center;font-weight:800;border:1.5px solid var(--navy9)}
+.stickybar .off{border-style:dashed;border-color:#9AA7C0;color:#7A89A6}
+.stickybar .go{background:var(--royal);border-color:var(--royal);color:#fff}
+
+.rules{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+.rules .panel h3{margin-bottom:8px}
+.rules ul{margin:0;padding-left:18px;display:grid;gap:6px;font-size:14px}
+
+@media (max-width:900px){
+  .intro,.grid3,.grid2,.picker,.rules{grid-template-columns:1fr}
+  .controls{position:static}
+}
+</style>
+
+<div class="wrap">
+
+<header class="intro">
+  <div>
+    <span class="pill">Back to Blueprint · colour, illustration, motion</span>
+    <h1>Blueprint, explored</h1>
+    <p class="lead">You liked Blueprint. This sheet shows three ways to colour-code it, three illustration styles and four animation ideas, all on the real logo. Use the live picker at the bottom to combine them, then send me the line it produces.</p>
+  </div>
+  <div class="logo-card"><img src="yonam-logo.jpg" alt="Official YONAM CCTV Surveillance logo"></div>
+</header>
+
+<!-- ============ 1 ROLES ============ -->
+<section id="roles">
+  <span class="eyebrow">Colour coding · the rulebook</span>
+  <h2>Every colour gets exactly one job</h2>
+  <p class="lead">Colour coding works when a colour always means the same thing. The same five meanings run through the plan illustrations and the page UI, so visitors learn the language without noticing.</p>
+  <div class="table-wrap"><table>
+    <thead><tr><th>Colour</th><th>Meaning</th><th>On the plan</th><th>In the page UI</th><th>Never</th></tr></thead>
+    <tbody>
+      <tr><td><span class="dotc" style="background:#0B1F5C"></span><b>Navy</b></td><td>Authority, structure</td><td>Walls, outdoor and perimeter zones</td><td>Headings, footer, process band</td><td>Buttons</td></tr>
+      <tr><td><span class="dotc" style="background:#1650D0"></span><b>Royal</b></td><td>“You can act here”</td><td>Camera positions only</td><td>Buttons, links, focus ring</td><td>Zones or decoration</td></tr>
+      <tr><td><span class="dotc" style="background:#00ADFC"></span><b>Cyan</b></td><td>What the cameras cover</td><td>Coverage cones, common areas</td><td>Info notes, timeline connector</td><td>Text (use <code>#0369A1</code>)</td></tr>
+      <tr><td><span class="dotc" style="background:#FD7B01"></span><b>Orange</b></td><td>Way in and out, one signal</td><td>Entrances and exits</td><td>One highlight per screen</td><td>White text on it</td></tr>
+      <tr><td><span class="dotc" style="background:#1CAD00"></span><b>Green</b></td><td>Recording and support</td><td>Recording room</td><td>Long-term support block, step 6</td><td>A fake “success” message</td></tr>
+    </tbody>
+  </table></div>
+  <div class="strip" aria-label="Colour roles in the page UI">
+    <span class="b-pri">Discuss Your Project</span><span class="b-sec">Request a Site Assessment</span><span class="b-link">Explore Building Solutions →</span>
+    <span class="c-sel">Under Construction</span><span class="c-info">Coverage is planned after your property assessment.</span>
+    <span class="c-sig">Main entrance</span><span class="c-ok"><i>✓</i>Long-term support</span>
+  </div>
+  <p class="cap">Accessibility rule baked in: tinted fills carry the zone colour, but outlines and text use the darker contrast-safe version (orange <code>#C2540A</code>, cyan <code>#0369A1</code>, green <code>#15803D</code>). Every zone is also named in text and in a legend, so nothing depends on colour alone (WCAG 1.4.1).</p>
+</section>
+
+<!-- ============ 2 COLOUR SCHEMES ============ -->
+<section id="colour">
+  <span class="eyebrow">Option set 1 · colour coding of the plan</span>
+  <h2>Three ways to colour the same plan</h2>
+  <p class="lead">Same geometry, same illustration style. Only the colour logic changes. Hover or tab to a legend item to see that zone isolated.</p>
+  <div class="grid3">
+    <div class="opt-card">
+      <h3>Colour 1 · Calm Cyan <span class="tag ok">Safest</span></h3>
+      <div class="stage"><div class="plan-host" data-scheme="calm" data-style="filled"></div></div>
+      <ul><li>Two meanings only: orange = entrances, cyan = coverage</li><li>Quietest, most “corporate”</li><li>Less information per glance</li></ul>
+    </div>
+    <div class="opt-card rec">
+      <h3>Colour 2 · Zone Coded <span class="tag ok">Most informative</span></h3>
+      <div class="stage"><div class="plan-host" data-scheme="zones" data-style="filled"></div></div>
+      <ul><li>Four zone types, four colours, one legend</li><li>Shows that YONAM plans entrances, outdoors, common areas and recording separately</li><li>Still under about 4% of the page area for warm colours</li></ul>
+    </div>
+    <div class="opt-card">
+      <h3>Colour 3 · Mono Navy <span class="tag warn">Strict</span></h3>
+      <div class="stage"><div class="plan-host" data-scheme="mono" data-style="filled"></div></div>
+      <ul><li>All navy, with only the entrances in orange</li><li>Most restrained, closest to the PRD’s navy-first brief</li><li>Reads as architectural drawing, least friendly for homeowners</li></ul>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 3 ILLUSTRATION ============ -->
+<section id="illustration">
+  <span class="eyebrow">Option set 2 · illustration style</span>
+  <h2>Three drawing styles</h2>
+  <p class="lead">All three are plain inline SVG, a few KB each, no images to load. They are labelled “Illustrative · not to scale” so nobody mistakes them for a real YONAM plan. Shown in the Zone Coded colours.</p>
+  <div class="grid3">
+    <div class="opt-card">
+      <h3>Style 1 · Plan view</h3>
+      <div class="stage"><div class="plan-host" data-scheme="zones" data-style="filled"></div></div>
+      <ul><li>Top-down floor plan with soft filled zones</li><li>Clearest for “entrances, parking, common areas”</li><li>Easiest to animate and to keep readable on mobile</li></ul>
+    </div>
+    <div class="opt-card">
+      <h3>Style 2 · Line blueprint</h3>
+      <div class="stage"><div class="plan-host" data-scheme="zones" data-style="line"></div></div>
+      <ul><li>Thin technical linework, dashed coverage</li><li>Most “engineer” feel, matches the grid background</li><li>Lighter on screen, slightly less friendly</li></ul>
+    </div>
+    <div class="opt-card">
+      <h3>Style 3 · Isometric <span class="tag warn">Most impressive</span></h3>
+      <div class="stage"><div class="plan-host" data-scheme="zones" data-style="iso"></div></div>
+      <ul><li>A building in perspective, coverage on the ground</li><li>Most visual impact, best as a hero image</li><li>Harder to read small, needs most craft to extend</li></ul>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 4 MOTION ============ -->
+<section id="motion">
+  <span class="eyebrow">Option set 3 · animation</span>
+  <h2>Four small motions</h2>
+  <p class="lead">Each one is CSS only. No animation library, no scroll-triggered effects. Each runs for about 5 seconds at most, then rests, because moving content that never stops fails accessibility rules. Hover a plan to replay it.</p>
+  <div class="grid4">
+    <div class="opt-card">
+      <h3>Motion 1 · Scanning <span class="tag ok">Recommended</span></h3>
+      <div class="stage"><div class="plan-host" data-scheme="zones" data-style="filled" data-anim="sweep"></div></div>
+      <button class="btn" data-replay="prev">Replay</button>
+      <dl class="spec"><dt>What</dt><dd>Coverage cones sweep ±5° around each camera</dd><dt>Timing</dt><dd>2.4 s, 2 cycles, ease-in-out</dd><dt>Meaning</dt><dd>“Cameras are watching”, without a single claim</dd><dt>Cost</dt><dd>transform only, GPU friendly</dd></dl>
+    </div>
+    <div class="opt-card">
+      <h3>Motion 2 · Drawing in <span class="tag ok">Recommended</span></h3>
+      <div class="stage"><div class="plan-host" data-scheme="zones" data-style="line" data-anim="draw"></div></div>
+      <button class="btn" data-replay="prev">Replay</button>
+      <dl class="spec"><dt>What</dt><dd>Walls draw themselves like a plan being drawn</dd><dt>Timing</dt><dd>1.8 s, once, on first view</dd><dt>Meaning</dt><dd>“We plan before we install”</dd><dt>Cost</dt><dd>stroke-dashoffset, runs once</dd></dl>
+    </div>
+    <div class="opt-card">
+      <h3>Motion 3 · Camera pulse</h3>
+      <div class="stage"><div class="plan-host" data-scheme="zones" data-style="filled" data-anim="pulse"></div></div>
+      <button class="btn" data-replay="prev">Replay</button>
+      <dl class="spec"><dt>What</dt><dd>A soft ring expands from each camera point</dd><dt>Timing</dt><dd>2.4 s, 2 cycles, ease-out</dd><dt>Meaning</dt><dd>“Live”, can feel like a recording indicator</dd><dt>Cost</dt><dd>transform and opacity</dd></dl>
+    </div>
+    <div class="opt-card">
+      <h3>Motion 4 · Process fill <span class="tag ok">Recommended</span></h3>
+      <div class="tl-band"><div class="tl" id="tl">
+        <div class="track"><i></i></div>
+        <ol>
+          <li style="--i:0"><b>1</b>Understand your requirements</li><li style="--i:1"><b>2</b>Assess your property</li><li style="--i:2"><b>3</b>Prepare a dedicated plan</li>
+          <li style="--i:3"><b>4</b>Install the system</li><li style="--i:4"><b>5</b>Configure and test</li><li style="--i:5"><b>6</b>Long-term support</li>
+        </ol></div></div>
+      <button class="btn" id="tlReplay">Replay</button>
+      <dl class="spec"><dt>What</dt><dd>Line fills left to right, each step lights in order, step 6 ends green</dd><dt>Timing</dt><dd>3.4 s, once, when the section scrolls into view</dd><dt>Meaning</dt><dd>A real sequence, so motion carries information</dd></dl>
+    </div>
+  </div>
+  <p class="cap">Always on, no motion: hovering or focusing a legend item isolates that zone on the plan. It is interaction, not decoration, and it works on a tap as well.</p>
+</section>
+
+<!-- ============ 5 PICKER ============ -->
+<section id="picker">
+  <span class="eyebrow">Live picker</span>
+  <h2>Combine them on the real hero</h2>
+  <p class="lead">Choose one option from each group. The desktop and phone hero below update immediately. The text box at the bottom of the controls is your answer, send it to me as is.</p>
+  <div class="picker">
+    <form class="controls" id="cfg" onsubmit="return false">
+      <fieldset><legend>Colour coding</legend>
+        <label class="ch"><input type="radio" name="scheme" value="calm"><span><span class="mini"><i style="background:#FD7B01"></i><i style="background:#00ADFC"></i></span><span>Calm Cyan<small>Orange entrance, cyan coverage</small></span></span></label>
+        <label class="ch"><input type="radio" name="scheme" value="zones" checked><span><span class="mini"><i style="background:#FD7B01"></i><i style="background:#0B1F5C"></i><i style="background:#00ADFC"></i><i style="background:#1CAD00"></i></span><span>Zone Coded<small>Four zone types</small></span></span></label>
+        <label class="ch"><input type="radio" name="scheme" value="mono"><span><span class="mini"><i style="background:#FD7B01"></i><i style="background:#0B1F5C"></i></span><span>Mono Navy<small>Navy with one orange signal</small></span></span></label>
+      </fieldset>
+      <fieldset><legend>Illustration</legend>
+        <label class="ch"><input type="radio" name="style" value="filled" checked><span><span>Plan view<small>Soft filled zones</small></span></span></label>
+        <label class="ch"><input type="radio" name="style" value="line"><span><span>Line blueprint<small>Technical linework</small></span></span></label>
+        <label class="ch"><input type="radio" name="style" value="iso"><span><span>Isometric<small>Building in perspective</small></span></span></label>
+      </fieldset>
+      <fieldset><legend>Motion (pick any)</legend>
+        <label class="ch"><input type="checkbox" name="anim" value="sweep" checked><span><span>Scanning cones</span></span></label>
+        <label class="ch"><input type="checkbox" name="anim" value="draw" checked><span><span>Drawing in</span></span></label>
+        <label class="ch"><input type="checkbox" name="anim" value="pulse"><span><span>Camera pulse</span></span></label>
+        <label class="ch"><input type="checkbox" name="rmprev"><span><span>Preview “reduce motion” setting<small>What visitors with that OS setting see</small></span></span></label>
+      </fieldset>
+      <div class="result"><span>Your pick</span><output id="out" aria-live="polite"></output><button class="btn" type="button" id="copy">Copy</button><span class="small muted" id="copied" hidden>Copied</span></div>
+    </form>
+
+    <div class="previews">
+      <div class="scroll"><div class="site desk">
+        <div class="s-head"><span class="lt" style="width:56px"><img src="yonam-logo.jpg" alt="YONAM logo"></span>
+          <div class="s-nav"><span>Home</span><span>About Us</span><span>Solutions ▾</span><span>Services ▾</span><span>Contact Us</span></div><span class="s-btn">Discuss Your Project</span></div>
+        <div class="heroB">
+          <div><span class="eb">Dedicated plan for every property · Nadiad, Gujarat</span>
+            <div class="s-h">Complete CCTV Surveillance Solutions, Planned Around Your Needs.</div>
+            <p class="s-p">From dedicated implementation planning and professional installation to system setup and long-term support, YONAM helps deliver CCTV surveillance solutions according to your property’s requirements.</p>
+            <div class="ctas"><span class="s-btn">Discuss Your Project</span><span class="s-btn ghost">Request a Site Assessment</span></div></div>
+          <div class="planbox"><div class="plan-host" id="cfgDesk"></div></div>
+        </div>
+      </div></div>
+      <div class="phones">
+        <div class="phone">
+          <div class="ph-head"><span class="lt" style="width:48px"><img src="yonam-logo.jpg" alt="YONAM logo"></span><span class="burger" aria-hidden="true"><i></i><i></i><i></i></span></div>
+          <div class="ph-hero"><span class="eb">Nadiad, Gujarat</span>
+            <div class="s-h">Complete CCTV Surveillance Solutions, Planned Around Your Needs.</div>
+            <p class="s-p">Dedicated planning, installation, setup and long-term support.</p>
+            <span class="s-btn" style="text-align:center;padding:10px">Discuss Your Project</span>
+            <span class="s-btn ghost" style="text-align:center;padding:9px">Request a Site Assessment</span></div>
+          <div class="planbox" style="margin:0 12px 12px"><div class="plan-host" id="cfgPhone"></div></div>
+          <div class="stickybar"><span>Call</span><span class="off">WhatsApp</span><span class="go">Enquire</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 6 GUARDRAILS ============ -->
+<section id="rules">
+  <span class="eyebrow">Guardrails</span>
+  <h2>Rules that apply to whatever you pick</h2>
+  <div class="rules">
+    <div class="panel"><h3>Honesty</h3><ul><li>Every plan is captioned “Illustrative · not to scale”.</li><li>No real customer plans or property layouts without permission.</li><li>Camera counts and positions in drawings are examples, never an offer or a quote.</li></ul></div>
+    <div class="panel"><h3>Motion</h3><ul><li>CSS only, no libraries. Under 2 KB of added script.</li><li>Every animation ends within about 5 seconds, then rests.</li><li>Respects the “reduce motion” setting: everything shows in its final state.</li><li>Motion only on the hero, the planning section and the process timeline.</li></ul></div>
+    <div class="panel"><h3>Performance</h3><ul><li>Illustrations are inline SVG, each about 3 to 6 KB.</li><li>No layout shift: drawings have fixed aspect ratios.</li><li>Animates transform and opacity wherever possible.</li></ul></div>
+    <div class="panel"><h3>Accessibility</h3><ul><li>Each drawing has a text description, and a legend names every colour.</li><li>Contrast-safe darker outlines on all tinted zones.</li><li>Legend items are real buttons: keyboard and touch work, not hover only.</li></ul></div>
+  </div>
+  <p class="cap">My leaning, for reference only: Colour 2 (Zone Coded), Style 1 (Plan view) in the hero, Style 3 (Isometric) as a larger image in the planning section, Motions 1, 2 and 4. Pick whatever you like better.</p>
+</section>
+
+</div>
+
+<script>
+(function(){
+  /* ---------- plan builders ---------- */
+  var CAMS=[
+    {z:'ent',c:[70,182],p:[[70,182],[30,122],[110,122]]},
+    {z:'com',c:[90,28],p:[[90,28],[35,108],[145,108]]},
+    {z:'com',c:[240,150],p:[[240,150],[128,126],[128,186]]},
+    {z:'rec',c:[205,28],p:[[205,28],[168,96],[242,96]]},
+    {z:'park',c:[268,115],p:[[268,115],[346,36],[346,196]]}
+  ];
+  function pts(a){return a.map(function(p){return p.join(',')}).join(' ')}
+  function camDots(list){return list.map(function(c){return '<g data-z="'+c.z+'"><circle class="ring" cx="'+c[0]+'" cy="'+c[1]+'" r="4.5"/><circle class="cam" cx="'+c[0]+'" cy="'+c[1]+'" r="4.5"/></g>'}).join('')}
+  function flat(st){
+    var cones=CAMS.map(function(m){return '<g class="sw" data-z="'+m.z+'" style="transform-origin:'+m.c[0]+'px '+m.c[1]+'px"><polygon class="cone z-'+m.z+'" points="'+pts(m.p)+'"/></g>'}).join('');
+    var dots=CAMS.map(function(m){return '<g data-z="'+m.z+'"><circle class="ring" cx="'+m.c[0]+'" cy="'+m.c[1]+'" r="4.5"/><circle class="cam" cx="'+m.c[0]+'" cy="'+m.c[1]+'" r="4.5"/></g>'}).join('');
+    var slots='';
+    if(st==='line'){for(var i=1;i<6;i++){var y=30+i*28;slots+='<path class="slot z-park" d="M275 '+y+'H337"/>'}}
+    var dim=st==='line'?'<path class="dim" d="M20 10H250M20 6V14M250 6V14"/><text class="lab mut" x="24" y="8">ILLUSTRATIVE PLAN</text>':'';
+    return '<svg viewBox="0 0 360 222" role="img" aria-label="Illustrative floor plan. Cameras cover the main entrance, a common area, a corridor, a recording room and the parking area.">'+
+      '<rect class="area z-park" data-z="park" x="265" y="30" width="82" height="170" rx="3"/>'+slots+
+      '<rect class="bld" pathLength="1" x="20" y="20" width="230" height="170" rx="3"/>'+
+      '<path class="wall" pathLength="1" d="M160 20V110M20 110H250M120 110V190"/>'+
+      cones+
+      '<rect class="door z-ent" data-z="ent" x="50" y="186" width="40" height="7" rx="2"/>'+
+      dots+dim+
+      '<text class="lab" x="52" y="206">Main entrance</text>'+
+      '<text class="lab" x="28" y="36">Common area</text>'+
+      '<text class="lab sm" x="168" y="36">Recording room</text>'+
+      '<text class="lab sm" x="130" y="176">Corridor</text>'+
+      '<text class="lab" x="276" y="190">Parking</text>'+
+      '<text class="lab mut" x="20" y="218">Illustrative · not to scale</text></svg>';
+  }
+  function iso(){
+    var s=.62,ox=130,oy=44,H=24;
+    function P(x,y,z){z=z||0;return [+(ox+(x-y)*.866*s).toFixed(1),+(oy+(x+y)*.5*s-z).toFixed(1)]}
+    function poly(a){return a.map(function(p){return P(p[0],p[1],p[2]).join(',')}).join(' ')}
+    function sw(z,cx,cy,inner){var o=P(cx,cy);return '<g class="sw" data-z="'+z+'" style="transform-origin:'+o[0]+'px '+o[1]+'px">'+inner+'</g>'}
+    var slots='';for(var i=1;i<6;i++){var y=20+i*27.5;slots+='<path class="slot" d="M'+P(225,y).join(',')+' L'+P(290,y).join(',')+'"/>'}
+    var c1=P(75,140,H-5),c2=P(190,92,H-5);
+    var edge='M'+P(0,0,H)+' L'+P(190,0,H)+' L'+P(190,140,H)+' L'+P(0,140,H)+' Z M'+P(0,140,H)+' L'+P(0,140,0)+' L'+P(190,140,0)+' L'+P(190,0,0)+' L'+P(190,0,H)+' M'+P(190,140,H)+' L'+P(190,140,0);
+    var l=function(x,y,t,c){var p=P(x,y);return '<text class="lab '+(c||'')+'" text-anchor="middle" x="'+p[0]+'" y="'+p[1]+'">'+t+'</text>'};
+    return '<svg viewBox="0 0 314 215" role="img" aria-label="Illustrative isometric view of a building. Cameras cover the main entrance and the parking area.">'+
+      '<polygon class="ground" points="'+poly([[-10,-10],[310,-10],[310,210],[-10,210]])+'"/>'+
+      '<polygon class="area z-park" data-z="park" points="'+poly([[215,20],[300,20],[300,185],[215,185]])+'"/>'+slots+
+      sw('ent',75,140,'<polygon class="cone z-ent" points="'+poly([[75,140],[32,206],[122,206]])+'"/>')+
+      sw('park',190,92,'<polygon class="cone z-park" points="'+poly([[190,92],[298,28],[298,182]])+'"/>')+
+      '<polygon class="face-l" points="'+poly([[0,140,0],[190,140,0],[190,140,H],[0,140,H]])+'"/>'+
+      '<polygon class="face-r" points="'+poly([[190,0,0],[190,140,0],[190,140,H],[190,0,H]])+'"/>'+
+      '<polygon class="roof" points="'+poly([[0,0,H],[190,0,H],[190,140,H],[0,140,H]])+'"/>'+
+      '<polygon class="area z-com" data-z="com" points="'+poly([[6,6,H],[122,6,H],[122,80,H],[6,80,H]])+'"/>'+
+      '<polygon class="area z-rec" data-z="rec" points="'+poly([[132,6,H],[184,6,H],[184,80,H],[132,80,H]])+'"/>'+
+      '<polygon class="door z-ent" data-z="ent" points="'+poly([[60,140,0],[92,140,0],[92,140,16],[60,140,16]])+'"/>'+
+      '<path class="wall" pathLength="1" d="'+edge+'"/>'+
+      '<g data-z="ent"><circle class="ring" cx="'+c1[0]+'" cy="'+c1[1]+'" r="4.5"/><circle class="cam" cx="'+c1[0]+'" cy="'+c1[1]+'" r="4.5"/></g>'+
+      '<g data-z="park"><circle class="ring" cx="'+c2[0]+'" cy="'+c2[1]+'" r="4.5"/><circle class="cam" cx="'+c2[0]+'" cy="'+c2[1]+'" r="4.5"/></g>'+
+      l(48,175,'Main entrance')+l(60,40,'Common area','sm')+l(158,30,'Recording','sm')+l(255,196,'Parking')+
+      '<text class="lab mut" x="8" y="209">Illustrative · not to scale</text></svg>';
+  }
+  var LEG={
+    calm:[['ent','Entrances and exits'],['cov','Camera coverage']],
+    zones:[['ent','Entrances and exits'],['park','Outdoor and parking'],['com','Common areas'],['rec','Recording room']],
+    mono:[['ent','Entrances and exits'],['cov','Camera coverage']]
+  };
+  function legend(sc){return LEG[sc].map(function(i){return '<button type="button" class="lg" data-k="'+i[0]+'"><i class="sw-'+i[0]+'"></i>'+i[1]+'</button>'}).join('')}
+  function render(host,o){
+    o=o||{};
+    var sc=o.scheme||host.dataset.scheme,st=o.style||host.dataset.style;
+    var an=(o.anim!==undefined?o.anim:(host.dataset.anim||'')).split(' ').filter(Boolean);
+    host.innerHTML='<div class="plan sc-'+sc+' st-'+st+' '+an.map(function(a){return 'a-'+a}).join(' ')+'" data-an="'+an.join(' ')+'">'+(st==='iso'?iso():flat(st))+'<div class="legend">'+legend(sc)+'</div></div>';
+  }
+  function replay(host){
+    var p=host.querySelector('.plan');if(!p)return;
+    var c=[].filter.call(p.classList,function(x){return x.indexOf('a-')===0});
+    c.forEach(function(x){p.classList.remove(x)});void p.offsetWidth;c.forEach(function(x){p.classList.add(x)});
+  }
+  /* legend focus (hover, keyboard, touch) */
+  function focusOn(e){var b=e.target.closest&&e.target.closest('.lg');if(!b)return;var p=b.closest('.plan');p.dataset.focus=b.dataset.k}
+  function focusOff(e){var b=e.target.closest&&e.target.closest('.lg');if(!b)return;delete b.closest('.plan').dataset.focus}
+  document.addEventListener('mouseover',focusOn);document.addEventListener('focusin',focusOn);
+  document.addEventListener('mouseout',focusOff);document.addEventListener('focusout',focusOff);
+  document.addEventListener('click',function(e){var b=e.target.closest&&e.target.closest('.lg');if(!b)return;var p=b.closest('.plan');if(p.dataset.focus===b.dataset.k&&e.detail===0){return}p.dataset.focus=b.dataset.k});
+
+  /* static option cards */
+  [].forEach.call(document.querySelectorAll('.plan-host[data-scheme]'),function(h){
+    render(h);
+    h.addEventListener('mouseenter',function(){replay(h)});
+  });
+  [].forEach.call(document.querySelectorAll('[data-replay]'),function(b){
+    b.addEventListener('click',function(){var h=b.closest('.opt-card').querySelector('.plan-host');replay(h)});
+  });
+
+  /* process timeline */
+  var tl=document.getElementById('tl');
+  function runTl(){tl.classList.remove('run');void tl.offsetWidth;tl.classList.add('run')}
+  document.getElementById('tlReplay').addEventListener('click',runTl);
+  if('IntersectionObserver' in window){
+    var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){runTl();io.disconnect()}})},{threshold:.5});io.observe(tl);
+  }else{runTl()}
+
+  /* picker */
+  var cfg=document.getElementById('cfg'),out=document.getElementById('out');
+  var NAMES={calm:'Calm Cyan',zones:'Zone Coded',mono:'Mono Navy',filled:'Plan view',line:'Line blueprint',iso:'Isometric',sweep:'Scanning cones',draw:'Drawing in',pulse:'Camera pulse'};
+  function read(){
+    var f=new FormData(cfg);
+    return {scheme:f.get('scheme'),style:f.get('style'),anims:f.getAll('anim'),rm:f.get('rmprev')!==null};
+  }
+  function apply(){
+    var v=read();
+    document.documentElement.classList.toggle('rm',v.rm);
+    var a=v.anims.join(' ');
+    render(document.getElementById('cfgDesk'),{scheme:v.scheme,style:v.style,anim:a});
+    render(document.getElementById('cfgPhone'),{scheme:v.scheme,style:v.style,anim:a});
+    out.textContent='Colour: '+NAMES[v.scheme]+' · Illustration: '+NAMES[v.style]+' · Motion: '+(v.anims.length?v.anims.map(function(x){return NAMES[x]}).join(', ')+' + Process fill':'Process fill only');
+  }
+  cfg.addEventListener('change',apply);
+  ['cfgDesk','cfgPhone'].forEach(function(id){var h=document.getElementById(id);h.addEventListener('mouseenter',function(){replay(h)})});
+  document.getElementById('copy').addEventListener('click',function(){
+    var t=out.textContent,c=document.getElementById('copied');
+    function done(){c.hidden=false;setTimeout(function(){c.hidden=true},1600)}
+    if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(done,function(){})}
+  });
+  apply();
+})();
+</script>
